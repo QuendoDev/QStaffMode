@@ -31,4 +31,9 @@ public class QStaffMode extends JavaPlugin {
     public void onDisable() {
         qsmService.stop();
     }
+
+    /*
+    qstaffmode.fly
+
+     */
 }

@@ -61,6 +61,7 @@
                     <include>config.yml</include>
                     <include>messages.yml</include>
                     <include>items.yml</include>
+                    <include>staffInformation.yml</include>
                 </includes>
                 <filtering>true</filtering>
             </resource>
@@ -94,7 +95,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.12</version>
+            <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -121,7 +122,7 @@
         <dependency>
             <groupId>com.eatthepath</groupId>
             <artifactId>fast-uuid</artifactId>
-            <version>0.1</version>
+            <version>0.2.0</version>
         </dependency>
     </dependencies>
 

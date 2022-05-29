@@ -1,3 +1,6 @@
+enabledFly: "&bYou now can fly!"
+disabledFly: "&cYou now can't fly!"
+#################################################################################################################
 command-translator:
   invalid-subcommand: "The subcommand %s doesn't exists!"
   no-permission: "No permission."
@@ -10,3 +13,4 @@ command-translator:
     double: "The number %s is not a valid double!"
     boolean: "The string %s is not a valid boolean!"
     enum: "The value %s is not valid, the valid values are: %s"
+#################################################################################################################

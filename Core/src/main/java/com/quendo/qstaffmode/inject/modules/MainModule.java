@@ -18,7 +18,8 @@ public class MainModule extends AbstractModule {
         FileBinder fileBinder = new FileBinder()
                 .bind("config", new YMLFile(qStaffMode, "config"))
                 .bind("messages", new YMLFile(qStaffMode, "messages"))
-                .bind("items", new YMLFile(qStaffMode, "items"));
+                .bind("items", new YMLFile(qStaffMode, "items"))
+                .bind("staffInformation", new YMLFile(qStaffMode, "staffInformation"));
 
         install(fileBinder.build());
         install(new APIModule());
