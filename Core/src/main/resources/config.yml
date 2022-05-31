@@ -1,0 +1,4 @@
+keepFlyingWhenDisableStaffMode: true
+autoStaffModeOnJoin: false
+dropItemsWhileFrozen: true
+moveInventoryWhileFrozen: true

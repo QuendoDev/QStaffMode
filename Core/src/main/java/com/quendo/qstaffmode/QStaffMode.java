@@ -33,7 +33,13 @@ public class QStaffMode extends JavaPlugin {
     }
 
     /*
+    qstaffmode.staffmode
+    qstaffmode.staffmode.keepflying
     qstaffmode.fly
-
+    qstaffmode.vanish
+    qstaffmode.randomtp
+    qstaffmode.freeze
+    qstaffmode.bypass.vanish
+    qstaffmode.bypass.freeze
      */
 }

@@ -1,5 +1,26 @@
+#################################################################################################################
+noPerms: "&cYou can't do that"
+#################################################################################################################
+enabledStaffMode: "&bYou have enabled staffmode"
+disabledStaffMode: "&bYou have disabled staffmode"
+#################################################################################################################
 enabledFly: "&bYou now can fly!"
 disabledFly: "&cYou now can't fly!"
+#################################################################################################################
+enabledVanish: "&bYou are now vanished"
+disabledVanish: "&cYou are now visible!"
+#################################################################################################################
+#When the server doesn't have enough players to do the random teleport
+errorRandomTp: "&cThe server hasn't got enough players to do this."
+#When you do the random teleport
+teleportedTo: "&aYou have been teleported to <player>."
+#################################################################################################################
+frozenByStaff: "&cYou were frozen by <player>"
+frozeSomeone: "&aYou have frozen <player>"
+unfrozenByStaff: "&cYou were unfrozen by <player>"
+unfrozeSomeone: "&aYou have unfrozen <player>"
+moveWhileFrozen: "&cYou are frozen, you can't move"
+frozenDisconnect: "&c<player> disconnected while frozen!"
 #################################################################################################################
 command-translator:
   invalid-subcommand: "The subcommand %s doesn't exists!"

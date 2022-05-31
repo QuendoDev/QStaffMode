@@ -2,6 +2,9 @@ package com.quendo.qstaffmode.inject.loader;
 
 import com.kino.kore.utils.loaders.Loader;
 import com.quendo.qstaffmode.QStaffMode;
+import com.quendo.qstaffmode.listener.basic.JoinListener;
+import com.quendo.qstaffmode.listener.basic.MoveListener;
+import com.quendo.qstaffmode.listener.basic.StaffModeBasicListener;
 import team.unnamed.inject.InjectAll;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
@@ -11,9 +14,9 @@ public class ListenerLoader implements Loader {
 
     private QStaffMode plugin;
 
-    /*private JoinListener joinListener;
-    private QuitListener quitListener;
-    private PlayerTeleportListener teleportListener;*/
+    private StaffModeBasicListener staffModeBasicListener;
+    private MoveListener moveListener;
+    private JoinListener joinListener;
 
     private void registerListeners (Listener...listeners) {
         for (Listener listener : listeners) {
@@ -23,6 +26,6 @@ public class ListenerLoader implements Loader {
 
     @Override
     public void load() {
-        registerListeners(/*joinListener, quitListener, teleportListener*/);
+        registerListeners(staffModeBasicListener, moveListener, joinListener);
     }
 }
