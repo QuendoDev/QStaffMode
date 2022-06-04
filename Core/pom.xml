@@ -62,6 +62,7 @@
                     <include>messages.yml</include>
                     <include>items.yml</include>
                     <include>staffInformation.yml</include>
+                    <include>leaveInformation.yml</include>
                 </includes>
                 <filtering>true</filtering>
             </resource>

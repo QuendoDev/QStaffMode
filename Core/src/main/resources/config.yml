@@ -1,4 +1,10 @@
+#This is a command without the "/" that will be executed when a player disconnected while frozen.
+frozenDisconnect: "say <player> disconnected frozen!"
+#This will let a player use the random tp item, and teleport to a player who is on another world.
+randomTpMultiworld: true
+navigatorImpulse: 3
 keepFlyingWhenDisableStaffMode: true
 autoStaffModeOnJoin: false
+autoEnableBySavedInfo: true
 dropItemsWhileFrozen: true
 moveInventoryWhileFrozen: true

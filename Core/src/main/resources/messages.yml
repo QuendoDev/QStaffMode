@@ -10,9 +10,9 @@ disabledFly: "&cYou now can't fly!"
 enabledVanish: "&bYou are now vanished"
 disabledVanish: "&cYou are now visible!"
 #################################################################################################################
-#When the server doesn't have enough players to do the random teleport
+#When the server doesn't have enough players to do the random teleport.
 errorRandomTp: "&cThe server hasn't got enough players to do this."
-#When you do the random teleport
+#When you do the random teleport.
 teleportedTo: "&aYou have been teleported to <player>."
 #################################################################################################################
 frozenByStaff: "&cYou were frozen by <player>"

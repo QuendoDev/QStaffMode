@@ -35,11 +35,15 @@ public class QStaffMode extends JavaPlugin {
     /*
     qstaffmode.staffmode
     qstaffmode.staffmode.keepflying
+    qstaffmode.staffmode.autoenable
+    qstaffmode.data.save
+    qstaffmode.data.read
     qstaffmode.fly
     qstaffmode.vanish
     qstaffmode.randomtp
     qstaffmode.freeze
     qstaffmode.bypass.vanish
     qstaffmode.bypass.freeze
+    qstaffmode.frozendisconnect
      */
 }

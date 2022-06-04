@@ -14,12 +14,12 @@ public class MainModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        YMLFile config;
         FileBinder fileBinder = new FileBinder()
                 .bind("config", new YMLFile(qStaffMode, "config"))
                 .bind("messages", new YMLFile(qStaffMode, "messages"))
                 .bind("items", new YMLFile(qStaffMode, "items"))
-                .bind("staffInformation", new YMLFile(qStaffMode, "staffInformation"));
+                .bind("staffInformation", new YMLFile(qStaffMode, "staffInformation"))
+                .bind("leaveInformation", new YMLFile(qStaffMode, "leaveInformation"));
 
         install(fileBinder.build());
         install(new APIModule());

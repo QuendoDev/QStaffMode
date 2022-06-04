@@ -20,12 +20,13 @@ public class JoinListener implements Listener {
 
     private StaffModeManager staffModeManager;
 
-    //TODO: Data saving system for knowing if player is flying, vanished, frozen... and loading it when he's joining again (LeaveListener also)
     @EventHandler
     public void onJoin(PlayerJoinEvent e){
-        if(e.getPlayer().hasPermission("kstaffmode.data.read")){
-            //Storage<UUID, LeaveInformation>
-            //playerDataManager.readData(e.getPlayer());
+        if (config.getBoolean("autoStaffModeOnJoin") && e.getPlayer().hasPermission("qstaffmode.staffmode.autoenable")) {
+            staffModeManager.enableStaffMode(e.getPlayer(), true);
+        }
+        if(config.getBoolean("autoEnableBySavedInfo") && e.getPlayer().hasPermission("qstaffmode.data.read")){
+            staffModeManager.readData(e.getPlayer());
         }
         if(!e.getPlayer().hasPermission("qstaffmode.bypass.vanish")) {
             for (UUID uuid : staffModeManager.getVanished()) {
