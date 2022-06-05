@@ -61,6 +61,7 @@
                     <include>config.yml</include>
                     <include>messages.yml</include>
                     <include>items.yml</include>
+                    <include>menus.yml</include>
                     <include>staffInformation.yml</include>
                     <include>leaveInformation.yml</include>
                 </includes>

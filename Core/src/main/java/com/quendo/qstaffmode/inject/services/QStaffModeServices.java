@@ -14,6 +14,7 @@ public class QStaffModeServices implements Service {
     private CooldownLoader cooldownLoader;
     private FilesLoader filesLoader;
     private ItemsLoader itemsLoader;
+    private MenuLoader menuLoader;
 
     @Named("storage-service")
     private Service storageService;
@@ -25,6 +26,7 @@ public class QStaffModeServices implements Service {
         cooldownLoader.load();
         filesLoader.load();
         itemsLoader.load();
+        menuLoader.load();
 
         storageService.start();
     }

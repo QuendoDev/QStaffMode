@@ -1,0 +1,93 @@
+inspect:
+  title: "&bInspect Menu"
+  contents: true
+  armor: true
+  decoration:
+    enabled: true
+    skull:
+      #TYPES: "NULL (not skull)", "OWNER (name of a player)", "URL (net.minecraft textures)"
+      type: "NULL"
+      #Example:
+      #With a player name: id: "Rusheer"
+      #With an url: id: "a7fcf1ddf4c218adbdac828394a114cb83b1a8982f22a2c3038e0685492d8056"
+      id: "Rusheer"
+    id: "STAINED_GLASS_PANE"
+    data: 7
+    amount: 1
+    name: ""
+    lore:
+      - ""
+    #Item looks like being enchanted
+    glow: false
+  info:
+    enabled: true
+    skull:
+      #TYPES: "NULL (not skull)", "OWNER (name of a player)", "URL (net.minecraft textures)"
+      type: "NULL"
+      #Example:
+      #With a player name: id: "Rusheer"
+      #With an url: id: "a7fcf1ddf4c218adbdac828394a114cb83b1a8982f22a2c3038e0685492d8056"
+      id: "Rusheer"
+    id: "APPLE"
+    data: 0
+    amount: 1
+    name: "&cInfo"
+    lore:
+      - "&4Health: <health>"
+      - "&aFood: <food>"
+      - "&bXp: <xp>"
+    #Item looks like being enchanted
+    glow: false
+  gamemode:
+    enabled: true
+    skull:
+      #TYPES: "NULL (not skull)", "OWNER (name of a player)", "URL (net.minecraft textures)"
+      type: "NULL"
+      #Example:
+      #With a player name: id: "Rusheer"
+      #With an url: id: "a7fcf1ddf4c218adbdac828394a114cb83b1a8982f22a2c3038e0685492d8056"
+      id: "Rusheer"
+    id: "DIAMOND_SWORD"
+    data: 0
+    amount: 1
+    name: "&cGamemode: <gm>"
+    lore:
+      - "&4The gamemode!"
+    #Item looks like being enchanted
+    glow: false
+  fly:
+    enabled: true
+    skull:
+      #TYPES: "NULL (not skull)", "OWNER (name of a player)", "URL (net.minecraft textures)"
+      type: "NULL"
+      #Example:
+      #With a player name: id: "Rusheer"
+      #With an url: id: "a7fcf1ddf4c218adbdac828394a114cb83b1a8982f22a2c3038e0685492d8056"
+      id: "Rusheer"
+    id: "FEATHER"
+    data: 0
+    amount: 1
+    name: "&bFlying: <fly>"
+    lore:
+      - "&cGet if flying!"
+    #Item looks like being enchanted
+    glow: false
+  effects:
+    enabled: true
+    skull:
+      #TYPES: "NULL (not skull)", "OWNER (name of a player)", "URL (net.minecraft textures)"
+      type: "NULL"
+      #Example:
+      #With a player name: id: "Rusheer"
+      #With an url: id: "a7fcf1ddf4c218adbdac828394a114cb83b1a8982f22a2c3038e0685492d8056"
+      id: "Rusheer"
+    id: "GLASS_BOTTLE"
+    data: 0
+    amount: 1
+    name: "&ePotion effects"
+    format: "&a<name> <level>: &7<duration>"
+    #To this field, the plugin will add all potion effects, one line per effect
+    lore:
+      - "&bEffects:"
+    #Item looks like being enchanted
+    glow: false

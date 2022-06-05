@@ -18,6 +18,7 @@ public class MainModule extends AbstractModule {
                 .bind("config", new YMLFile(qStaffMode, "config"))
                 .bind("messages", new YMLFile(qStaffMode, "messages"))
                 .bind("items", new YMLFile(qStaffMode, "items"))
+                .bind("menus", new YMLFile(qStaffMode, "menus"))
                 .bind("staffInformation", new YMLFile(qStaffMode, "staffInformation"))
                 .bind("leaveInformation", new YMLFile(qStaffMode, "leaveInformation"));
 

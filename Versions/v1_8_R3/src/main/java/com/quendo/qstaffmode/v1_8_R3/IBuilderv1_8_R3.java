@@ -31,7 +31,7 @@ public class IBuilderv1_8_R3 implements ItemBuilder {
 
     @Override
     public ItemBuilder material(String material) {
-        if (Material.getMaterial(material) != null) {
+        if (Material.getMaterial(material) == null) {
             this.material = Material.STONE;
         } else {
             this.material = Material.getMaterial(material);

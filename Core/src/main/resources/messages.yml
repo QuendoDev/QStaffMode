@@ -7,6 +7,8 @@ disabledStaffMode: "&bYou have disabled staffmode"
 enabledFly: "&bYou now can fly!"
 disabledFly: "&cYou now can't fly!"
 #################################################################################################################
+usedFishingRod: "&aYou used your knock-back-testing fishing rod!"
+#################################################################################################################
 enabledVanish: "&bYou are now vanished"
 disabledVanish: "&cYou are now visible!"
 #################################################################################################################

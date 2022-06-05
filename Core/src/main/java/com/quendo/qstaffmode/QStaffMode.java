@@ -33,6 +33,15 @@ public class QStaffMode extends JavaPlugin {
     }
 
     /*
+    qstaffmode.useitems
+    qstaffmode.items.fly
+    qstaffmode.items.randomtp
+    qstaffmode.items.vanish
+    qstaffmode.items.stafflist
+    qstaffmode.items.inspect
+    qstaffmode.items.freeze
+    qstaffmode.items.navigator
+    qstaffmode.items.kbFishingRod
     qstaffmode.staffmode
     qstaffmode.staffmode.keepflying
     qstaffmode.staffmode.autoenable
@@ -42,8 +51,10 @@ public class QStaffMode extends JavaPlugin {
     qstaffmode.vanish
     qstaffmode.randomtp
     qstaffmode.freeze
+    qstaffmode.inspect
     qstaffmode.bypass.vanish
     qstaffmode.bypass.freeze
+    qstaffmode.bypass.inspect
     qstaffmode.frozendisconnect
      */
 }

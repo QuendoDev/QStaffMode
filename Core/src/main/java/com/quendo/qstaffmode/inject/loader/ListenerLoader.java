@@ -6,6 +6,9 @@ import com.quendo.qstaffmode.listener.basic.JoinListener;
 import com.quendo.qstaffmode.listener.basic.LeaveListener;
 import com.quendo.qstaffmode.listener.basic.MoveListener;
 import com.quendo.qstaffmode.listener.basic.StaffModeBasicListener;
+import com.quendo.qstaffmode.listener.inventory.InventoryListener;
+import com.quendo.qstaffmode.listener.items.ItemsInteractGeneralListener;
+import com.quendo.qstaffmode.listener.items.ItemsInteractImplListener;
 import team.unnamed.inject.InjectAll;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
@@ -19,6 +22,9 @@ public class ListenerLoader implements Loader {
     private MoveListener moveListener;
     private JoinListener joinListener;
     private LeaveListener leaveListener;
+    private ItemsInteractImplListener itemsInteractImplListener;
+    private ItemsInteractGeneralListener itemsInteractGeneralListener;
+    private InventoryListener inventoryListener;
 
     private void registerListeners (Listener...listeners) {
         for (Listener listener : listeners) {
@@ -28,6 +34,7 @@ public class ListenerLoader implements Loader {
 
     @Override
     public void load() {
-        registerListeners(staffModeBasicListener, moveListener, joinListener, leaveListener);
+        registerListeners(staffModeBasicListener, moveListener, joinListener, leaveListener,
+                itemsInteractGeneralListener, itemsInteractImplListener, inventoryListener);
     }
 }

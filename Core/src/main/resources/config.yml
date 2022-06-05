@@ -2,7 +2,7 @@
 frozenDisconnect: "say <player> disconnected frozen!"
 #This will let a player use the random tp item, and teleport to a player who is on another world.
 randomTpMultiworld: true
-navigatorImpulse: 3
+navigatorImpulse: 3.0
 keepFlyingWhenDisableStaffMode: true
 autoStaffModeOnJoin: false
 autoEnableBySavedInfo: true
