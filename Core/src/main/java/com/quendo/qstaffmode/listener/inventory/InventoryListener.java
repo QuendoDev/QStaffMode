@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import team.unnamed.inject.InjectAll;
@@ -157,6 +158,12 @@ public class InventoryListener implements Listener {
                 e.setCancelled(true);
             }
         }
+    }
+
+    @EventHandler
+    public void onClose (InventoryCloseEvent e) {
+        Player p = (Player) e.getPlayer();
+        pageTracker.removePlayerPage(p);
     }
 
     private boolean checks (InventoryClickEvent e) {
