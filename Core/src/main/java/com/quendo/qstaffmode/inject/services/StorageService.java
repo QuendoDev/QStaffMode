@@ -3,8 +3,8 @@ package com.quendo.qstaffmode.inject.services;
 import com.kino.kore.utils.files.YMLFile;
 import com.kino.kore.utils.service.Service;
 import com.kino.kore.utils.storage.Storage;
-import com.quendo.qstaffmode.models.LeaveInformation;
-import com.quendo.qstaffmode.models.StaffInformation;
+import com.quendo.qstaffmode.models.data.LeaveInformation;
+import com.quendo.qstaffmode.models.data.StaffInformation;
 
 import javax.inject.Inject;
 import javax.inject.Named;

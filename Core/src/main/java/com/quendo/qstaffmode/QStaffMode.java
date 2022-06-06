@@ -48,6 +48,13 @@ public class QStaffMode extends JavaPlugin {
     qstaffmode.data.save
     qstaffmode.data.read
     qstaffmode.fly
+    qstaffmode.stafflist
+    qstaffmode.stafflist.availablestaff
+    qstaffmode.stafflist.unavailablestaff
+    qstaffmode.menu.availablestaff.open
+    qstaffmode.menu.unavailablestaff.open
+    qstaffmode.menu.availablestaff.teleport
+    qstaffmode.menu.unavailableStaff.teleport
     qstaffmode.vanish
     qstaffmode.randomtp
     qstaffmode.freeze

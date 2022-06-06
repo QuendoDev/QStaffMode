@@ -15,4 +15,8 @@ public interface Utils {
 
     String getInventoryName(InventoryClickEvent inventoryClickEvent);
 
+    boolean isPlayerHead (ItemStack itemStack);
+
+    boolean isSkull (ItemStack itemStack);
+
 }

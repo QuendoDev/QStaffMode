@@ -3,8 +3,7 @@ package com.quendo.qstaffmode.storage;
 import com.eatthepath.uuid.FastUUID;
 import com.kino.kore.utils.files.YMLFile;
 import com.kino.kore.utils.storage.Storage;
-import com.quendo.qstaffmode.models.LeaveInformation;
-import com.quendo.qstaffmode.models.StaffInformation;
+import com.quendo.qstaffmode.models.data.LeaveInformation;
 import org.bukkit.configuration.ConfigurationSection;
 
 import javax.inject.Inject;

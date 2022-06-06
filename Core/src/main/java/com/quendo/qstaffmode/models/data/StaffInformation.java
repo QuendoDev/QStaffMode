@@ -1,4 +1,4 @@
-package com.quendo.qstaffmode.models;
+package com.quendo.qstaffmode.models.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

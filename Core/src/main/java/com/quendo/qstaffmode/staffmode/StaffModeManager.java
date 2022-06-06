@@ -3,9 +3,8 @@ package com.quendo.qstaffmode.staffmode;
 import com.kino.kore.utils.files.YMLFile;
 import com.kino.kore.utils.messages.MessageUtils;
 import com.kino.kore.utils.storage.Storage;
-import com.quendo.qstaffmode.menus.InspectMenu;
-import com.quendo.qstaffmode.models.LeaveInformation;
-import com.quendo.qstaffmode.models.StaffInformation;
+import com.quendo.qstaffmode.models.data.LeaveInformation;
+import com.quendo.qstaffmode.models.data.StaffInformation;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -33,7 +32,6 @@ public class StaffModeManager {
     @Inject Storage<UUID, LeaveInformation> leaveInformationStorage;
 
     @Inject private ItemManager itemManager;
-    @Inject private InspectMenu inspectMenu;
 
     @Getter private final List<UUID> frozen = new ArrayList<>();
     @Getter private final List<UUID> vanished = new ArrayList<>();
@@ -241,12 +239,6 @@ public class StaffModeManager {
             } else {
                 MessageUtils.sendMessage(p, messages.getString("errorRandomTp"));
             }
-        }
-    }
-
-    public void openInspectMenu (Player p, Player interacted) {
-        if (p.hasPermission("qstaffmode.inspect")) {
-            inspectMenu.open(p, interacted);
         }
     }
 

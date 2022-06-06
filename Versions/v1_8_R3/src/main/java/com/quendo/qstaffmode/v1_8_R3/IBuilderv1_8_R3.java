@@ -3,6 +3,7 @@ package com.quendo.qstaffmode.v1_8_R3;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import com.quendo.qstaffmode.api.ItemBuilder;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -157,13 +158,38 @@ public class IBuilderv1_8_R3 implements ItemBuilder {
 
 
         if((material == Material.SKULL_ITEM) || (material == Material.SKULL)) {
-            itemStack = buidSkull(itemStack);
+            buidSkull(itemStack);
         }
 
         return itemStack;
     }
 
-    private ItemStack buidSkull(ItemStack itemStack) {
+    @Override
+    public ItemStack buildPlayerSkull(UUID uuid) {
+
+        ItemStack itemStack = new ItemStack(Material.SKULL_ITEM, amount, (short) 3);
+        ItemMeta meta = itemStack.getItemMeta();
+
+        enchantments.forEach((enchantment, level) -> meta.addEnchant(enchantment, level, true));
+
+        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
+
+        lore.replaceAll(line -> ChatColor.translateAlternateColorCodes('&', line));
+        meta.setLore(lore);
+
+        flags.forEach(meta::addItemFlags);
+
+        itemStack.setItemMeta(meta);
+
+        SkullMeta skullMeta = (SkullMeta) itemStack.getItemMeta();
+        skullMeta.setOwner(Bukkit.getPlayer(uuid).getName());
+
+        itemStack.setItemMeta(skullMeta);
+
+        return itemStack;
+    }
+
+    private void buidSkull(ItemStack itemStack) {
         SkullMeta skullMeta = (SkullMeta) itemStack.getItemMeta();
 
         if (owner != null) {
@@ -198,6 +224,5 @@ public class IBuilderv1_8_R3 implements ItemBuilder {
 
         itemStack.setItemMeta(skullMeta);
 
-        return itemStack;
     }
 }

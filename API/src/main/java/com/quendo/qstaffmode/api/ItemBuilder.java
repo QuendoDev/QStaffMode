@@ -7,6 +7,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public interface ItemBuilder {
 
@@ -109,4 +110,6 @@ public interface ItemBuilder {
      * @return A non null {@link ItemStack} instance
      */
     ItemStack build();
+
+    ItemStack buildPlayerSkull(UUID uuid);
 }

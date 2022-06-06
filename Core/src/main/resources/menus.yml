@@ -1,3 +1,6 @@
+#################################################################################################################
+#Menu used when clicking the inspect item or executing the /invsee command.
+#################################################################################################################
 inspect:
   title: "&bInspect Menu"
   contents: true
@@ -91,3 +94,241 @@ inspect:
       - "&bEffects:"
     #Item looks like being enchanted
     glow: false
+#################################################################################################################
+#Menu opened when using the staff-list item. This menu can open another 2 sub-menus.
+#################################################################################################################
+main:
+  title: "&aStaff List &eMenu"
+  #Has to be a multiple of 9 (9, 18, 27...) and the max is 54.
+  size: 27
+  decoration:
+    enabled: true
+    #Possible values: "full" or "frame".
+    type: "full"
+    skull:
+      #TYPES: "NULL (not skull)", "OWNER (name of a player)", "URL (net.minecraft textures)"
+      type: "NULL"
+      #Example:
+      #With a player name: id: "Rusheer"
+      #With an url: id: "a7fcf1ddf4c218adbdac828394a114cb83b1a8982f22a2c3038e0685492d8056"
+      id: "Rusheer"
+    id: "STAINED_GLASS_PANE"
+    data: 7
+    amount: 1
+    name: ""
+    lore:
+      - ""
+    #Item looks like being enchanted
+    glow: false
+  inStaffMode:
+    enabled: true
+    skull:
+      #TYPES: "NULL (not skull)", "OWNER (name of a player)", "URL (net.minecraft textures)"
+      type: "NULL"
+      #Example:
+      #With a player name: id: "Rusheer"
+      #With an url: id: "a7fcf1ddf4c218adbdac828394a114cb83b1a8982f22a2c3038e0685492d8056"
+      id: "Rusheer"
+    id: "WOOD_AXE"
+    data: 0
+    amount: 1
+    name: "&cAvailable Staff"
+    lore:
+      - "&eAll players in staff mode: &b(<total>)"
+    #Item looks like being enchanted
+    glow: false
+    #Has to be between 0 and the size of this menu minus one unity.
+    slot: 11
+  withoutStaffMode:
+    enabled: true
+    skull:
+      #TYPES: "NULL (not skull)", "OWNER (name of a player)", "URL (net.minecraft textures)"
+      type: "NULL"
+      #Example:
+      #With a player name: id: "Rusheer"
+      #With an url: id: "a7fcf1ddf4c218adbdac828394a114cb83b1a8982f22a2c3038e0685492d8056"
+      id: "Rusheer"
+    id: "REDSTONE_BLOCK"
+    data: 0
+    amount: 1
+    name: "&cStaff Playing"
+    lore:
+      - "&eAll players without staff mode: &b(<total>)"
+    #Item looks like being enchanted
+    glow: false
+    #Has to be between 0 and the size of this menu minus one unity.
+    slot: 15
+#################################################################################################################
+#Menu opened when click on the "inStaffMode" item of the "main" menu of staff-list. It displays all the staff
+#that is in staff-mode.
+#################################################################################################################
+availableStaff:
+  title: "&aAvailable Staff &eMenu"
+  #Has to be a multiple of 9 (9, 18, 27...), where min value is 27 and the max is 54.
+  size: 54
+  decoration:
+    enabled: true
+    #Possible values: "full" or "frame".
+    type: "frame"
+    skull:
+      #TYPES: "NULL (not skull)", "OWNER (name of a player)", "URL (net.minecraft textures)"
+      type: "NULL"
+      #Example:
+      #With a player name: id: "Rusheer"
+      #With an url: id: "a7fcf1ddf4c218adbdac828394a114cb83b1a8982f22a2c3038e0685492d8056"
+      id: "Rusheer"
+    id: "STAINED_GLASS_PANE"
+    data: 7
+    amount: 1
+    name: ""
+    lore:
+      - ""
+    #Item looks like being enchanted
+    glow: false
+  heads:
+    amount: 1
+    name: "<player>"
+    lore:
+      - "<player> lore!"
+    #Item looks like being enchanted
+    glow: false
+  nextPage:
+    skull:
+      #TYPES: "NULL (not skull)", "OWNER (name of a player)", "URL (net.minecraft textures)"
+      type: "NULL"
+      #Example:
+      #With a player name: id: "Rusheer"
+      #With an url: id: "a7fcf1ddf4c218adbdac828394a114cb83b1a8982f22a2c3038e0685492d8056"
+      id: "Rusheer"
+    id: "ARROW"
+    data: 0
+    amount: 1
+    name: "&7Next page"
+    lore:
+      - ""
+    #Item looks like being enchanted
+    glow: false
+    #Possible values: "corner" or "middle"
+    slot: "corner"
+  previousPage:
+    skull:
+      #TYPES: "NULL (not skull)", "OWNER (name of a player)", "URL (net.minecraft textures)"
+      type: "NULL"
+      #Example:
+      #With a player name: id: "Rusheer"
+      #With an url: id: "a7fcf1ddf4c218adbdac828394a114cb83b1a8982f22a2c3038e0685492d8056"
+      id: "Rusheer"
+    id: "ARROW"
+    data: 0
+    amount: 1
+    name: "&7Previous page"
+    lore:
+      - ""
+    #Item looks like being enchanted
+    glow: false
+    #Possible values: "corner" or "middle"
+    slot: "corner"
+  pageItem:
+    enabled: true
+    skull:
+      #TYPES: "NULL (not skull)", "OWNER (name of a player)", "URL (net.minecraft textures)"
+      type: "NULL"
+      #Example:
+      #With a player name: id: "Rusheer"
+      #With an url: id: "a7fcf1ddf4c218adbdac828394a114cb83b1a8982f22a2c3038e0685492d8056"
+      id: "Rusheer"
+    id: "WATCH"
+    data: 0
+    amount: 1
+    name: "&4Page: <page>/<total>"
+    lore:
+      - ""
+    #Item looks like being enchanted
+    glow: true
+#################################################################################################################
+#Menu opened when click on the "withoutStaffMode" item of the "main" menu of staff-list. It displays all the staff
+#that is not in staff-mode.
+#################################################################################################################
+unavailableStaff:
+  title: "&aStaff Playing &eMenu"
+  #Has to be a multiple of 9 (9, 18, 27...), where min value is 27 and the max is 54.
+  size: 54
+  decoration:
+    enabled: true
+    #Possible values: "full" or "frame".
+    type: "frame"
+    skull:
+      #TYPES: "NULL (not skull)", "OWNER (name of a player)", "URL (net.minecraft textures)"
+      type: "NULL"
+      #Example:
+      #With a player name: id: "Rusheer"
+      #With an url: id: "a7fcf1ddf4c218adbdac828394a114cb83b1a8982f22a2c3038e0685492d8056"
+      id: "Rusheer"
+    id: "STAINED_GLASS_PANE"
+    data: 7
+    amount: 1
+    name: ""
+    lore:
+      - ""
+    #Item looks like being enchanted
+    glow: false
+  heads:
+    amount: 1
+    name: "<player>"
+    lore:
+      - "<player> lore!"
+    #Item looks like being enchanted
+    glow: false
+  nextPage:
+    skull:
+      #TYPES: "NULL (not skull)", "OWNER (name of a player)", "URL (net.minecraft textures)"
+      type: "NULL"
+      #Example:
+      #With a player name: id: "Rusheer"
+      #With an url: id: "a7fcf1ddf4c218adbdac828394a114cb83b1a8982f22a2c3038e0685492d8056"
+      id: "Rusheer"
+    id: "ARROW"
+    data: 0
+    amount: 1
+    name: "&7Next page"
+    lore:
+      - ""
+    #Item looks like being enchanted
+    glow: false
+    #Possible values: "corner" or "middle"
+    slot: "corner"
+  previousPage:
+    skull:
+      #TYPES: "NULL (not skull)", "OWNER (name of a player)", "URL (net.minecraft textures)"
+      type: "NULL"
+      #Example:
+      #With a player name: id: "Rusheer"
+      #With an url: id: "a7fcf1ddf4c218adbdac828394a114cb83b1a8982f22a2c3038e0685492d8056"
+      id: "Rusheer"
+    id: "ARROW"
+    data: 0
+    amount: 1
+    name: "&7Previous page"
+    lore:
+      - ""
+    #Item looks like being enchanted
+    glow: false
+    #Possible values: "corner" or "middle"
+    slot: "corner"
+  pageItem:
+    enabled: true
+    skull:
+      #TYPES: "NULL (not skull)", "OWNER (name of a player)", "URL (net.minecraft textures)"
+      type: "NULL"
+      #Example:
+      #With a player name: id: "Rusheer"
+      #With an url: id: "a7fcf1ddf4c218adbdac828394a114cb83b1a8982f22a2c3038e0685492d8056"
+      id: "Rusheer"
+    id: "WATCH"
+    data: 0
+    amount: 1
+    name: "&4Page: <page>/<total>"
+    lore:
+      - ""
+    #Item looks like being enchanted
+    glow: true

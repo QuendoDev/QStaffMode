@@ -37,6 +37,11 @@ public class InspectMenu {
 
     public void open (Player p, Player interacted) {
 
+        //Decoration (if it is not enabled, then "defaultItems" will be empty).
+        for (ItemStack item : defaultItems.keySet()) {
+            inspect.setItem(defaultItems.get(item), item);
+        }
+
         //Inventory items from the interacted player.
         if (menus.getBoolean("inspect.contents")) {
             for (int i = 0; i < 36; i++) {
@@ -49,11 +54,6 @@ public class InspectMenu {
             for (int i = 0; i < interacted.getInventory().getArmorContents().length; i++) {
                 inspect.setItem(45 + i, interacted.getInventory().getArmorContents()[i]);
             }
-        }
-
-        //Decoration (if it is not enabled, then "defaultItems" will be empty).
-        for (ItemStack item : defaultItems.keySet()) {
-            inspect.setItem(defaultItems.get(item), item);
         }
 
         //Info item (xp, food and health of the interacted player).

@@ -2,6 +2,7 @@ package com.quendo.qstaffmode.listener.items;
 
 import com.kino.kore.utils.files.YMLFile;
 import com.quendo.qstaffmode.events.*;
+import com.quendo.qstaffmode.staffmode.MenuManager;
 import com.quendo.qstaffmode.staffmode.StaffModeManager;
 import com.quendo.qstaffmode.utils.ActionType;
 import org.bukkit.Location;
@@ -19,6 +20,7 @@ public class ItemsInteractImplListener implements Listener {
     private YMLFile config;
 
     private StaffModeManager staffModeManager;
+    private MenuManager menuManager;
 
     @EventHandler
     public void navigatorInteract (NavigatorInteractEvent e) {
@@ -58,17 +60,17 @@ public class ItemsInteractImplListener implements Listener {
         }
     }
 
-    /*@EventHandler
+    @EventHandler
     public void stafflistInteract (StaffListInteractEvent e) {
         if(e.getPlayer().hasPermission("qstaffmode.items.stafflist")) {
-            menuManager.getStaffListMainMenu().open(e.getPlayer());
+            menuManager.openStaffListMainMenu(e.getPlayer());
         }
-    }*/
+    }
 
     @EventHandler
     public void inspectInteract (InspectInteractEvent e) {
         if(e.getPlayer().hasPermission("qstaffmode.items.inspect") && !e.getPlayerClicked().hasPermission("qstaffmode.bypass.inspect")) {
-            staffModeManager.openInspectMenu(e.getPlayer(), e.getPlayerClicked());
+            menuManager.openInspectMenu(e.getPlayer(), e.getPlayerClicked());
         }
     }
 
