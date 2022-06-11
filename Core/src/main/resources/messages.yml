@@ -7,6 +7,9 @@ teleported: "&b<player> has been teleported to your position."
 #################################################################################################################
 enabledStaffMode: "&bYou have enabled staffmode."
 disabledStaffMode: "&bYou have disabled staffmode."
+bcEnabledStaffMode: "&a<player> has enabled staff-mode!"
+bcDisabledStaffMode: "&a<player> has disabled staff-mode!"
+teleportedToInitialPos: "&bYou have been teleported to your initial position!"
 #################################################################################################################
 enabledFly: "&bYou now can fly!"
 disabledFly: "&cYou now can't fly!"

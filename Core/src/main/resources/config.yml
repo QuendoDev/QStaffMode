@@ -8,3 +8,4 @@ autoStaffModeOnJoin: false
 autoEnableBySavedInfo: true
 dropItemsWhileFrozen: true
 moveInventoryWhileFrozen: true
+teleportToInitialPosWhenDisabling: true

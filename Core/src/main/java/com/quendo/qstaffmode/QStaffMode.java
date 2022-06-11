@@ -34,6 +34,7 @@ public class QStaffMode extends JavaPlugin {
     }
 
     /*
+    qstaffmode.message.enabledstaffmode
     qstaffmode.commands.teleport
     qstaffmode.commands.invsee
     qstaffmode.commands.main.*

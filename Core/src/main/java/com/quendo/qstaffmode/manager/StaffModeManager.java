@@ -52,10 +52,19 @@ public class StaffModeManager {
                 stopFlying(p);
             }
             returnPlayerItems(p);
+            if (config.getBoolean("teleportToInitialPosWhenDisabling")) {
+                inStaffMode.find(p.getUniqueId()).ifPresent(staffInformation -> p.teleport(staffInformation.getSavedLocation()));
+                MessageUtils.sendMessage(p, messages.getString("teleportedToInitialPos"));
+            }
             if (!leaving) {
                 inStaffMode.remove(p.getUniqueId());
             }
             MessageUtils.sendMessage(p, messages.getString("disabledStaffMode"));
+            for (Player online : Bukkit.getOnlinePlayers()) {
+                if (online.hasPermission("qstaffmode.message.enabledstaffmode")) {
+                    MessageUtils.sendMessage(online, messages.getString("bcDisabledStaffMode").replace("<player>", p.getName()));
+                }
+            }
         }
     }
 
@@ -68,6 +77,11 @@ public class StaffModeManager {
             fly(p);
             giveStaffItems(p);
             MessageUtils.sendMessage(p, messages.getString("enabledStaffMode"));
+            for (Player online : Bukkit.getOnlinePlayers()) {
+                if (online.hasPermission("qstaffmode.message.enabledstaffmode")) {
+                    MessageUtils.sendMessage(online, messages.getString("bcEnabledStaffMode").replace("<player>", p.getName()));
+                }
+            }
         }
     }
 
