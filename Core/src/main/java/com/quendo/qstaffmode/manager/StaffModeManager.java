@@ -35,6 +35,7 @@ public class StaffModeManager {
     @Getter private final List<UUID> frozen = new ArrayList<>();
     @Getter private final List<UUID> vanished = new ArrayList<>();
     @Getter private final List<UUID> flying = new ArrayList<>();
+    @Getter private final List<UUID> inStaffChat = new ArrayList<>();
 
     public void toogleStaffMode (Player p, boolean serverConnection) {
         if (isInStaffMode(p)) {
@@ -254,13 +255,44 @@ public class StaffModeManager {
         }
     }
 
+    public boolean isInStaffChat (Player p) {
+        return inStaffChat.contains(p.getUniqueId());
+    }
+
+    public void toogleStaffChat (Player p) {
+        if (isInStaffChat(p)) {
+            disableStaffChat(p);
+        } else {
+            enableStaffChat(p);
+        }
+    }
+
+    public void enableStaffChat (Player p) {
+        if (config.getBoolean("staffChatEnabled")) {
+            if (p.hasPermission("qstaffmode.staffchat")) {
+                inStaffChat.add(p.getUniqueId());
+                MessageUtils.sendMessage(p, messages.getString("enabledStaffChat"));
+            }
+        } else {
+            MessageUtils.sendMessage(p, messages.getString("staffChatDisabledByDefault"));
+        }
+    }
+
+    public void disableStaffChat (Player p) {
+        if (p.hasPermission("qstaffmode.staffchat")) {
+            inStaffChat.remove(p.getUniqueId());
+            MessageUtils.sendMessage(p, messages.getString("disabledStaffChat"));
+        }
+    }
+
     public void saveData (Player p) {
         if (!config.getBoolean("autoStaffModeOnJoin")) {
             boolean fly = isFlying(p);
             boolean vanish = isVanished(p);
+            boolean isInStaffChat = isInStaffChat (p);
             boolean inStaffMode = isInStaffMode(p);
             leaveInformationStorage.remove(p.getUniqueId());
-            leaveInformationStorage.add(p.getUniqueId(), new LeaveInformation(fly, vanish, inStaffMode));
+            leaveInformationStorage.add(p.getUniqueId(), new LeaveInformation(fly, vanish, inStaffMode, isInStaffChat));
         }
     }
 
@@ -274,7 +306,17 @@ public class StaffModeManager {
                 setFlyingValue(p, fly);
                 boolean vanish = playerInfo.get().isVanish();
                 setVanishValue(p, vanish);
+                boolean isInStaffChat = playerInfo.get().isInStaffChat();
+                setStaffChatValue (p, isInStaffChat);
             }
+        }
+    }
+
+    private void setStaffChatValue (Player p, boolean isInStaffChat) {
+        if (isInStaffChat) {
+            enableStaffChat(p);
+        } else {
+            disableStaffChat(p);
         }
     }
 

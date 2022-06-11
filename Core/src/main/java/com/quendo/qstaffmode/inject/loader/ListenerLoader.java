@@ -2,10 +2,7 @@ package com.quendo.qstaffmode.inject.loader;
 
 import com.kino.kore.utils.loaders.Loader;
 import com.quendo.qstaffmode.QStaffMode;
-import com.quendo.qstaffmode.listener.basic.JoinListener;
-import com.quendo.qstaffmode.listener.basic.LeaveListener;
-import com.quendo.qstaffmode.listener.basic.MoveListener;
-import com.quendo.qstaffmode.listener.basic.StaffModeBasicListener;
+import com.quendo.qstaffmode.listener.basic.*;
 import com.quendo.qstaffmode.listener.inventory.InventoryListener;
 import com.quendo.qstaffmode.listener.items.ItemsInteractGeneralListener;
 import com.quendo.qstaffmode.listener.items.ItemsInteractImplListener;
@@ -25,6 +22,7 @@ public class ListenerLoader implements Loader {
     private ItemsInteractImplListener itemsInteractImplListener;
     private ItemsInteractGeneralListener itemsInteractGeneralListener;
     private InventoryListener inventoryListener;
+    private ChatListener chatListener;
 
     private void registerListeners (Listener...listeners) {
         for (Listener listener : listeners) {
@@ -35,6 +33,7 @@ public class ListenerLoader implements Loader {
     @Override
     public void load() {
         registerListeners(staffModeBasicListener, moveListener, joinListener, leaveListener,
-                itemsInteractGeneralListener, itemsInteractImplListener, inventoryListener);
+                itemsInteractGeneralListener, itemsInteractImplListener, inventoryListener,
+                chatListener);
     }
 }

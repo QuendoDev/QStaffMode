@@ -13,11 +13,13 @@ public class LeaveInformation implements ConfigurationSerializable {
 
     private boolean flying;
     private boolean vanish;
+    private boolean inStaffChat;
     private boolean inStaffMode;
 
     public LeaveInformation (Map<String, Object> map) {
         this.flying = (boolean) map.get("flying");
         this.vanish = (boolean) map.get("vanish");
+        this.vanish = (boolean) map.get("inStaffChat");
         this.inStaffMode = (boolean) map.get("inStaffMode");
     }
 
@@ -26,6 +28,7 @@ public class LeaveInformation implements ConfigurationSerializable {
         Map<String, Object> map = new HashMap<>();
         map.put("flying", flying);
         map.put("vanish", vanish);
+        map.put("inStaffChat", inStaffChat);
         map.put("inStaffMode", inStaffMode);
         return map;
     }

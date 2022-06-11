@@ -5,6 +5,7 @@ import com.kino.kore.utils.loaders.Loader;
 import com.quendo.qstaffmode.QStaffMode;
 import com.quendo.qstaffmode.commandflow.translator.CustomTranslatorProvider;
 import com.quendo.qstaffmode.commands.GamemodeCommand;
+import com.quendo.qstaffmode.commands.StaffChatCommand;
 import com.quendo.qstaffmode.commands.StaffModeCommand;
 import com.quendo.qstaffmode.commands.staffitems.FlyCommand;
 import com.quendo.qstaffmode.commands.staffitems.FreezeCommand;
@@ -41,6 +42,7 @@ public class CommandLoader implements Loader {
     private StaffModeCommand staffModeCommand;
     private VanishCommand vanishCommand;
     private GamemodeCommand gamemodeCommand;
+    private StaffChatCommand staffChatCommand;
 
     @InjectIgnore
     private final AnnotatedCommandTreeBuilder builder = createBuilder();
@@ -65,6 +67,7 @@ public class CommandLoader implements Loader {
     public void load() {
         commandManager.getTranslator().setProvider(new CustomTranslatorProvider(messages));
         registerCommands(sCommand, qStaffModeCommand, invseeCommand, flyCommand,
-                freezeCommand, staffModeCommand, vanishCommand, gamemodeCommand);
+                freezeCommand, staffModeCommand, vanishCommand, gamemodeCommand,
+                staffChatCommand);
     }
 }

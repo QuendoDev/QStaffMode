@@ -34,6 +34,8 @@ public class QStaffMode extends JavaPlugin {
     }
 
     /*
+    qstaffmode.staffchat.read
+    qstaffmode.staffchat
     qstaffmode.message.enabledstaffmode
     qstaffmode.commands.teleport
     qstaffmode.commands.invsee
@@ -58,6 +60,10 @@ public class QStaffMode extends JavaPlugin {
     qstaffmode.commands.gamemode.spectator.others
     qstaffmode.commands.gamemode.survival.others
     qstaffmode.commands.gamemode.adventure.others
+    qstaffmode.commands.staffchat.*
+    qstaffmode.commands.staffchat.toogle
+    qstaffmode.commands.staffchat.on
+    qstaffmode.commands.staffchat.off
     qstaffmode.useitems
     qstaffmode.items.fly
     qstaffmode.items.randomtp

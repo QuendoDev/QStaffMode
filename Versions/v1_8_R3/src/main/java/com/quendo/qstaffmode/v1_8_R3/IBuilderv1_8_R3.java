@@ -102,48 +102,38 @@ public class IBuilderv1_8_R3 implements ItemBuilder {
     }
 
     @Override
-    public ItemBuilder addEnchant(Enchantment enchantment, Integer level) {
+    public void addEnchant(Enchantment enchantment, Integer level) {
         enchantments.put(enchantment, level);
-
-        return this;
     }
 
     @Override
-    public ItemBuilder flags(List<ItemFlag> flags) {
+    public void flags(List<ItemFlag> flags) {
         this.flags = flags;
-
-        return this;
     }
 
     @Override
-    public ItemBuilder addFlag(ItemFlag itemFlag) {
+    public void addFlag(ItemFlag itemFlag) {
         flags.add(itemFlag);
-
-        return this;
     }
 
     @Override
-    public ItemBuilder setOwner(String owner) {
+    public void setOwner(String owner) {
         this.owner = owner;
-        return this;
     }
 
     @Override
-    public ItemBuilder setURL(String url) {
+    public void setURL(String url) {
         this.url = url;
-        return this;
     }
 
-    public ItemBuilder glow() {
+    public void glow() {
         addEnchant(material != Material.BOW ? Enchantment.ARROW_INFINITE : Enchantment.LUCK, 10);
         addFlag(ItemFlag.HIDE_ENCHANTS);
-        return this;
     }
 
     @Override
-    public ItemBuilder unbreakable() {
+    public void unbreakable() {
         this.unbreakable = false;
-        return this;
     }
 
     @Override

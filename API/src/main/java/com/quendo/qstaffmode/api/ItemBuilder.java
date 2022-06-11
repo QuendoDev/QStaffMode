@@ -1,6 +1,5 @@
 package com.quendo.qstaffmode.api;
 
-import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -17,7 +16,7 @@ public interface ItemBuilder {
 
     ItemBuilder amount (int amount);
 
-    ItemBuilder unbreakable ();
+    void unbreakable ();
     /**
      * Sets the name for the {@linkplain ItemStack}
      * <p>
@@ -75,9 +74,8 @@ public interface ItemBuilder {
      *
      * @param enchantment The new {@link Enchantment} added to the {@linkplain ItemStack} being build
      * @param level The level of the {@link Enchantment} being added
-     * @return The same mutable instance of ItemBuilder
      */
-    ItemBuilder addEnchant(Enchantment enchantment, Integer level);
+    void addEnchant(Enchantment enchantment, Integer level);
 
     /**
      * Sets a set of flags for the {@linkplain ItemStack}
@@ -85,9 +83,8 @@ public interface ItemBuilder {
      * Multiple calls to this method will override the last value set
      *
      * @param flags The new flags list for the {@linkplain ItemStack} being build
-     * @return The same mutable instance of ItemBuilder
      */
-    ItemBuilder flags(List<ItemFlag> flags);
+    void flags(List<ItemFlag> flags);
 
     /**
      * Adds a flag for the {@linkplain ItemStack}
@@ -95,15 +92,14 @@ public interface ItemBuilder {
      * Multiple calls to this method with the same specified {@link ItemFlag} will lead to the Flag being added multiple times
      *
      * @param itemFlag The new {@link ItemFlag} added to the {@linkplain ItemStack} being build
-     * @return The same mutable instance of ItemBuilder
      */
-    ItemBuilder addFlag(ItemFlag itemFlag);
+    void addFlag(ItemFlag itemFlag);
 
-    ItemBuilder setURL (String url);
+    void setURL (String url);
 
-    ItemBuilder setOwner (String owner);
+    void setOwner (String owner);
 
-    ItemBuilder glow();
+    void glow();
 
     /**
      * Builds the final {@link ItemStack} instance with the specified fields
