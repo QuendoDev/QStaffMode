@@ -16,7 +16,8 @@ public class APIModule extends AbstractModule {
             bind(ItemBuilder.class).to((Class<? extends ItemBuilder>) Class.forName("com.quendo.qstaffmode.v" + SERVER_VERSION + ".IBuilderv" + SERVER_VERSION));
             bind(Utils.class).to((Class<? extends Utils>) Class.forName("com.quendo.qstaffmode.v" + SERVER_VERSION + ".Utilsv" + SERVER_VERSION));
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            Bukkit.getLogger().severe("VERSION " + SERVER_VERSION + " IS NOT SUPPORTED YET!");
+            Bukkit.getLogger().severe("IF YOU DON'T USE A SUPPORTED VERSION, YOU WILL BE GETTING " + e.getClass().getName());
         }
     }
 }

@@ -5,7 +5,7 @@ import com.quendo.qstaffmode.menus.stafflist.StaffListMainMenu;
 import com.quendo.qstaffmode.menus.stafflist.submenus.InStaffModeMenu;
 import com.quendo.qstaffmode.menus.stafflist.submenus.WithoutStaffModeMenu;
 import com.quendo.qstaffmode.menus.stafflist.submenus.pages.PageTracker;
-import com.quendo.qstaffmode.staffmode.MenuManager;
+import com.quendo.qstaffmode.manager.MenuManager;
 import team.unnamed.inject.AbstractModule;
 
 

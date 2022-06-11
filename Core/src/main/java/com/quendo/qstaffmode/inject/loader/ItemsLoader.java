@@ -4,7 +4,7 @@ import com.kino.kore.utils.files.YMLFile;
 import com.kino.kore.utils.loaders.Loader;
 import com.quendo.qstaffmode.api.ItemBuilder;
 import com.quendo.qstaffmode.models.StaffItem;
-import com.quendo.qstaffmode.staffmode.ItemManager;
+import com.quendo.qstaffmode.manager.ItemManager;
 import com.quendo.qstaffmode.utils.SkullType;
 import org.bukkit.inventory.ItemStack;
 import team.unnamed.inject.InjectAll;
@@ -29,7 +29,7 @@ public class ItemsLoader implements Loader {
                     .amount(getAmount(item))
                     .data(getData(item))
                     .name(getName(item))
-                    .lore(getLore(item));
+                    .lore(getLore(item)).unbreakable();
             if (getGlow(item)) {
                 itemBuilder.glow();
             }

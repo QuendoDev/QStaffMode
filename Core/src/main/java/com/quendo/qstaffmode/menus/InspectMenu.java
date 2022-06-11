@@ -19,7 +19,7 @@ import java.util.Map;
 public class InspectMenu {
 
     @Getter
-    private final Map<ItemStack, Integer> defaultItems = new HashMap<>();
+    private final Map<Integer, ItemStack> defaultItems = new HashMap<>();
 
     @Inject
     @Named("menus")
@@ -38,8 +38,8 @@ public class InspectMenu {
     public void open (Player p, Player interacted) {
 
         //Decoration (if it is not enabled, then "defaultItems" will be empty).
-        for (ItemStack item : defaultItems.keySet()) {
-            inspect.setItem(defaultItems.get(item), item);
+        for (Integer i : defaultItems.keySet()) {
+            inspect.setItem(i, defaultItems.get(i));
         }
 
         //Inventory items from the interacted player.
@@ -63,17 +63,17 @@ public class InspectMenu {
 
         //Gamemode of the player item.
         if (menus.getBoolean("inspect.gamemode.enabled")) {
-            inspect.setItem(50, setupGamemodeItem(interacted));
+            inspect.setItem(51, setupGamemodeItem(interacted));
         }
 
         //Player flying or not item.
         if (menus.getBoolean("inspect.fly.enabled")) {
-            inspect.setItem(50, setupFlyItem(interacted));
+            inspect.setItem(52, setupFlyItem(interacted));
         }
 
         //Effects on the player item.
         if (menus.getBoolean("inspect.effects.enabled")) {
-            inspect.setItem(50, setupEffectsItem(interacted));
+            inspect.setItem(53, setupEffectsItem(interacted));
         }
 
         p.openInventory(inspect);
@@ -119,7 +119,7 @@ public class InspectMenu {
         if(menus.getBoolean("inspect.decoration.enabled")) {
             ItemStack item = buildItem("decoration", menus.getStringList("inspect.decoration.lore"));
             for(int i = 0; i < 54; i++) {
-                defaultItems.put(item, i);
+                defaultItems.put(i, item);
             }
         }
     }

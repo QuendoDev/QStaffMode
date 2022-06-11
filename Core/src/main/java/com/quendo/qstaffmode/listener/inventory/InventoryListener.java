@@ -4,7 +4,7 @@ import com.kino.kore.utils.files.YMLFile;
 import com.quendo.qstaffmode.api.Utils;
 import com.quendo.qstaffmode.menus.stafflist.submenus.pages.PageTracker;
 import com.quendo.qstaffmode.menus.stafflist.submenus.pages.PlayerPage;
-import com.quendo.qstaffmode.staffmode.MenuManager;
+import com.quendo.qstaffmode.manager.MenuManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

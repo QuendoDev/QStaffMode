@@ -6,6 +6,8 @@ import org.bukkit.Material;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.Repairable;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.material.MaterialData;
 
@@ -40,4 +42,5 @@ public class Utilsv1_8_R3 implements Utils {
     public boolean isPlayerHead (ItemStack itemStack) {
         return isSkull(itemStack) && itemStack.getDurability() == 3 && itemStack.hasItemMeta() && ((SkullMeta)itemStack.getItemMeta()).hasOwner();
     }
+
 }

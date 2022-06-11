@@ -1,7 +1,7 @@
 package com.quendo.qstaffmode.listener.basic;
 
 import com.kino.kore.utils.files.YMLFile;
-import com.quendo.qstaffmode.staffmode.StaffModeManager;
+import com.quendo.qstaffmode.manager.StaffModeManager;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -22,16 +22,17 @@ public class JoinListener implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e){
-        if (config.getBoolean("autoStaffModeOnJoin") && e.getPlayer().hasPermission("qstaffmode.staffmode.autoenable")) {
-            staffModeManager.enableStaffMode(e.getPlayer(), true);
-        }
-        if(config.getBoolean("autoEnableBySavedInfo") && e.getPlayer().hasPermission("qstaffmode.data.read")){
-            staffModeManager.readData(e.getPlayer());
-        }
         if(!e.getPlayer().hasPermission("qstaffmode.bypass.vanish")) {
             for (UUID uuid : staffModeManager.getVanished()) {
                 e.getPlayer().hidePlayer(Bukkit.getPlayer(uuid));
             }
+        }
+        if (config.getBoolean("autoStaffModeOnJoin") && e.getPlayer().hasPermission("qstaffmode.staffmode.autoenable")) {
+            staffModeManager.enableStaffMode(e.getPlayer(), true);
+            return;
+        }
+        if(config.getBoolean("autoEnableBySavedInfo") && e.getPlayer().hasPermission("qstaffmode.data.read")){
+            staffModeManager.readData(e.getPlayer());
         }
     }
 }

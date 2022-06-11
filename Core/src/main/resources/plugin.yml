@@ -2,3 +2,4 @@ name: QStaffMode
 main: com.quendo.qstaffmode.QStaffMode
 version: ${project.version}
 author: Quendo
+softdepend: ["Multiverse-Core"]

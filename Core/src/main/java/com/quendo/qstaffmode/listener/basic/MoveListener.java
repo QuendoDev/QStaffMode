@@ -2,9 +2,8 @@ package com.quendo.qstaffmode.listener.basic;
 
 import com.kino.kore.utils.files.YMLFile;
 import com.kino.kore.utils.messages.MessageUtils;
-import com.quendo.qstaffmode.staffmode.StaffModeManager;
+import com.quendo.qstaffmode.manager.StaffModeManager;
 import org.bukkit.Location;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;

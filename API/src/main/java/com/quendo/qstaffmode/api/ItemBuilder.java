@@ -17,6 +17,7 @@ public interface ItemBuilder {
 
     ItemBuilder amount (int amount);
 
+    ItemBuilder unbreakable ();
     /**
      * Sets the name for the {@linkplain ItemStack}
      * <p>

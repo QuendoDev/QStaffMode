@@ -1,7 +1,7 @@
 package com.quendo.qstaffmode.listener.basic;
 
 import com.kino.kore.utils.files.YMLFile;
-import com.quendo.qstaffmode.staffmode.StaffModeManager;
+import com.quendo.qstaffmode.manager.StaffModeManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

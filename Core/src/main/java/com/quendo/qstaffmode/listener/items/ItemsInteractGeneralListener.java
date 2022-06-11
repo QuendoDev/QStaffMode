@@ -1,14 +1,12 @@
 package com.quendo.qstaffmode.listener.items;
 
 import com.kino.kore.utils.files.YMLFile;
-import com.kino.kore.utils.items.KMaterial;
 import com.kino.kore.utils.messages.MessageUtils;
 import com.quendo.qstaffmode.api.Utils;
 import com.quendo.qstaffmode.events.*;
-import com.quendo.qstaffmode.staffmode.StaffModeManager;
+import com.quendo.qstaffmode.manager.StaffModeManager;
 import com.quendo.qstaffmode.utils.ActionType;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -19,11 +17,12 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import team.unnamed.inject.InjectAll;
 
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.Set;
 
+@InjectAll
 public class ItemsInteractGeneralListener implements Listener {
 
     private StaffModeManager staffModeManager;
@@ -32,7 +31,6 @@ public class ItemsInteractGeneralListener implements Listener {
     @Named("items")
     private YMLFile items;
 
-    @Inject
     @Named("messages")
     private YMLFile messages;
 
@@ -70,7 +68,7 @@ public class ItemsInteractGeneralListener implements Listener {
     public void onAction(PlayerInteractEvent e) {
         Player p = e.getPlayer();
         if (staffModeManager.isInStaffMode(p)) {
-            if (p.hasPermission("qstaffmode.useitems")) {
+            if (p.hasPermission("qstaffmode.useitems") && e.getItem() != null && utils.getItemInHand(e) != null) {
 
                 ////////////******NAVIGATOR******/////////////
                 if (itemInHandequalsItem(e, "navigator") && p.hasPermission("qstaffmode.items.navigator") && e.getAction() != null) {
@@ -78,12 +76,16 @@ public class ItemsInteractGeneralListener implements Listener {
                         Bukkit.getServer().getPluginManager().callEvent(new NavigatorInteractEvent(p, ActionType.LEFT_CLICK, p.getLocation()));
                     }
                     if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-                        if (p.getTargetBlock((Set<Material>) null, 25) != null) {
-                            Block block = p.getTargetBlock((Set<Material>) null, 25);
-                            if (block != null) {
-                                Bukkit.getServer().getPluginManager().callEvent(new NavigatorInteractEvent(p, ActionType.RIGHT_CLICK, new Location(block.getWorld(),
-                                        block.getLocation().getX(), block.getLocation().getY(), block.getLocation().getZ(), p.getLocation().getYaw(), p.getLocation().getPitch())));
+                        try {
+                            if (p.getTargetBlock((Set<Material>) null, 25) != null) {
+                                Block block = p.getTargetBlock((Set<Material>) null, 25);
+                                if (block != null) {
+                                    Bukkit.getServer().getPluginManager().callEvent(new NavigatorInteractEvent(p, ActionType.RIGHT_CLICK, new Location(block.getWorld(),
+                                            block.getLocation().getX(), block.getLocation().getY(), block.getLocation().getZ(), p.getLocation().getYaw(), p.getLocation().getPitch())));
+                                }
                             }
+                        } catch (IllegalStateException ignored) {
+
                         }
                     }
                     e.setCancelled(true);
@@ -130,7 +132,7 @@ public class ItemsInteractGeneralListener implements Listener {
     }
     private boolean itemInHandequalsItem (PlayerEvent e, String key) {
         boolean metaAndName = utils.getItemInHand(e).hasItemMeta() && utils.getItemInHand(e).getItemMeta().hasDisplayName();
-        boolean sameName = utils.getItemInHand(e).getItemMeta().getDisplayName().equals(items.getString("items." + key + ".name"));
+        boolean sameName = utils.getItemInHand(e).hasItemMeta() && utils.getItemInHand(e).getItemMeta().getDisplayName().equals(items.getString("items." + key + ".name"));
         boolean sameId = utils.getMaterial(utils.getItemInHand(e).getType().name()) == utils.getMaterial(items.getString("items." + key + ".id"));
         return metaAndName && sameName && sameId;
     }

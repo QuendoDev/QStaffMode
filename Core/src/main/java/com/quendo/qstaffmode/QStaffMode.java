@@ -3,6 +3,7 @@ package com.quendo.qstaffmode;
 import com.kino.kore.utils.PluginUtils;
 import com.kino.kore.utils.service.Service;
 import com.quendo.qstaffmode.inject.modules.MainModule;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 import team.unnamed.inject.Injector;
@@ -24,7 +25,7 @@ public class QStaffMode extends JavaPlugin {
 
         qsmService.start();
 
-        getLogger().info(ChatColor.GREEN + "QStaffMode " + PluginUtils.getVersion(this) + " enabled");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "QStaffMode " + PluginUtils.getVersion(this) + " enabled");
     }
 
     @Override
@@ -33,6 +34,29 @@ public class QStaffMode extends JavaPlugin {
     }
 
     /*
+    qstaffmode.commands.teleport
+    qstaffmode.commands.invsee
+    qstaffmode.commands.main.*
+    qstaffmode.commands.main.info
+    qstaffmode.commands.fly.*
+    qstaffmode.commands.fly.toogle
+    qstaffmode.commands.fly.on
+    qstaffmode.commands.fly.off
+    qstaffmode.commands.freeze
+    qstaffmode.commands.vanish.*
+    qstaffmode.commands.vanish.toogle
+    qstaffmode.commands.vanish.on
+    qstaffmode.commands.vanish.off
+    qstaffmode.commands.staffmode
+    qstaffmode.commands.gamemode.*
+    qstaffmode.commands.gamemode.creative
+    qstaffmode.commands.gamemode.spectator
+    qstaffmode.commands.gamemode.survival
+    qstaffmode.commands.gamemode.adventure
+    qstaffmode.commands.gamemode.creative.others
+    qstaffmode.commands.gamemode.spectator.others
+    qstaffmode.commands.gamemode.survival.others
+    qstaffmode.commands.gamemode.adventure.others
     qstaffmode.useitems
     qstaffmode.items.fly
     qstaffmode.items.randomtp

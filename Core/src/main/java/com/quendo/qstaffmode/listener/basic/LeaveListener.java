@@ -2,10 +2,8 @@ package com.quendo.qstaffmode.listener.basic;
 
 import com.kino.kore.utils.files.YMLFile;
 import com.kino.kore.utils.messages.MessageUtils;
-import com.quendo.qstaffmode.staffmode.StaffModeManager;
-import lombok.AllArgsConstructor;
+import com.quendo.qstaffmode.manager.StaffModeManager;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -34,7 +32,7 @@ public class LeaveListener implements Listener {
                     MessageUtils.sendMessage(p, messages.getString("frozenDisconnect").replace("<player>", e.getPlayer().getName()));
                 }
             }
-            staffModeManager.unfreeze(e.getPlayer(), null, false);
+            staffModeManager.unfreeze(e.getPlayer(), null, true);
             Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), config.getString("frozenDisconnect").replace("<player>", e.getPlayer().getName()));
         }
         if(e.getPlayer().hasPermission("qstaffmode.data.save")){

@@ -4,8 +4,8 @@ import com.kino.kore.utils.files.YMLFile;
 import com.kino.kore.utils.storage.Storage;
 import com.quendo.qstaffmode.models.data.LeaveInformation;
 import com.quendo.qstaffmode.models.data.StaffInformation;
-import com.quendo.qstaffmode.staffmode.ItemManager;
-import com.quendo.qstaffmode.staffmode.StaffModeManager;
+import com.quendo.qstaffmode.manager.ItemManager;
+import com.quendo.qstaffmode.manager.StaffModeManager;
 import com.quendo.qstaffmode.storage.LeaveStorageManager;
 import com.quendo.qstaffmode.storage.StaffModeStorageManager;
 import team.unnamed.inject.AbstractModule;
@@ -25,10 +25,7 @@ public class StorageModule extends AbstractModule {
     @Override
     protected void configure() {
         bind(new TypeReference<Storage<UUID, StaffInformation>>() {}).to(StaffModeStorageManager.class).singleton();
-        if (config.getBoolean("autoEnableBySavedInfo")) {
-            bind(new TypeReference<Storage<UUID, LeaveInformation>>() {
-            }).to(LeaveStorageManager.class).singleton();
-        }
+        bind(new TypeReference<Storage<UUID, LeaveInformation>>() {}).to(LeaveStorageManager.class).singleton();
         bind(ItemManager.class).singleton();
         bind(StaffModeManager.class).singleton();
         install(new MenuModule());

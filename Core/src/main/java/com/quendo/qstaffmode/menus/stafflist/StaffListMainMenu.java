@@ -19,7 +19,7 @@ import java.util.*;
 public class StaffListMainMenu {
 
     @Getter
-    private final Map<ItemStack, Integer> defaultItems = new HashMap<>();
+    private final Map<Integer, ItemStack> defaultItems = new HashMap<>();
 
     @Inject
     @Named("menus")
@@ -41,8 +41,8 @@ public class StaffListMainMenu {
     public void open (Player p) {
 
         //Decoration (if it is not enabled, then "defaultItems" will be empty).
-        for (ItemStack item : defaultItems.keySet()) {
-            main.setItem(defaultItems.get(item), item);
+        for (Integer i : defaultItems.keySet()) {
+            main.setItem(i, defaultItems.get(i));
         }
 
         //Item that opens the menu where all players in staff-mode (all staff available) is shown.
@@ -77,12 +77,12 @@ public class StaffListMainMenu {
             ItemStack item = buildItem("decoration", menus.getStringList("main.decoration.lore"));
             if (menus.getString("main.decoration.type").equalsIgnoreCase("full")) {
                 for (int i = 0; i < menus.getInt("main.size"); i++) {
-                    defaultItems.put(item, i);
+                    defaultItems.put(i, item);
                 }
             }
             if (menus.getString("main.decoration.type").equalsIgnoreCase("frame")) {
                 for (int i : BukkitUtils.slotsOfBorderOfInventory(menus.getInt("main.size"))) {
-                    defaultItems.put(item, i);
+                    defaultItems.put(i, item);
                 }
             }
         }

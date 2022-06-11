@@ -1,4 +1,4 @@
-package com.quendo.qstaffmode.staffmode;
+package com.quendo.qstaffmode.manager;
 
 import com.kino.kore.utils.files.YMLFile;
 import com.kino.kore.utils.messages.MessageUtils;
@@ -7,7 +7,6 @@ import com.quendo.qstaffmode.models.data.LeaveInformation;
 import com.quendo.qstaffmode.models.data.StaffInformation;
 import lombok.Getter;
 import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -68,7 +67,6 @@ public class StaffModeManager {
             vanish(p);
             fly(p);
             giveStaffItems(p);
-            p.setGameMode(GameMode.CREATIVE);
             MessageUtils.sendMessage(p, messages.getString("enabledStaffMode"));
         }
     }
@@ -89,8 +87,8 @@ public class StaffModeManager {
     public void returnPlayerItems (Player p) {
         clearInventory(p);
         Optional<StaffInformation> f = inStaffMode.find(p.getUniqueId());
-        ItemStack[] armor = f.map(StaffInformation::getArmor).orElse(null);
-        ItemStack[] items = f.map(StaffInformation::getInventoryItems).orElse(null);
+        ItemStack[] armor = f.map(StaffInformation::getArmor).orElse(new ItemStack[0]);
+        ItemStack[] items = f.map(StaffInformation::getInventoryItems).orElse(new ItemStack[0]);
         p.getInventory().setContents(items);
         p.getInventory().setArmorContents(armor);
     }
@@ -103,7 +101,7 @@ public class StaffModeManager {
         }
     }
 
-    private void fly (Player p) {
+    public void fly (Player p) {
         if(p.hasPermission("qstaffmode.fly")) {
             p.setAllowFlight(true);
             p.setFlying(true);
@@ -112,7 +110,7 @@ public class StaffModeManager {
         }
     }
 
-    private void stopFlying (Player p) {
+    public void stopFlying (Player p) {
         if(p.hasPermission("qstaffmode.fly")) {
             flying.remove(p.getUniqueId());
             p.setAllowFlight(false);
@@ -147,7 +145,7 @@ public class StaffModeManager {
         }
     }
 
-    private void vanish (Player p) {
+    public void vanish (Player p) {
         if (p.hasPermission("qstaffmode.vanish")) {
             if (isInStaffMode(p)) {
                 changeVanishItem(p, true);
@@ -160,7 +158,7 @@ public class StaffModeManager {
         }
     }
 
-    private void unvanish (Player p) {
+    public void unvanish (Player p) {
         if (p.hasPermission("qstaffmode.vanish")) {
             if (isInStaffMode(p)) {
                 changeVanishItem(p, false);
@@ -256,12 +254,12 @@ public class StaffModeManager {
         if (!config.getBoolean("autoStaffModeOnJoin")) {
             Optional<LeaveInformation> playerInfo = leaveInformationStorage.find(p.getUniqueId());
             if (playerInfo.isPresent()) {
+                boolean inStaffMode = playerInfo.get().isInStaffMode();
+                setStaffModeValue(p, inStaffMode);
                 boolean fly = playerInfo.get().isFlying();
                 setFlyingValue(p, fly);
                 boolean vanish = playerInfo.get().isVanish();
                 setVanishValue(p, vanish);
-                boolean inStaffMode = playerInfo.get().isInStaffMode();
-                setStaffModeValue(p, inStaffMode);
             }
         }
     }
@@ -286,7 +284,7 @@ public class StaffModeManager {
         if (staffmode) {
             enableStaffMode(p, true);
         } else {
-            disableStaffMode(p, false);
+            inStaffMode.remove(p.getUniqueId());
         }
     }
 }

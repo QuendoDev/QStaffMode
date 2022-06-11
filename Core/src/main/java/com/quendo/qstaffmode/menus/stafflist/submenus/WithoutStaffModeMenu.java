@@ -21,7 +21,7 @@ import java.util.*;
 public class WithoutStaffModeMenu {
 
     @Getter
-    private final Map<ItemStack, Integer> defaultItems = new HashMap<>();
+    private final Map<Integer, ItemStack> defaultItems = new HashMap<>();
 
     @Inject
     @Named("menus")
@@ -45,8 +45,8 @@ public class WithoutStaffModeMenu {
 
     public void open (Player p, int page) {
         //Decoration (if it is not enabled, then "defaultItems" will be empty).
-        for (ItemStack item : defaultItems.keySet()) {
-            without.setItem(defaultItems.get(item), item);
+        for (Integer i : defaultItems.keySet()) {
+            without.setItem(i, defaultItems.get(i));
         }
 
         int pages = totalPages();
@@ -90,12 +90,12 @@ public class WithoutStaffModeMenu {
             ItemStack item = buildItem("decoration", menus.getStringList("unavailableStaff.decoration.lore"));
             if (menus.getString("unavailableStaff.decoration.type").equalsIgnoreCase("full")) {
                 for (int i = 0; i < without.getSize(); i++) {
-                    defaultItems.put(item, i);
+                    defaultItems.put(i, item);
                 }
             }
             if (menus.getString("unavailableStaff.decoration.type").equalsIgnoreCase("frame")) {
                 for (int i : BukkitUtils.slotsOfBorderOfInventory(without.getSize())) {
-                    defaultItems.put(item, i);
+                    defaultItems.put(i, item);
                 }
             }
         }

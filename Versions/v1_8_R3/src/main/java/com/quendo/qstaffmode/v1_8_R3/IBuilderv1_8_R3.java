@@ -26,6 +26,7 @@ public class IBuilderv1_8_R3 implements ItemBuilder {
     private List<String> lore;
     private Map<Enchantment, Integer> enchantments = new HashMap<>();
     private List<ItemFlag> flags = new ArrayList<>();
+    private boolean unbreakable = false;
 
     private String url;
     private String owner;
@@ -140,6 +141,12 @@ public class IBuilderv1_8_R3 implements ItemBuilder {
     }
 
     @Override
+    public ItemBuilder unbreakable() {
+        this.unbreakable = false;
+        return this;
+    }
+
+    @Override
     public ItemStack build() {
 
         ItemStack itemStack = new ItemStack(material, amount, data);
@@ -153,6 +160,10 @@ public class IBuilderv1_8_R3 implements ItemBuilder {
         meta.setLore(lore);
 
         flags.forEach(meta::addItemFlags);
+
+        if (unbreakable) {
+            meta.spigot().setUnbreakable(true);
+        }
 
         itemStack.setItemMeta(meta);
 

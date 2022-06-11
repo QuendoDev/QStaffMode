@@ -1,8 +1,9 @@
-package com.quendo.qstaffmode.staffmode;
+package com.quendo.qstaffmode.manager;
 
 import com.quendo.qstaffmode.models.StaffItem;
 import lombok.Getter;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,9 +15,12 @@ public class ItemManager {
 
     public void giveItems (Player player, boolean vanished) {
         Map<String, StaffItem> tempItems = items;
+        StaffItem removed;
         if (vanished) {
+            removed = tempItems.get("visible");
             tempItems.remove("visible");
         } else {
+            removed = tempItems.get("vanish");
             tempItems.remove("vanish");
         }
         for (String s : tempItems.keySet()) {
@@ -24,6 +28,7 @@ public class ItemManager {
                 player.getInventory().setItem(tempItems.get(s).getSlot(), tempItems.get(s).getItem());
             }
         }
+        items.put(vanished ? "visible" : "vanished", removed);
     }
 
     public void giveVanishItem (Player player, boolean vanished) {

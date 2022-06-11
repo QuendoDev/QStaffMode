@@ -1,4 +1,4 @@
-package com.quendo.qstaffmode.staffmode;
+package com.quendo.qstaffmode.manager;
 
 import com.quendo.qstaffmode.menus.InspectMenu;
 import com.quendo.qstaffmode.menus.stafflist.StaffListMainMenu;
@@ -7,7 +7,6 @@ import com.quendo.qstaffmode.menus.stafflist.submenus.WithoutStaffModeMenu;
 import org.bukkit.entity.Player;
 import team.unnamed.inject.InjectAll;
 
-import javax.inject.Inject;
 
 @InjectAll
 public class MenuManager {

@@ -1,27 +1,35 @@
 #################################################################################################################
-noPerms: "&cYou can't do that"
+noPerms: "&cYou can't do that."
+playerNotOnline: "&cThat player is not online!"
 #################################################################################################################
-enabledStaffMode: "&bYou have enabled staffmode"
-disabledStaffMode: "&bYou have disabled staffmode"
+#When you execute /s <player> and player is online, you get this message
+teleported: "&b<player> has been teleported to your position."
+#################################################################################################################
+enabledStaffMode: "&bYou have enabled staffmode."
+disabledStaffMode: "&bYou have disabled staffmode."
 #################################################################################################################
 enabledFly: "&bYou now can fly!"
 disabledFly: "&cYou now can't fly!"
 #################################################################################################################
 usedFishingRod: "&aYou used your knock-back-testing fishing rod!"
 #################################################################################################################
-enabledVanish: "&bYou are now vanished"
+enabledVanish: "&bYou are now vanished."
 disabledVanish: "&cYou are now visible!"
+#################################################################################################################
+changeYourGamemode: "&aYou changed your gamemode to &e<gamemode>."
+changeOthersGamemode: "&aYou changed <player>'s gamemode to &e<gamemode>."
+someoneChangedYourGamemode: "&bYour gamemode was changed to <gamemode> by <staff>."
 #################################################################################################################
 #When the server doesn't have enough players to do the random teleport.
 errorRandomTp: "&cThe server hasn't got enough players to do this."
 #When you do the random teleport.
 teleportedTo: "&aYou have been teleported to <player>."
 #################################################################################################################
-frozenByStaff: "&cYou were frozen by <player>"
-frozeSomeone: "&aYou have frozen <player>"
-unfrozenByStaff: "&cYou were unfrozen by <player>"
-unfrozeSomeone: "&aYou have unfrozen <player>"
-moveWhileFrozen: "&cYou are frozen, you can't move"
+frozenByStaff: "&cYou were frozen by <player>."
+frozeSomeone: "&aYou have frozen <player>."
+unfrozenByStaff: "&cYou were unfrozen by <player>."
+unfrozeSomeone: "&aYou have unfrozen <player>."
+moveWhileFrozen: "&cYou are frozen, you can't move."
 frozenDisconnect: "&c<player> disconnected while frozen!"
 #################################################################################################################
 command-translator:

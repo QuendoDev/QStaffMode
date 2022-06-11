@@ -4,6 +4,14 @@ import com.kino.kore.utils.files.YMLFile;
 import com.kino.kore.utils.loaders.Loader;
 import com.quendo.qstaffmode.QStaffMode;
 import com.quendo.qstaffmode.commandflow.translator.CustomTranslatorProvider;
+import com.quendo.qstaffmode.commands.GamemodeCommand;
+import com.quendo.qstaffmode.commands.StaffModeCommand;
+import com.quendo.qstaffmode.commands.staffitems.FlyCommand;
+import com.quendo.qstaffmode.commands.staffitems.FreezeCommand;
+import com.quendo.qstaffmode.commands.staffitems.InvseeCommand;
+import com.quendo.qstaffmode.commands.main.QStaffModeCommand;
+import com.quendo.qstaffmode.commands.SCommand;
+import com.quendo.qstaffmode.commands.staffitems.VanishCommand;
 import me.fixeddev.commandflow.CommandManager;
 import me.fixeddev.commandflow.annotated.AnnotatedCommandTreeBuilder;
 import me.fixeddev.commandflow.annotated.AnnotatedCommandTreeBuilderImpl;
@@ -11,6 +19,7 @@ import me.fixeddev.commandflow.annotated.CommandClass;
 import me.fixeddev.commandflow.annotated.part.PartInjector;
 import me.fixeddev.commandflow.annotated.part.defaults.DefaultsModule;
 import me.fixeddev.commandflow.bukkit.BukkitCommandManager;
+import me.fixeddev.commandflow.bukkit.factory.BukkitModule;
 import team.unnamed.inject.InjectAll;
 import team.unnamed.inject.InjectIgnore;
 
@@ -24,6 +33,15 @@ public class CommandLoader implements Loader {
     @Named("messages")
     private YMLFile messages;
 
+    private SCommand sCommand;
+    private QStaffModeCommand qStaffModeCommand;
+    private InvseeCommand invseeCommand;
+    private FlyCommand flyCommand;
+    private FreezeCommand freezeCommand;
+    private StaffModeCommand staffModeCommand;
+    private VanishCommand vanishCommand;
+    private GamemodeCommand gamemodeCommand;
+
     @InjectIgnore
     private final AnnotatedCommandTreeBuilder builder = createBuilder();
 
@@ -33,6 +51,7 @@ public class CommandLoader implements Loader {
     private AnnotatedCommandTreeBuilder createBuilder() {
         PartInjector injector = PartInjector.create();
         injector.install(new DefaultsModule());
+        injector.install(new BukkitModule());
         return new AnnotatedCommandTreeBuilderImpl(injector);
     }
 
@@ -45,6 +64,7 @@ public class CommandLoader implements Loader {
     @Override
     public void load() {
         commandManager.getTranslator().setProvider(new CustomTranslatorProvider(messages));
-        registerCommands();
+        registerCommands(sCommand, qStaffModeCommand, invseeCommand, flyCommand,
+                freezeCommand, staffModeCommand, vanishCommand, gamemodeCommand);
     }
 }

@@ -2,8 +2,8 @@ package com.quendo.qstaffmode.listener.items;
 
 import com.kino.kore.utils.files.YMLFile;
 import com.quendo.qstaffmode.events.*;
-import com.quendo.qstaffmode.staffmode.MenuManager;
-import com.quendo.qstaffmode.staffmode.StaffModeManager;
+import com.quendo.qstaffmode.manager.MenuManager;
+import com.quendo.qstaffmode.manager.StaffModeManager;
 import com.quendo.qstaffmode.utils.ActionType;
 import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
@@ -76,8 +76,9 @@ public class ItemsInteractImplListener implements Listener {
 
     @EventHandler
     public void freezeInteract (FreezeInteractEvent e) {
+        System.out.println(e.getPlayer().getName() + e.getPlayerFrozen().getName());
         if(e.getPlayer().hasPermission("qstaffmode.items.freeze") && !e.getPlayerFrozen().hasPermission("qstaffmode.bypass.freeze")) {
-            staffModeManager.toogleFreeze(e.getPlayer(), e.getPlayerFrozen());
+            staffModeManager.toogleFreeze(e.getPlayerFrozen(), e.getPlayer());
         }
     }
 }
