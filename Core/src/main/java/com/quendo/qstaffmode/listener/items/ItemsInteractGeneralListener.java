@@ -124,7 +124,7 @@ public class ItemsInteractGeneralListener implements Listener {
                 }
 
                 ////////////******KBFISHINGROD******/////////////
-                if (itemInHandequalsItem(e, "kbFishingRod") && p.hasPermission("qstaffmode.items.kbFishingRod")) {
+                if (itemInHandequalsItem(e, "kbFishingRod") && p.hasPermission("qstaffmode.items.kbfishingrod")) {
                     MessageUtils.sendMessage(p, messages.getString("usedFishingRod"));
                 }
             }

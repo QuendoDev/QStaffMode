@@ -19,7 +19,7 @@ public class StaffModeCommand implements CommandClass {
     @Inject
     private StaffModeManager staffModeManager;
 
-    @Command(names = {"staff", "staffmode", "sm"}, permission = "qstaffmode.commands.staffmode", desc = "Enables the staffmode for the executor.")
+    @Command(names = {"staff", "staffmode", "sm", "mod", "admin", "h"}, permission = "qstaffmode.commands.staffmode", desc = "Enables the staffmode for the executor.")
     @Usage("/staff")
     public boolean staffModeCommand (@Sender Player sender) {
         staffModeManager.toogleStaffMode(sender, false);

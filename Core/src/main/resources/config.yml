@@ -2,11 +2,20 @@
 frozenDisconnect: "say <player> disconnected frozen!"
 #This will let a player use the random tp item, and teleport to a player who is on another world.
 randomTpMultiworld: true
+#Quantity of impulse that the navigator gives to the player.
 navigatorImpulse: 3.0
+#If not, no one will be able to use staff-chat.
 staffChatEnabled: true
+#If not, the player won't keep flying when disabled the staff-mode.
 keepFlyingWhenDisableStaffMode: true
+#When entering the server, the player will automatically enter in staff-mode.
 autoStaffModeOnJoin: false
+#Enabling or disabling all options (vanish, staff-chat...) depending on the state of the player
+#when leaving last time.
 autoEnableBySavedInfo: true
+#It won't be possible to throw items when the player is frozen.
 dropItemsWhileFrozen: true
+#It won't be possible to move items in the inventory when the player is frozen.
 moveInventoryWhileFrozen: true
+#The player will be teleported to the position where he enabled staff-mode when quitting it.
 teleportToInitialPosWhenDisabling: true
