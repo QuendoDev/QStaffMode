@@ -6,7 +6,7 @@
 
     <groupId>com.quendo</groupId>
     <artifactId>QStaffMode</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <modules>
         <module>Core</module>
         <module>Versions</module>
@@ -15,7 +15,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <core.version>1.0.0</core.version>
+        <core.version>1.0.1</core.version>
     </properties>
 
     <repositories>
