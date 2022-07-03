@@ -5,7 +5,7 @@
     <parent>
         <artifactId>QStaffMode</artifactId>
         <groupId>com.quendo</groupId>
-        <version>1.1.0</version>
+        <version>1.2.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -39,7 +39,17 @@
             <version>1.8.8-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.quendo</groupId>
+            <artifactId>qstaffmode-core</artifactId>
+            <version>${core.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>team.unnamed</groupId>
+            <artifactId>inject</artifactId>
+            <version>1.0.1</version>
+        </dependency>
     </dependencies>
-
 
 </project>

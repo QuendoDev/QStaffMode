@@ -1,7 +1,7 @@
 package com.quendo.qstaffmode.menus;
 
 import com.kino.kore.utils.files.YMLFile;
-import com.quendo.qstaffmode.api.ItemBuilder;
+import com.quendo.qstaffmode.common.ItemBuilder;
 import com.quendo.qstaffmode.utils.SkullType;
 import lombok.Getter;
 import org.bukkit.Bukkit;

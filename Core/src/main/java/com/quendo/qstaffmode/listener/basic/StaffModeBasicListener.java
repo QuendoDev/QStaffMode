@@ -1,10 +1,20 @@
 package com.quendo.qstaffmode.listener.basic;
 
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.events.ListenerPriority;
+import com.comphenix.protocol.events.PacketAdapter;
+import com.comphenix.protocol.events.PacketEvent;
 import com.kino.kore.utils.files.YMLFile;
+import com.quendo.qstaffmode.QStaffMode;
+import com.quendo.qstaffmode.manager.PacketManager;
 import com.quendo.qstaffmode.manager.StaffModeManager;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -12,9 +22,11 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import team.unnamed.inject.InjectAll;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 
 @InjectAll
@@ -24,6 +36,21 @@ public class StaffModeBasicListener implements Listener {
     private YMLFile config;
 
     private StaffModeManager staffModeManager;
+
+    private QStaffMode qStaffMode;
+
+    //TODO private PacketManager packetManager;
+
+    /*@EventHandler(priority = EventPriority.MONITOR)
+    public void onAction(PlayerInteractEvent e) {
+        Player p = e.getPlayer();
+        if (e.getAction() == Action.RIGHT_CLICK_BLOCK && staffModeManager.isVanished(p)
+                && config.getBoolean("chestSoundCancel")
+                && p.hasPermission("qstaffmode.silentchest")
+                && (e.getClickedBlock().getType() == Material.CHEST || e.getClickedBlock().getType() == Material.TRAPPED_CHEST)) {
+            packetManager.setChestOpening(true);
+        }
+    }*/
 
     @EventHandler
     public void onAttack(EntityDamageByEntityEvent e){

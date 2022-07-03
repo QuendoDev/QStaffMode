@@ -1,4 +1,4 @@
-package com.quendo.qstaffmode.api;
+package com.quendo.qstaffmode.common;
 
 import org.bukkit.Material;
 import org.bukkit.event.inventory.InventoryClickEvent;

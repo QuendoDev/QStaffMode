@@ -19,3 +19,5 @@ dropItemsWhileFrozen: true
 moveInventoryWhileFrozen: true
 #The player will be teleported to the position where he enabled staff-mode when quitting it.
 teleportToInitialPosWhenDisabling: true
+#If the player is vanished, the chest will not do animation or sound.
+#chestSoundCancel: true

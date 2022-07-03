@@ -2,7 +2,7 @@ package com.quendo.qstaffmode.inject.loader;
 
 import com.kino.kore.utils.files.YMLFile;
 import com.kino.kore.utils.loaders.Loader;
-import com.quendo.qstaffmode.api.ItemBuilder;
+import com.quendo.qstaffmode.common.ItemBuilder;
 import com.quendo.qstaffmode.models.StaffItem;
 import com.quendo.qstaffmode.manager.ItemManager;
 import com.quendo.qstaffmode.utils.SkullType;

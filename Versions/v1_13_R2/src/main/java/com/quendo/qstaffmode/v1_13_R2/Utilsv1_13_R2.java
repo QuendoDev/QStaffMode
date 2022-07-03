@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.v1_13_R2;
 
-import com.quendo.qstaffmode.api.Utils;
+import com.quendo.qstaffmode.common.Utils;
 import net.minecraft.server.v1_13_R2.MinecraftServer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -11,7 +11,6 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.SkullMeta;
 
 public class Utilsv1_13_R2 implements Utils {
 

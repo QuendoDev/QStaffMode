@@ -26,6 +26,7 @@ public class StaffModeManager {
     private YMLFile messages;
 
     @Inject
+    @Getter
     private Storage<UUID, StaffInformation> inStaffMode;
 
     @Inject Storage<UUID, LeaveInformation> leaveInformationStorage;
@@ -136,7 +137,7 @@ public class StaffModeManager {
         }
     }
 
-    private boolean isFlying (Player p) {
+    public boolean isFlying (Player p) {
         return flying.contains(p.getUniqueId());
     }
 
@@ -192,7 +193,7 @@ public class StaffModeManager {
         return inStaffMode.find(p.getUniqueId()).isPresent();
     }
 
-    private boolean isVanished(Player p){
+    public boolean isVanished(Player p){
         return vanished.contains(p.getUniqueId());
     }
 

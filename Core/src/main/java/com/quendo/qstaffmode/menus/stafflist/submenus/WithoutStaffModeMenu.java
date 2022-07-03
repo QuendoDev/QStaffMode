@@ -3,7 +3,7 @@ package com.quendo.qstaffmode.menus.stafflist.submenus;
 import com.kino.kore.utils.BukkitUtils;
 import com.kino.kore.utils.files.YMLFile;
 import com.kino.kore.utils.storage.Storage;
-import com.quendo.qstaffmode.api.ItemBuilder;
+import com.quendo.qstaffmode.common.ItemBuilder;
 import com.quendo.qstaffmode.menus.stafflist.submenus.pages.PageTracker;
 import com.quendo.qstaffmode.menus.stafflist.submenus.pages.PlayerPage;
 import com.quendo.qstaffmode.models.data.StaffInformation;

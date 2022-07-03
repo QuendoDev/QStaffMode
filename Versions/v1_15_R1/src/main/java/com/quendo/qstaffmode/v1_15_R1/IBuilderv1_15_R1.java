@@ -2,7 +2,7 @@ package com.quendo.qstaffmode.v1_15_R1;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
-import com.quendo.qstaffmode.api.ItemBuilder;
+import com.quendo.qstaffmode.common.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

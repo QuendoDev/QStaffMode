@@ -1,7 +1,7 @@
 package com.quendo.qstaffmode.listener.inventory;
 
 import com.kino.kore.utils.files.YMLFile;
-import com.quendo.qstaffmode.api.Utils;
+import com.quendo.qstaffmode.common.Utils;
 import com.quendo.qstaffmode.menus.stafflist.submenus.pages.PageTracker;
 import com.quendo.qstaffmode.menus.stafflist.submenus.pages.PlayerPage;
 import com.quendo.qstaffmode.manager.MenuManager;

@@ -111,5 +111,6 @@ public class QStaffMode extends JavaPlugin {
     qstaffmode.stafflist.availablestaff
     qstaffmode.stafflist.unavailablestaff
     qstaffmode.message.enabledstaffmode
+    qstaffmode.silentchest
      */
 }

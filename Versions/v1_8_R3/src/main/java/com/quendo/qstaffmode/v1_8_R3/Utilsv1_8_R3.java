@@ -1,15 +1,12 @@
 package com.quendo.qstaffmode.v1_8_R3;
 
-import com.quendo.qstaffmode.api.Utils;
+import com.quendo.qstaffmode.common.Utils;
 import net.minecraft.server.v1_8_R3.MinecraftServer;
 import org.bukkit.Material;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.Repairable;
 import org.bukkit.inventory.meta.SkullMeta;
-import org.bukkit.material.MaterialData;
 
 public class Utilsv1_8_R3 implements Utils {
 

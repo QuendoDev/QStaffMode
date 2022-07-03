@@ -6,16 +6,17 @@
 
     <groupId>com.quendo</groupId>
     <artifactId>QStaffMode</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <modules>
         <module>Core</module>
         <module>Versions</module>
+        <module>Common</module>
         <module>API</module>
     </modules>
     <packaging>pom</packaging>
 
     <properties>
-        <core.version>1.1.0</core.version>
+        <core.version>1.2.0</core.version>
     </properties>
 
     <repositories>
@@ -26,6 +27,10 @@
         <repository>
             <id>bungeecord-repo</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+        <repository>
+            <id>dmulloy2-repo</id>
+            <url>https://repo.dmulloy2.net/repository/public/</url>
         </repository>
     </repositories>
 

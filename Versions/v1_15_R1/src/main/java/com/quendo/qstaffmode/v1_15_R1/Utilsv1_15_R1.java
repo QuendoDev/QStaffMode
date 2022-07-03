@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.v1_15_R1;
 
-import com.quendo.qstaffmode.api.Utils;
+import com.quendo.qstaffmode.common.Utils;
 import net.minecraft.server.v1_15_R1.MinecraftServer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
