@@ -38,7 +38,10 @@ public class StaffModeManager {
     @Getter private final List<UUID> flying = new ArrayList<>();
     @Getter private final List<UUID> inStaffChat = new ArrayList<>();
 
-    public void toogleStaffMode (Player p, boolean serverConnection) {
+    @Getter private boolean chatLock = false;
+    @Getter private boolean slowmode = false;
+
+    public void toggleStaffMode (Player p, boolean serverConnection) {
         if (isInStaffMode(p)) {
             disableStaffMode(p, serverConnection);
         } else {
@@ -111,7 +114,7 @@ public class StaffModeManager {
         p.getInventory().setArmorContents(armor);
     }
 
-    public void toogleFly (Player p) {
+    public void toggleFly (Player p) {
         if (isFlying(p)) {
             stopFlying(p);
         } else {
@@ -155,7 +158,7 @@ public class StaffModeManager {
         player.showPlayer(toShow);
     }
 
-    public void toogleVanish (Player p) {
+    public void toggleVanish (Player p) {
         if (isVanished(p)) {
             unvanish(p);
         } else {
@@ -197,7 +200,7 @@ public class StaffModeManager {
         return vanished.contains(p.getUniqueId());
     }
 
-    public void toogleFreeze (Player p, Player staff) {
+    public void toggleFreeze (Player p, Player staff) {
         if (isFrozen(p)) {
             unfreeze(p, staff, false);
         } else {
@@ -262,7 +265,7 @@ public class StaffModeManager {
         return inStaffChat.contains(p.getUniqueId());
     }
 
-    public void toogleStaffChat (Player p) {
+    public void toggleStaffChat (Player p) {
         if (isInStaffChat(p)) {
             disableStaffChat(p);
         } else {
@@ -285,6 +288,46 @@ public class StaffModeManager {
         if (p.hasPermission("qstaffmode.staffchat")) {
             inStaffChat.remove(p.getUniqueId());
             MessageUtils.sendMessage(p, messages.getString("disabledStaffChat"));
+        }
+    }
+
+    public void toggleChat () {
+        if (isChatLock()) {
+            unlockChat ();
+        } else {
+            lockChat();
+        }
+    }
+
+    public void lockChat () {
+        if (config.getBoolean("chatLock")) {
+            chatLock = true;
+        }
+    }
+
+    public void unlockChat () {
+        if (config.getBoolean("chatLock")) {
+            chatLock = false;
+        }
+    }
+
+    public void toggleSlowMode () {
+        if (isSlowmode()) {
+            noSlowMode ();
+        } else {
+            slowmode();
+        }
+    }
+
+    private void slowmode () {
+        if (config.getBoolean("slowmode")) {
+            slowmode = true;
+        }
+    }
+
+    private void noSlowMode () {
+        if (config.getBoolean("slowmode")) {
+            slowmode = false;
         }
     }
 

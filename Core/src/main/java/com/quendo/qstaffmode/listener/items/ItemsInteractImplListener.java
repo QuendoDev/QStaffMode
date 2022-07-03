@@ -42,7 +42,7 @@ public class ItemsInteractImplListener implements Listener {
     @EventHandler
     public void flyInteract (FlyInteractEvent e) {
         if(e.getPlayer().hasPermission("qstaffmode.items.fly")) {
-            staffModeManager.toogleFly(e.getPlayer());
+            staffModeManager.toggleFly(e.getPlayer());
         }
     }
 
@@ -56,7 +56,7 @@ public class ItemsInteractImplListener implements Listener {
     @EventHandler
     public void vanishInteract (VanishInteractEvent e) {
         if(e.getPlayer().hasPermission("qstaffmode.items.vanish")) {
-            staffModeManager.toogleVanish(e.getPlayer());
+            staffModeManager.toggleVanish(e.getPlayer());
         }
     }
 
@@ -78,7 +78,7 @@ public class ItemsInteractImplListener implements Listener {
     public void freezeInteract (FreezeInteractEvent e) {
         System.out.println(e.getPlayer().getName() + e.getPlayerFrozen().getName());
         if(e.getPlayer().hasPermission("qstaffmode.items.freeze") && !e.getPlayerFrozen().hasPermission("qstaffmode.bypass.freeze")) {
-            staffModeManager.toogleFreeze(e.getPlayerFrozen(), e.getPlayer());
+            staffModeManager.toggleFreeze(e.getPlayerFrozen(), e.getPlayer());
         }
     }
 }

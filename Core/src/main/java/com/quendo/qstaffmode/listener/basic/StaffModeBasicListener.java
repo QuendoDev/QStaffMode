@@ -1,6 +1,7 @@
 package com.quendo.qstaffmode.listener.basic;
 
 import com.kino.kore.utils.files.YMLFile;
+import com.kino.kore.utils.messages.MessageUtils;
 import com.quendo.qstaffmode.QStaffMode;
 import com.quendo.qstaffmode.manager.StaffModeManager;
 import org.bukkit.Bukkit;
@@ -38,6 +39,9 @@ public class StaffModeBasicListener implements Listener {
 
     private QStaffMode qStaffMode;
 
+    @Named("messages")
+    private YMLFile messages;
+
     @EventHandler
     public void onAction(PlayerInteractEvent e) {
         Player p = e.getPlayer();
@@ -51,6 +55,7 @@ public class StaffModeBasicListener implements Listener {
             Inventory inventory = ((Chest) chest.getState()).getInventory();
             Inventory clone = Bukkit.createInventory(null, inventory.getSize(), ChatColor.translateAlternateColorCodes('&', "&aSilent Chest"));
             clone.setContents(inventory.getContents());
+            MessageUtils.sendMessage(p, messages.getString("openChestSilent"));
             p.openInventory(clone);
         }
     }

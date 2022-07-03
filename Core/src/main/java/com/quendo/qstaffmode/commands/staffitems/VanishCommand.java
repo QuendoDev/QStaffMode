@@ -15,10 +15,10 @@ public class VanishCommand implements CommandClass {
     @Inject
     private StaffModeManager staffModeManager;
 
-    @Command(names = "", permission = "qstaffmode.commands.vanish.toogle", desc = "The player enables vanish if it's disabled, and disables it if enabled.")
+    @Command(names = "", permission = "qstaffmode.commands.vanish.toggle", desc = "The player enables vanish if it's disabled, and disables it if enabled.")
     @Usage("/vanish")
-    public boolean toogleVanishCommand(@Sender Player sender) {
-        staffModeManager.toogleVanish(sender);
+    public boolean toggleVanishCommand(@Sender Player sender) {
+        staffModeManager.toggleVanish(sender);
         return true;
     }
 

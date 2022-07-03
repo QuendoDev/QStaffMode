@@ -22,7 +22,7 @@ public class StaffModeCommand implements CommandClass {
     @Command(names = {"staff", "staffmode", "sm", "mod", "admin", "h"}, permission = "qstaffmode.commands.staffmode", desc = "Enables the staffmode for the executor.")
     @Usage("/staff")
     public boolean staffModeCommand (@Sender Player sender) {
-        staffModeManager.toogleStaffMode(sender, false);
+        staffModeManager.toggleStaffMode(sender, false);
         return true;
     }
 }

@@ -81,6 +81,7 @@ public class InspectMenu {
     private ItemStack setupInfoItem (Player p) {
         List<String> lore = menus.getStringList("inspect.info.lore");
         lore.replaceAll(line -> line
+                .replace("<name>", p.getDisplayName())
                 .replace("<food>", p.getFoodLevel() + "")
                 .replace("<xp>", p.getExpToLevel() + "")
                 .replace("<health>", Math.round(p.getHealth() * 100) / 100.0 + ""));

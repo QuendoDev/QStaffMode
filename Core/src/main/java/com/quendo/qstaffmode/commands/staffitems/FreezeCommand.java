@@ -34,7 +34,7 @@ public class FreezeCommand implements CommandClass {
             MessageUtils.sendMessage(sender, messages.getString("noPerms"));
             return true;
         }
-        staffModeManager.toogleFreeze(p, sender);
+        staffModeManager.toggleFreeze(p, sender);
         return true;
     }
 }

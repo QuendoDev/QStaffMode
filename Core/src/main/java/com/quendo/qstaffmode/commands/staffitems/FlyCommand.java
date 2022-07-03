@@ -15,10 +15,10 @@ public class FlyCommand implements CommandClass {
     @Inject
     private StaffModeManager staffModeManager;
 
-    @Command(names = "", permission = "qstaffmode.commands.fly.toogle", desc = "The player enables fly if it's disabled, and disables it if enabled.")
+    @Command(names = "", permission = "qstaffmode.commands.fly.toggle", desc = "The player enables fly if it's disabled, and disables it if enabled.")
     @Usage("/fly")
-    public boolean toogleFlyCommand(@Sender Player sender) {
-        staffModeManager.toogleFly(sender);
+    public boolean toggleFlyCommand(@Sender Player sender) {
+        staffModeManager.toggleFly(sender);
         return true;
     }
 

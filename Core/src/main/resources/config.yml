@@ -21,3 +21,9 @@ moveInventoryWhileFrozen: true
 teleportToInitialPosWhenDisabling: true
 #If the player is vanished, the chest will not do animation or sound.
 chestSoundCancel: true
+#If /chat lock is enabled.
+chatLock: true
+#If /chat slowmode is enabled.
+slowmode: true
+#Time in seconds to have permission for talking
+slowmodeCooldown: 3

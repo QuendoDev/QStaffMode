@@ -15,10 +15,10 @@ public class StaffChatCommand implements CommandClass {
     @Inject
     private StaffModeManager staffModeManager;
 
-    @Command(names = "", permission = "qstaffmode.commands.staffchat.toogle", desc = "The player enables staffchat if it's disabled, and disables it if enabled.")
+    @Command(names = "", permission = "qstaffmode.commands.staffchat.toggle", desc = "The player enables staffchat if it's disabled, and disables it if enabled.")
     @Usage("/staffchat")
-    public boolean toogleStaffChatCommand(@Sender Player sender) {
-        staffModeManager.toogleStaffChat(sender);
+    public boolean toggleStaffChatCommand(@Sender Player sender) {
+        staffModeManager.toggleStaffChat(sender);
         return true;
     }
 

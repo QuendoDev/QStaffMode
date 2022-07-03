@@ -2,8 +2,26 @@
 noPerms: "&cYou can't do that."
 playerNotOnline: "&cThat player is not online!"
 #################################################################################################################
-#When you execute /s <player> and player is online, you get this message
+#When you execute /s <player> and player is online, you get this message.
 teleported: "&b<player> has been teleported to your position."
+#################################################################################################################
+#Sended when inspecting someone.
+openingInventory: "&bOpening the inventory of &e<player>."
+#Sended when opening a chest silently.
+openChestSilent: "&bOpening chest silently..."
+#################################################################################################################
+#Sended when cleared the chat.
+chatCleared: "&aChat has been cleared by &r<player>"
+enabledColor: "&a"
+disabledColor: "&c"
+#When you use /chat [lock/unlock/toggle], this message is broadcast.
+chatLock: "&bChat has been <color><value> by &f<name>."
+#Sended when talking with locked chat.
+cantTalk: "&cYou can't use the chat right now."
+#When you use /chat slowmode, this message is broadcast.
+chatSlowMode: "&bSlow-mode has been <color><value> by &f<name>."
+#Sended when talking a lot with sow-mode chat.
+inCooldownChat: "&cWait <time> for talking again."
 #################################################################################################################
 staffChatDisabledByDefault: "&cThe staffchat is not enabled!"
 enabledStaffChat: "&bYou are now talking in private chat!"

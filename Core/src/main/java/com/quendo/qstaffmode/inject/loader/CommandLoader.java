@@ -4,14 +4,11 @@ import com.kino.kore.utils.files.YMLFile;
 import com.kino.kore.utils.loaders.Loader;
 import com.quendo.qstaffmode.QStaffMode;
 import com.quendo.qstaffmode.commandflow.translator.CustomTranslatorProvider;
-import com.quendo.qstaffmode.commands.GamemodeCommand;
-import com.quendo.qstaffmode.commands.StaffChatCommand;
-import com.quendo.qstaffmode.commands.StaffModeCommand;
+import com.quendo.qstaffmode.commands.*;
 import com.quendo.qstaffmode.commands.staffitems.FlyCommand;
 import com.quendo.qstaffmode.commands.staffitems.FreezeCommand;
 import com.quendo.qstaffmode.commands.staffitems.InvseeCommand;
 import com.quendo.qstaffmode.commands.main.QStaffModeCommand;
-import com.quendo.qstaffmode.commands.SCommand;
 import com.quendo.qstaffmode.commands.staffitems.VanishCommand;
 import me.fixeddev.commandflow.CommandManager;
 import me.fixeddev.commandflow.annotated.AnnotatedCommandTreeBuilder;
@@ -43,6 +40,7 @@ public class CommandLoader implements Loader {
     private VanishCommand vanishCommand;
     private GamemodeCommand gamemodeCommand;
     private StaffChatCommand staffChatCommand;
+    private ChatCommand chatCommand;
 
     @InjectIgnore
     private final AnnotatedCommandTreeBuilder builder = createBuilder();
@@ -68,6 +66,6 @@ public class CommandLoader implements Loader {
         commandManager.getTranslator().setProvider(new CustomTranslatorProvider(messages));
         registerCommands(sCommand, qStaffModeCommand, invseeCommand, flyCommand,
                 freezeCommand, staffModeCommand, vanishCommand, gamemodeCommand,
-                staffChatCommand);
+                staffChatCommand, chatCommand);
     }
 }

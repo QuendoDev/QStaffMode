@@ -36,6 +36,7 @@ inspect:
     amount: 1
     name: "&cInfo"
     lore:
+      - "&cName: <name>"
       - "&4Health: <health>"
       - "&aFood: <food>"
       - "&bXp: <xp>"

@@ -39,10 +39,16 @@ public class QStaffMode extends JavaPlugin {
     qstaffmode.commands.vanish.*
     qstaffmode.commands.gamemode.*
     qstaffmode.commands.staffchat.*
+    qstaffmode.commands.chat.*
 
-    qstaffmode.commands.fly.toogle
+    qstaffmode.commands.fly.toggle
     qstaffmode.commands.fly.on
     qstaffmode.commands.fly.off
+
+    qstaffmode.commands.chat.lock
+    qstaffmode.commands.chat.unlock
+    qstaffmode.commands.chat.toggle
+    qstaffmode.commands.chat.slowmode
 
     qstaffmode.commands.gamemode.creative
     qstaffmode.commands.gamemode.spectator
@@ -62,11 +68,11 @@ public class QStaffMode extends JavaPlugin {
 
     qstaffmode.commands.teleport
 
-    qstaffmode.commands.staffchat.toogle
+    qstaffmode.commands.staffchat.toggle
     qstaffmode.commands.staffchat.on
     qstaffmode.commands.staffchat.off
 
-    qstaffmode.commands.vanish.toogle
+    qstaffmode.commands.vanish.toggle
     qstaffmode.commands.vanish.on
     qstaffmode.commands.vanish.off
 
@@ -96,6 +102,9 @@ public class QStaffMode extends JavaPlugin {
     qstaffmode.staffmode.keepflying
     qstaffmode.staffmode.autoenable
 
+    qstaffmode.chat.lock.bypass
+    qstaffmode.chat.slowmode.bypass
+
     qstaffmode.frozendisconnect
     qstaffmode.useitems
     qstaffmode.staff
@@ -112,5 +121,6 @@ public class QStaffMode extends JavaPlugin {
     qstaffmode.stafflist.unavailablestaff
     qstaffmode.message.enabledstaffmode
     qstaffmode.silentchest
+
      */
 }
