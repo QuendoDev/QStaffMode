@@ -2,7 +2,6 @@ package com.quendo.qstaffmode.inject.modules;
 
 import com.kino.kore.utils.files.YMLFile;
 import com.kino.kore.utils.storage.Storage;
-import com.quendo.qstaffmode.manager.PacketManager;
 import com.quendo.qstaffmode.models.data.LeaveInformation;
 import com.quendo.qstaffmode.models.data.StaffInformation;
 import com.quendo.qstaffmode.manager.ItemManager;
@@ -29,7 +28,6 @@ public class StorageModule extends AbstractModule {
         bind(new TypeReference<Storage<UUID, LeaveInformation>>() {}).to(LeaveStorageManager.class).singleton();
         bind(ItemManager.class).singleton();
         bind(StaffModeManager.class).singleton();
-        //TODO bind(PacketManager.class).singleton();
         install(new MenuModule());
     }
 }

@@ -2,6 +2,5 @@ name: QStaffMode
 main: com.quendo.qstaffmode.QStaffMode
 version: ${project.version}
 author: Quendo
-#depend: [ProtocolLib]
 softdepend: [Multiverse-Core]
 api-version: 1.13

@@ -1,7 +1,6 @@
 package com.quendo.qstaffmode.inject.modules;
 
 import com.quendo.qstaffmode.common.ItemBuilder;
-import com.quendo.qstaffmode.common.PacketReader;
 import com.quendo.qstaffmode.common.Utils;
 import org.bukkit.Bukkit;
 import team.unnamed.inject.AbstractModule;
@@ -16,7 +15,6 @@ public class APIModule extends AbstractModule {
         try {
             bind(ItemBuilder.class).to((Class<? extends ItemBuilder>) Class.forName("com.quendo.qstaffmode.v" + SERVER_VERSION + ".IBuilderv" + SERVER_VERSION));
             bind(Utils.class).to((Class<? extends Utils>) Class.forName("com.quendo.qstaffmode.v" + SERVER_VERSION + ".Utilsv" + SERVER_VERSION));
-            //TODO bind(PacketReader.class).to((Class<? extends PacketReader>) Class.forName("com.quendo.qstaffmode.v" + SERVER_VERSION + ".PacketReaderv" + SERVER_VERSION));
         } catch (ClassNotFoundException e) {
             Bukkit.getLogger().severe("VERSION " + SERVER_VERSION + " IS NOT SUPPORTED YET!");
             Bukkit.getLogger().severe("IF YOU DON'T USE A SUPPORTED VERSION, YOU WILL BE GETTING " + e.getClass().getName());

@@ -1,15 +1,13 @@
 package com.quendo.qstaffmode.listener.basic;
 
-import com.comphenix.protocol.PacketType;
-import com.comphenix.protocol.ProtocolLibrary;
-import com.comphenix.protocol.events.ListenerPriority;
-import com.comphenix.protocol.events.PacketAdapter;
-import com.comphenix.protocol.events.PacketEvent;
 import com.kino.kore.utils.files.YMLFile;
 import com.quendo.qstaffmode.QStaffMode;
-import com.quendo.qstaffmode.manager.PacketManager;
 import com.quendo.qstaffmode.manager.StaffModeManager;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.Chest;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -24,6 +22,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
+import org.bukkit.inventory.Inventory;
 import team.unnamed.inject.InjectAll;
 
 import javax.inject.Inject;
@@ -39,18 +38,22 @@ public class StaffModeBasicListener implements Listener {
 
     private QStaffMode qStaffMode;
 
-    //TODO private PacketManager packetManager;
-
-    /*@EventHandler(priority = EventPriority.MONITOR)
+    @EventHandler
     public void onAction(PlayerInteractEvent e) {
         Player p = e.getPlayer();
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK && staffModeManager.isVanished(p)
                 && config.getBoolean("chestSoundCancel")
                 && p.hasPermission("qstaffmode.silentchest")
                 && (e.getClickedBlock().getType() == Material.CHEST || e.getClickedBlock().getType() == Material.TRAPPED_CHEST)) {
-            packetManager.setChestOpening(true);
+
+            e.setCancelled(true);
+            Block chest = e.getClickedBlock();
+            Inventory inventory = ((Chest) chest.getState()).getInventory();
+            Inventory clone = Bukkit.createInventory(null, inventory.getSize(), ChatColor.translateAlternateColorCodes('&', "&aSilent Chest"));
+            clone.setContents(inventory.getContents());
+            p.openInventory(clone);
         }
-    }*/
+    }
 
     @EventHandler
     public void onAttack(EntityDamageByEntityEvent e){
@@ -129,9 +132,7 @@ public class StaffModeBasicListener implements Listener {
             Player p = (Player) e.getWhoClicked();
             if (staffModeManager.isInStaffMode(p)) {
                 if(e.getClickedInventory() != null) {
-                    if (e.getClickedInventory().equals(p.getInventory())) {
-                        e.setCancelled(true);
-                    }
+                    e.setCancelled(true);
                 }
             }
             if (!config.getBoolean("moveInventoryWhileFrozen") && staffModeManager.isFrozen(p)) {

@@ -19,8 +19,6 @@ public class QStaffModeServices implements Service {
     private ItemsLoader itemsLoader;
     private MenuLoader menuLoader;
 
-    //TODO private ProtocolLoader protocolLoader;
-
     @Named("storage-service")
     private Service storageService;
 
@@ -35,8 +33,6 @@ public class QStaffModeServices implements Service {
         filesLoader.load();
         itemsLoader.load();
         menuLoader.load();
-
-        //TODO protocolLoader.load();
 
         storageService.start();
         servicesRegistrationService.start();
