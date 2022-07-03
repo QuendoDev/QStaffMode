@@ -5,7 +5,7 @@
     <parent>
         <artifactId>QStaffMode</artifactId>
         <groupId>com.quendo</groupId>
-        <version>1.0.1</version>
+        <version>1.1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -137,6 +137,24 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>com.quendo</groupId>
+            <artifactId>qstaffmode-versions-v1_17_R1</artifactId>
+            <version>${core.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.quendo</groupId>
+            <artifactId>qstaffmode-versions-v1_18_R2</artifactId>
+            <version>${core.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.quendo</groupId>
+            <artifactId>qstaffmode-versions-v1_19_R1</artifactId>
+            <version>${core.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
             <version>1.8.8-R0.1-SNAPSHOT</version>
@@ -175,5 +193,4 @@
             <version>0.2.0</version>
         </dependency>
     </dependencies>
-
 </project>

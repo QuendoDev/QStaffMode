@@ -9,6 +9,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
@@ -43,6 +44,17 @@ public class StaffModeBasicListener implements Listener {
         //If player is frozen or is on staffmode, placing blocks will be cancelled.
         if (staffModeManager.isInStaffMode(e.getPlayer()) || staffModeManager.isFrozen(e.getPlayer())) {
             e.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onTarget(EntityTargetEvent e) {
+        if (e.getTarget() instanceof Player) {
+            Player p = (Player) e.getTarget();
+            //If player is frozen or is on staffmode, mobs targeting will be cancelled.
+            if (staffModeManager.isInStaffMode(p) || staffModeManager.isFrozen(p)) {
+                e.setCancelled(true);
+            }
         }
     }
 

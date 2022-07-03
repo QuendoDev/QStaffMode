@@ -1,19 +1,18 @@
-package com.quendo.qstaffmode.v1_13_R2;
+package com.quendo.qstaffmode.v1_17_R1;
 
 import com.quendo.qstaffmode.api.Utils;
-import net.minecraft.server.v1_13_R2.MinecraftServer;
+import net.minecraft.server.MinecraftServer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_13_R2.CraftServer;
+import org.bukkit.craftbukkit.v1_17_R1.CraftServer;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.SkullMeta;
 
-public class Utilsv1_13_R2 implements Utils {
+public class Utilsv1_17_R1 implements Utils {
 
     @Override
     public ItemStack getItemInHand(PlayerEvent e) {

@@ -77,6 +77,8 @@ public class StaffModeManager {
             vanish(p);
             fly(p);
             giveStaffItems(p);
+            p.setHealth(20.0D);
+            p.setFoodLevel(20);
             MessageUtils.sendMessage(p, messages.getString("enabledStaffMode"));
             for (Player online : Bukkit.getOnlinePlayers()) {
                 if (online.hasPermission("qstaffmode.message.enabledstaffmode")) {

@@ -5,12 +5,12 @@
     <parent>
         <artifactId>QStaffMode</artifactId>
         <groupId>com.quendo</groupId>
-        <version>1.0.1</version>
+        <version>1.1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>qstaffmode-versions</artifactId>
-    <version>1.0.1</version>
+    <version>1.1.0</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -23,13 +23,16 @@
         <module>v1_14_R1</module>
         <module>v1_15_R1</module>
         <module>v1_16_R3</module>
+        <module>v1_17_R1</module>
+        <module>v1_18_R2</module>
+        <module>v1_19_R1</module>
     </modules>
 
     <dependencies>
         <dependency>
             <groupId>com.quendo</groupId>
             <artifactId>qstaffmode-api</artifactId>
-            <version>1.0.1</version>
+            <version>1.1.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

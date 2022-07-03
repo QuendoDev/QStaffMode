@@ -2,7 +2,9 @@ package com.quendo.qstaffmode.v1_12_R1;
 
 import com.quendo.qstaffmode.api.Utils;
 import net.minecraft.server.v1_12_R1.MinecraftServer;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.v1_12_R1.CraftServer;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
@@ -11,7 +13,6 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
-@SuppressWarnings("deprecation")
 public class Utilsv1_12_R1 implements Utils {
 
     @Override
@@ -32,7 +33,12 @@ public class Utilsv1_12_R1 implements Utils {
 
     @Override
     public double getTPS () {
-        return MinecraftServer.getServer().recentTps[0];
+        if (Bukkit.getServer() instanceof CraftServer) {
+            MinecraftServer server = ((CraftServer) Bukkit.getServer()).getServer();
+            return server.recentTps[0];
+        }
+
+        return 0.0D;
     }
 
     @Override
