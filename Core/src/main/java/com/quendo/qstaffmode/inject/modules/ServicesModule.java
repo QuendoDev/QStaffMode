@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.inject.modules;
 
-import com.kino.kore.utils.service.Service;
+import com.quendo.qore.setup.Service;
 import com.quendo.qstaffmode.inject.services.QStaffModeServices;
 import com.quendo.qstaffmode.inject.services.ServicesRegistrationService;
 import com.quendo.qstaffmode.inject.services.StorageService;

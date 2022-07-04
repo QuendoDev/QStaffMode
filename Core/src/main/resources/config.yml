@@ -1,3 +1,5 @@
+#The scoreboard is enabled.
+scoreboard: true
 #This is a command without the "/" that will be executed when a player disconnected while frozen.
 frozenDisconnect: "say <player> disconnected frozen!"
 #This will let a player use the random tp item, and teleport to a player who is on another world.
@@ -25,5 +27,5 @@ chestSoundCancel: true
 chatLock: true
 #If /chat slowmode is enabled.
 slowmode: true
-#Time in seconds to have permission for talking
+#Time in seconds to have permission for talking.
 slowmodeCooldown: 3

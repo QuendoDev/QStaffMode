@@ -1,7 +1,7 @@
 package com.quendo.qstaffmode.inject.modules;
 
-import com.kino.kore.utils.files.YMLFile;
-import com.kino.kore.utils.storage.Storage;
+import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.storage.Storage;
 import com.quendo.qstaffmode.cooldown.ChatCooldown;
 import com.quendo.qstaffmode.models.data.LeaveInformation;
 import com.quendo.qstaffmode.models.data.StaffInformation;
@@ -18,10 +18,6 @@ import java.util.UUID;
 
 
 public class StorageModule extends AbstractModule {
-
-    @Inject
-    @Named("config")
-    private YMLFile config;
 
     @Override
     protected void configure() {

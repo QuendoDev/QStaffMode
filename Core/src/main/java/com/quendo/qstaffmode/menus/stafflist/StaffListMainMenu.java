@@ -1,8 +1,8 @@
 package com.quendo.qstaffmode.menus.stafflist;
 
-import com.kino.kore.utils.BukkitUtils;
-import com.kino.kore.utils.files.YMLFile;
-import com.kino.kore.utils.storage.Storage;
+import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.storage.Storage;
+import com.quendo.qore.utils.bukkit.BukkitUtil;
 import com.quendo.qstaffmode.common.ItemBuilder;
 import com.quendo.qstaffmode.models.data.StaffInformation;
 import com.quendo.qstaffmode.utils.SkullType;
@@ -23,7 +23,7 @@ public class StaffListMainMenu {
 
     @Inject
     @Named("menus")
-    private YMLFile menus;
+    private OldYMLFile menus;
 
     @Inject
     private ItemBuilder itemBuilder;
@@ -81,7 +81,7 @@ public class StaffListMainMenu {
                 }
             }
             if (menus.getString("main.decoration.type").equalsIgnoreCase("frame")) {
-                for (int i : BukkitUtils.slotsOfBorderOfInventory(menus.getInt("main.size"))) {
+                for (int i : BukkitUtil.slotsOfBorderOfInventory(menus.getInt("main.size"))) {
                     defaultItems.put(i, item);
                 }
             }

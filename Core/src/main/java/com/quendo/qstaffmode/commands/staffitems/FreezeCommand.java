@@ -1,7 +1,7 @@
 package com.quendo.qstaffmode.commands.staffitems;
 
-import com.kino.kore.utils.files.YMLFile;
-import com.kino.kore.utils.messages.MessageUtils;
+import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.utils.bukkit.MessageUtil;
 import com.quendo.qstaffmode.manager.StaffModeManager;
 import me.fixeddev.commandflow.annotated.CommandClass;
 import me.fixeddev.commandflow.annotated.annotation.Command;
@@ -17,7 +17,7 @@ public class FreezeCommand implements CommandClass {
 
     @Inject
     @javax.inject.Named ("messages")
-    private YMLFile messages;
+    private OldYMLFile messages;
 
     @Inject
     private StaffModeManager staffModeManager;
@@ -27,11 +27,11 @@ public class FreezeCommand implements CommandClass {
     public boolean freezeCommand (@Sender Player sender, @Named("name") String name) {
         Player p = Bukkit.getPlayer(name);
         if (p == null || !p.isOnline()) {
-            MessageUtils.sendMessage(sender, messages.getString("playerNotOnline"));
+            MessageUtil.sendMessage(sender, messages.getString("playerNotOnline"));
             return true;
         }
         if (p.hasPermission("qstaffmode.bypass.freeze") || sender.getName().equals(name)) {
-            MessageUtils.sendMessage(sender, messages.getString("noPerms"));
+            MessageUtil.sendMessage(sender, messages.getString("noPerms"));
             return true;
         }
         staffModeManager.toggleFreeze(p, sender);

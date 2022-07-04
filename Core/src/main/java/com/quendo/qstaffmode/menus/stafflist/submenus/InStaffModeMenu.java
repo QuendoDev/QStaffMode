@@ -1,8 +1,8 @@
 package com.quendo.qstaffmode.menus.stafflist.submenus;
 
-import com.kino.kore.utils.BukkitUtils;
-import com.kino.kore.utils.files.YMLFile;
-import com.kino.kore.utils.storage.Storage;
+import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.storage.Storage;
+import com.quendo.qore.utils.bukkit.BukkitUtil;
 import com.quendo.qstaffmode.common.ItemBuilder;
 import com.quendo.qstaffmode.menus.stafflist.submenus.pages.PageTracker;
 import com.quendo.qstaffmode.menus.stafflist.submenus.pages.PlayerPage;
@@ -25,7 +25,7 @@ public class InStaffModeMenu {
 
     @Inject
     @Named("menus")
-    private YMLFile menus;
+    private OldYMLFile menus;
 
     @Inject
     private ItemBuilder itemBuilder;
@@ -94,7 +94,7 @@ public class InStaffModeMenu {
                 }
             }
             if (menus.getString("availableStaff.decoration.type").equalsIgnoreCase("frame")) {
-                for (int i : BukkitUtils.slotsOfBorderOfInventory(available.getSize())) {
+                for (int i : BukkitUtil.slotsOfBorderOfInventory(available.getSize())) {
                     defaultItems.put(i, item);
                 }
             }
@@ -124,7 +124,7 @@ public class InStaffModeMenu {
         int space = getSpaceForHeads();
         int slot = 0;
         int maxSlot = available.getSize() - 10;
-        List<Integer> borderSlots = BukkitUtils.slotsOfBorderOfInventory(available.getSize());
+        List<Integer> borderSlots = BukkitUtil.slotsOfBorderOfInventory(available.getSize());
 
         for (int i = space * (page - 1); i < inStaffMode.get().size(); i++) {
             slot++;
@@ -212,6 +212,6 @@ public class InStaffModeMenu {
     }
 
     private int getSpaceForHeads () {
-        return available.getSize() - BukkitUtils.slotsOfBorderOfInventory(available.getSize()).size();
+        return available.getSize() - BukkitUtil.slotsOfBorderOfInventory(available.getSize()).size();
     }
 }

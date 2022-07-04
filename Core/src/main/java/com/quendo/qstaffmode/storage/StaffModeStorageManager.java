@@ -1,8 +1,8 @@
 package com.quendo.qstaffmode.storage;
 
 import com.eatthepath.uuid.FastUUID;
-import com.kino.kore.utils.files.YMLFile;
-import com.kino.kore.utils.storage.Storage;
+import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.storage.Storage;
 import com.quendo.qstaffmode.models.data.StaffInformation;
 import org.bukkit.configuration.ConfigurationSection;
 
@@ -18,7 +18,7 @@ public class StaffModeStorageManager implements Storage<UUID, StaffInformation> 
 
     @Inject
     @Named("staffInformation")
-    private YMLFile staffInformation;
+    private OldYMLFile staffInformation;
 
     private final Map<UUID, StaffInformation> inStaffMode = new ConcurrentHashMap<>();
 

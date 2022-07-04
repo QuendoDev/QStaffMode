@@ -1,8 +1,8 @@
 package com.quendo.qstaffmode.storage;
 
 import com.eatthepath.uuid.FastUUID;
-import com.kino.kore.utils.files.YMLFile;
-import com.kino.kore.utils.storage.Storage;
+import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.storage.Storage;
 import com.quendo.qstaffmode.models.data.LeaveInformation;
 import org.bukkit.configuration.ConfigurationSection;
 
@@ -18,7 +18,7 @@ public class LeaveStorageManager implements Storage<UUID, LeaveInformation> {
 
     @Inject
     @Named("leaveInformation")
-    private YMLFile leaveInformationFile;
+    private OldYMLFile leaveInformationFile;
 
     private final Map<UUID, LeaveInformation> leaveInformation = new ConcurrentHashMap<>();
 

@@ -1,7 +1,7 @@
 package com.quendo.qstaffmode.listener.items;
 
-import com.kino.kore.utils.files.YMLFile;
-import com.kino.kore.utils.messages.MessageUtils;
+import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.utils.bukkit.MessageUtil;
 import com.quendo.qstaffmode.common.Utils;
 import com.quendo.qstaffmode.events.*;
 import com.quendo.qstaffmode.manager.StaffModeManager;
@@ -29,10 +29,10 @@ public class ItemsInteractGeneralListener implements Listener {
     private Utils utils;
 
     @Named("items")
-    private YMLFile items;
+    private OldYMLFile items;
 
     @Named("messages")
-    private YMLFile messages;
+    private OldYMLFile messages;
 
     @EventHandler
     public void interactEntity (PlayerInteractEntityEvent e) {
@@ -47,7 +47,7 @@ public class ItemsInteractGeneralListener implements Listener {
                         if (!clicked.hasPermission("qstaffmode.bypass.inspect")) {
                             Bukkit.getServer().getPluginManager().callEvent(new InspectInteractEvent(p, clicked));
                         } else {
-                            MessageUtils.sendMessage(p, messages.getString("noPerms"));
+                            MessageUtil.sendMessage(p, messages.getString("noPerms"));
                         }
                     }
 
@@ -56,7 +56,7 @@ public class ItemsInteractGeneralListener implements Listener {
                         if (!clicked.hasPermission("qstaffmode.bypass.freeze")) {
                             Bukkit.getServer().getPluginManager().callEvent(new FreezeInteractEvent(p, clicked));
                         } else {
-                            MessageUtils.sendMessage(p, messages.getString("noPerms"));
+                            MessageUtil.sendMessage(p, messages.getString("noPerms"));
                         }
                     }
                 }
@@ -125,7 +125,7 @@ public class ItemsInteractGeneralListener implements Listener {
 
                 ////////////******KBFISHINGROD******/////////////
                 if (itemInHandequalsItem(e, "kbFishingRod") && p.hasPermission("qstaffmode.items.kbfishingrod")) {
-                    MessageUtils.sendMessage(p, messages.getString("usedFishingRod"));
+                    MessageUtil.sendMessage(p, messages.getString("usedFishingRod"));
                 }
             }
         }

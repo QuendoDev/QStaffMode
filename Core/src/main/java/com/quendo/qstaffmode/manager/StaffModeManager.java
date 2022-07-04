@@ -1,15 +1,21 @@
 package com.quendo.qstaffmode.manager;
 
-import com.kino.kore.utils.files.YMLFile;
-import com.kino.kore.utils.messages.MessageUtils;
-import com.kino.kore.utils.storage.Storage;
+import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.scoreboard.Assemble;
+import com.quendo.qore.scoreboard.AssembleBoard;
+import com.quendo.qore.storage.Storage;
+import com.quendo.qore.utils.bukkit.MessageUtil;
+import com.quendo.qstaffmode.QStaffMode;
+import com.quendo.qstaffmode.common.Utils;
 import com.quendo.qstaffmode.models.data.LeaveInformation;
 import com.quendo.qstaffmode.models.data.StaffInformation;
+import com.quendo.qstaffmode.scoreboard.QStaffModeScoreboard;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.ServicesManager;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -18,12 +24,19 @@ import java.util.*;
 public class StaffModeManager {
 
     @Inject
+    private Utils utils;
+
+    @Inject
     @Named("config")
-    private YMLFile config;
+    private OldYMLFile config;
 
     @Inject
     @Named("messages")
-    private YMLFile messages;
+    private OldYMLFile messages;
+
+    @Inject
+    @Named("scoreboard")
+    private OldYMLFile scoreboard;
 
     @Inject
     @Getter
@@ -38,8 +51,16 @@ public class StaffModeManager {
     @Getter private final List<UUID> flying = new ArrayList<>();
     @Getter private final List<UUID> inStaffChat = new ArrayList<>();
 
+    @Getter private Assemble staffmodeScoreboard;
+    @Getter private Map<UUID, AssembleBoard> scoreboardMap;
+
     @Getter private boolean chatLock = false;
     @Getter private boolean slowmode = false;
+
+    public void setup (QStaffMode qStaffMode) {
+        staffmodeScoreboard = new Assemble(qStaffMode, new QStaffModeScoreboard(scoreboard, utils, this), false);
+        scoreboardMap = staffmodeScoreboard.getBoards();
+    }
 
     public void toggleStaffMode (Player p, boolean serverConnection) {
         if (isInStaffMode(p)) {
@@ -59,15 +80,19 @@ public class StaffModeManager {
             returnPlayerItems(p);
             if (config.getBoolean("teleportToInitialPosWhenDisabling")) {
                 inStaffMode.find(p.getUniqueId()).ifPresent(staffInformation -> p.teleport(staffInformation.getSavedLocation()));
-                MessageUtils.sendMessage(p, messages.getString("teleportedToInitialPos"));
+                MessageUtil.sendMessage(p, messages.getString("teleportedToInitialPos"));
             }
             if (!leaving) {
                 inStaffMode.remove(p.getUniqueId());
             }
-            MessageUtils.sendMessage(p, messages.getString("disabledStaffMode"));
+            if (config.getBoolean("scoreboard")) {
+                scoreboardMap.remove(p.getUniqueId());
+                p.setScoreboard(Bukkit.getScoreboardManager().getMainScoreboard());
+            }
+            MessageUtil.sendMessage(p, messages.getString("disabledStaffMode"));
             for (Player online : Bukkit.getOnlinePlayers()) {
                 if (online.hasPermission("qstaffmode.message.enabledstaffmode")) {
-                    MessageUtils.sendMessage(online, messages.getString("bcDisabledStaffMode").replace("<player>", p.getName()));
+                    MessageUtil.sendMessage(online, messages.getString("bcDisabledStaffMode").replace("<player>", p.getName()));
                 }
             }
         }
@@ -83,10 +108,13 @@ public class StaffModeManager {
             giveStaffItems(p);
             p.setHealth(20.0D);
             p.setFoodLevel(20);
-            MessageUtils.sendMessage(p, messages.getString("enabledStaffMode"));
+            if (config.getBoolean("scoreboard")) {
+                scoreboardMap.put(p.getUniqueId(), new AssembleBoard(p, staffmodeScoreboard));
+            }
+            MessageUtil.sendMessage(p, messages.getString("enabledStaffMode"));
             for (Player online : Bukkit.getOnlinePlayers()) {
                 if (online.hasPermission("qstaffmode.message.enabledstaffmode")) {
-                    MessageUtils.sendMessage(online, messages.getString("bcEnabledStaffMode").replace("<player>", p.getName()));
+                    MessageUtil.sendMessage(online, messages.getString("bcEnabledStaffMode").replace("<player>", p.getName()));
                 }
             }
         }
@@ -127,7 +155,7 @@ public class StaffModeManager {
             p.setAllowFlight(true);
             p.setFlying(true);
             flying.add(p.getUniqueId());
-            MessageUtils.sendMessage(p, messages.getString("enabledFly"));
+            MessageUtil.sendMessage(p, messages.getString("enabledFly"));
         }
     }
 
@@ -136,7 +164,7 @@ public class StaffModeManager {
             flying.remove(p.getUniqueId());
             p.setAllowFlight(false);
             p.setFlying(false);
-            MessageUtils.sendMessage(p, messages.getString("disabledFly"));
+            MessageUtil.sendMessage(p, messages.getString("disabledFly"));
         }
     }
 
@@ -175,7 +203,7 @@ public class StaffModeManager {
                 showPlayerToPlayer(p, player, false);
             }
             vanished.add(p.getUniqueId());
-            MessageUtils.sendMessage(p, messages.getString("enabledVanish"));
+            MessageUtil.sendMessage(p, messages.getString("enabledVanish"));
         }
     }
 
@@ -188,7 +216,7 @@ public class StaffModeManager {
                 showPlayerToPlayer(p, player, true);
             }
             vanished.remove(p.getUniqueId());
-            MessageUtils.sendMessage(p, messages.getString("disabledVanish"));
+            MessageUtil.sendMessage(p, messages.getString("disabledVanish"));
         }
     }
 
@@ -212,10 +240,10 @@ public class StaffModeManager {
         if (staff.hasPermission("qstaffmode.freeze")) {
             if (!p.hasPermission("qstaffmode.bypass.freeze")) {
                 frozen.add(p.getUniqueId());
-                MessageUtils.sendMessage(p, messages.getString("frozenByStaff").replace("<player>", staff.getName()));
-                MessageUtils.sendMessage(staff, messages.getString("frozeSomeone").replace("<player>", p.getName()));
+                MessageUtil.sendMessage(p, messages.getString("frozenByStaff").replace("<player>", staff.getName()));
+                MessageUtil.sendMessage(staff, messages.getString("frozeSomeone").replace("<player>", p.getName()));
             } else {
-                MessageUtils.sendMessage(staff, messages.getString("noPerms"));
+                MessageUtil.sendMessage(staff, messages.getString("noPerms"));
             }
         }
     }
@@ -227,8 +255,8 @@ public class StaffModeManager {
         }
         if (staff.hasPermission("qstaffmode.freeze")) {
             frozen.remove(p.getUniqueId());
-            MessageUtils.sendMessage(p, messages.getString("unfrozenByStaff").replace("<player>", staff.getName()));
-            MessageUtils.sendMessage(staff, messages.getString("unfrozeSomeone").replace("<player>", p.getName()));
+            MessageUtil.sendMessage(p, messages.getString("unfrozenByStaff").replace("<player>", staff.getName()));
+            MessageUtil.sendMessage(staff, messages.getString("unfrozeSomeone").replace("<player>", p.getName()));
         }
     }
 
@@ -246,17 +274,17 @@ public class StaffModeManager {
                 Player player = players.get(index);
                 if (useMultiworld) {
                     p.teleport(player.getLocation());
-                    MessageUtils.sendMessage(p, messages.getString("teleportedTo").replace("<player>", player.getName()));
+                    MessageUtil.sendMessage(p, messages.getString("teleportedTo").replace("<player>", player.getName()));
                 } else {
                     if (player.getWorld().equals(p.getWorld())) {
                         p.teleport(player.getLocation());
-                        MessageUtils.sendMessage(p, messages.getString("teleportedTo").replace("<player>", player.getName()));
+                        MessageUtil.sendMessage(p, messages.getString("teleportedTo").replace("<player>", player.getName()));
                     } else {
                         teleportToRandomplayer(p, false);
                     }
                 }
             } else {
-                MessageUtils.sendMessage(p, messages.getString("errorRandomTp"));
+                MessageUtil.sendMessage(p, messages.getString("errorRandomTp"));
             }
         }
     }
@@ -277,17 +305,17 @@ public class StaffModeManager {
         if (config.getBoolean("staffChatEnabled")) {
             if (p.hasPermission("qstaffmode.staffchat")) {
                 inStaffChat.add(p.getUniqueId());
-                MessageUtils.sendMessage(p, messages.getString("enabledStaffChat"));
+                MessageUtil.sendMessage(p, messages.getString("enabledStaffChat"));
             }
         } else {
-            MessageUtils.sendMessage(p, messages.getString("staffChatDisabledByDefault"));
+            MessageUtil.sendMessage(p, messages.getString("staffChatDisabledByDefault"));
         }
     }
 
     public void disableStaffChat (Player p) {
         if (p.hasPermission("qstaffmode.staffchat")) {
             inStaffChat.remove(p.getUniqueId());
-            MessageUtils.sendMessage(p, messages.getString("disabledStaffChat"));
+            MessageUtil.sendMessage(p, messages.getString("disabledStaffChat"));
         }
     }
 

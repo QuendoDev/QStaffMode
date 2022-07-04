@@ -2,5 +2,7 @@ name: QStaffMode
 main: com.quendo.qstaffmode.QStaffMode
 version: ${project.version}
 author: Quendo
-softdepend: [Multiverse-Core]
+softdepend:
+  - Multiverse-Core
+  - PlaceholderAPI
 api-version: 1.13

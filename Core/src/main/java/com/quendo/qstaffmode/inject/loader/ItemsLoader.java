@@ -1,7 +1,7 @@
 package com.quendo.qstaffmode.inject.loader;
 
-import com.kino.kore.utils.files.YMLFile;
-import com.kino.kore.utils.loaders.Loader;
+import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.setup.Loader;
 import com.quendo.qstaffmode.common.ItemBuilder;
 import com.quendo.qstaffmode.models.StaffItem;
 import com.quendo.qstaffmode.manager.ItemManager;
@@ -16,7 +16,7 @@ import java.util.List;
 public class ItemsLoader implements Loader {
 
     @Named("items")
-    private YMLFile items;
+    private OldYMLFile items;
 
     private ItemBuilder itemBuilder;
     private ItemManager itemManager;

@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.inject.loader;
 
-import com.kino.kore.utils.loaders.Loader;
+import com.quendo.qore.setup.Loader;
 import com.quendo.qstaffmode.menus.InspectMenu;
 import com.quendo.qstaffmode.menus.stafflist.StaffListMainMenu;
 import com.quendo.qstaffmode.menus.stafflist.submenus.InStaffModeMenu;

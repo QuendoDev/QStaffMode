@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.menus;
 
-import com.kino.kore.utils.files.YMLFile;
+import com.quendo.qore.files.OldYMLFile;
 import com.quendo.qstaffmode.common.ItemBuilder;
 import com.quendo.qstaffmode.utils.SkullType;
 import lombok.Getter;
@@ -23,7 +23,7 @@ public class InspectMenu {
 
     @Inject
     @Named("menus")
-    private YMLFile menus;
+    private OldYMLFile menus;
 
     @Inject
     private ItemBuilder itemBuilder;

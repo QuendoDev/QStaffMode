@@ -1,7 +1,7 @@
 package com.quendo.qstaffmode.inject.loader;
 
-import com.kino.kore.utils.files.YMLFile;
-import com.kino.kore.utils.loaders.Loader;
+import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.setup.Loader;
 import com.quendo.qstaffmode.QStaffMode;
 import com.quendo.qstaffmode.commandflow.translator.CustomTranslatorProvider;
 import com.quendo.qstaffmode.commands.*;
@@ -29,7 +29,7 @@ public class CommandLoader implements Loader {
     private QStaffMode plugin;
 
     @Named("messages")
-    private YMLFile messages;
+    private OldYMLFile messages;
 
     private SCommand sCommand;
     private QStaffModeCommand qStaffModeCommand;

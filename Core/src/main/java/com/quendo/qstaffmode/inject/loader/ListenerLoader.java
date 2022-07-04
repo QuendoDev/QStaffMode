@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.inject.loader;
 
-import com.kino.kore.utils.loaders.Loader;
+import com.quendo.qore.setup.Loader;
 import com.quendo.qstaffmode.QStaffMode;
 import com.quendo.qstaffmode.listener.basic.*;
 import com.quendo.qstaffmode.listener.inventory.InventoryListener;

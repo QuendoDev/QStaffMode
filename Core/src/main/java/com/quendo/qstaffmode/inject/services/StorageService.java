@@ -1,8 +1,8 @@
 package com.quendo.qstaffmode.inject.services;
 
-import com.kino.kore.utils.files.YMLFile;
-import com.kino.kore.utils.service.Service;
-import com.kino.kore.utils.storage.Storage;
+import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.setup.Service;
+import com.quendo.qore.storage.Storage;
 import com.quendo.qstaffmode.models.data.LeaveInformation;
 import com.quendo.qstaffmode.models.data.StaffInformation;
 
@@ -14,7 +14,7 @@ public class StorageService implements Service {
 
     @Inject
     @Named("config")
-    private YMLFile config;
+    private OldYMLFile config;
 
     @Inject
     private Storage<UUID, StaffInformation> staffInformationStorage;

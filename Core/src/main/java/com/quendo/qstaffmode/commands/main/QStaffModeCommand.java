@@ -1,8 +1,8 @@
 package com.quendo.qstaffmode.commands.main;
 
-import com.kino.kore.utils.PluginUtils;
-import com.kino.kore.utils.files.YMLFile;
-import com.kino.kore.utils.messages.MessageUtils;
+import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.utils.bukkit.MessageUtil;
+import com.quendo.qore.utils.bukkit.PluginUtil;
 import com.quendo.qstaffmode.QStaffMode;
 import me.fixeddev.commandflow.annotated.CommandClass;
 import me.fixeddev.commandflow.annotated.annotation.Command;
@@ -18,7 +18,7 @@ public class QStaffModeCommand implements CommandClass {
 
     @Inject
     @javax.inject.Named ("messages")
-    private YMLFile messages;
+    private OldYMLFile messages;
 
     @Inject
     private QStaffMode plugin;
@@ -26,11 +26,11 @@ public class QStaffModeCommand implements CommandClass {
     @Command(names = {"info", "author", "version"}, permission = "qstaffmode.commands.main.info", desc = "Get the info of this plugin.")
     @Usage("/qsm info")
     public boolean infoArgument(@Sender Player sender) {
-        MessageUtils.sendMessage(sender, "&e&m--------&e[QStaffMode]&e&m--------");
-        MessageUtils.sendMessage(sender, "&aName: &f" + PluginUtils.getName(plugin));
-        MessageUtils.sendMessage(sender, "&aVersion: &f" + PluginUtils.getVersion(plugin));
-        MessageUtils.sendMessage(sender, "&aAuthor: &f" + Arrays.toString(PluginUtils.getAuthors(plugin).toArray()));
-        MessageUtils.sendMessage(sender, "&e&m----------------------------");
+        MessageUtil.sendMessage(sender, "&e&m--------&e[QStaffMode]&e&m--------");
+        MessageUtil.sendMessage(sender, "&aName: &f" + PluginUtil.getName(plugin));
+        MessageUtil.sendMessage(sender, "&aVersion: &f" + PluginUtil.getVersion(plugin));
+        MessageUtil.sendMessage(sender, "&aAuthor: &f" + Arrays.toString(PluginUtil.getAuthors(plugin).toArray()));
+        MessageUtil.sendMessage(sender, "&e&m----------------------------");
         return true;
     }
 }

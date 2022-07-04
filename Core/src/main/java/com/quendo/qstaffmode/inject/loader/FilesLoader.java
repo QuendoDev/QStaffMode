@@ -1,6 +1,7 @@
 package com.quendo.qstaffmode.inject.loader;
 
-import com.kino.kore.utils.loaders.Loader;
+
+import com.quendo.qore.setup.Loader;
 import team.unnamed.inject.InjectAll;
 
 @InjectAll

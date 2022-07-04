@@ -1,6 +1,5 @@
 package com.quendo.qstaffmode.cooldown;
 
-import com.kino.kore.utils.files.YMLFile;
 import com.quendo.qstaffmode.QStaffMode;
 import lombok.Getter;
 import org.bukkit.Bukkit;

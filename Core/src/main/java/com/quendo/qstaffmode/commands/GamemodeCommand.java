@@ -1,7 +1,7 @@
 package com.quendo.qstaffmode.commands;
 
-import com.kino.kore.utils.files.YMLFile;
-import com.kino.kore.utils.messages.MessageUtils;
+import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.utils.bukkit.MessageUtil;
 import me.fixeddev.commandflow.annotated.CommandClass;
 import me.fixeddev.commandflow.annotated.annotation.Command;
 import me.fixeddev.commandflow.annotated.annotation.OptArg;
@@ -19,31 +19,31 @@ public class GamemodeCommand implements CommandClass {
 
     @Inject
     @Named("messages")
-    private YMLFile messages;
+    private OldYMLFile messages;
 
     @Command(names = {"creative", "1", "c"} , permission = "qstaffmode.commands.gamemode.creative", desc = "The player changes to creative mode.")
     @Usage("/gamemode creative [player]")
     public boolean creative (@Sender Player sender, @OptArg @me.fixeddev.commandflow.annotated.annotation.Named("name") String name) {
         if (name == null) {
             sender.setGameMode(GameMode.CREATIVE);
-            MessageUtils.sendMessage(sender, messages.getString("changeYourGamemode")
+            MessageUtil.sendMessage(sender, messages.getString("changeYourGamemode")
                     .replace("<gamemode>", sender.getGameMode().name().toLowerCase()));
             return true;
         }
         Player p = Bukkit.getPlayer(name);
         if (p == null || !p.isOnline()) {
-            MessageUtils.sendMessage(sender, messages.getString("playerNotOnline"));
+            MessageUtil.sendMessage(sender, messages.getString("playerNotOnline"));
             return true;
         }
         if (!sender.hasPermission("qstaffmode.commands.gamemode.creative.others")) {
-            MessageUtils.sendMessage(sender, messages.getString("noPerms"));
+            MessageUtil.sendMessage(sender, messages.getString("noPerms"));
             return true;
         }
         p.setGameMode(GameMode.CREATIVE);
-        MessageUtils.sendMessage(sender, messages.getString("changeOthersGamemode")
+        MessageUtil.sendMessage(sender, messages.getString("changeOthersGamemode")
                 .replace("<gamemode>", p.getGameMode().name().toLowerCase())
                 .replace("<player>", p.getDisplayName()));
-        MessageUtils.sendMessage(p, messages.getString("someoneChangedYourGamemode")
+        MessageUtil.sendMessage(p, messages.getString("someoneChangedYourGamemode")
                 .replace("<gamemode>", p.getGameMode().name().toLowerCase())
                 .replace("<staff>", sender.getDisplayName()));
         return true;
@@ -54,24 +54,24 @@ public class GamemodeCommand implements CommandClass {
     public boolean survival (@Sender Player sender, @OptArg @me.fixeddev.commandflow.annotated.annotation.Named("name") String name) {
         if (name == null) {
             sender.setGameMode(GameMode.SURVIVAL);
-            MessageUtils.sendMessage(sender, messages.getString("changeYourGamemode")
+            MessageUtil.sendMessage(sender, messages.getString("changeYourGamemode")
                     .replace("<gamemode>", sender.getGameMode().name().toLowerCase()));
             return true;
         }
         Player p = Bukkit.getPlayer(name);
         if (p == null || !p.isOnline()) {
-            MessageUtils.sendMessage(sender, messages.getString("playerNotOnline"));
+            MessageUtil.sendMessage(sender, messages.getString("playerNotOnline"));
             return true;
         }
         if (!sender.hasPermission("qstaffmode.commands.gamemode.survival.others")) {
-            MessageUtils.sendMessage(sender, messages.getString("noPerms"));
+            MessageUtil.sendMessage(sender, messages.getString("noPerms"));
             return true;
         }
         p.setGameMode(GameMode.SURVIVAL);
-        MessageUtils.sendMessage(sender, messages.getString("changeOthersGamemode")
+        MessageUtil.sendMessage(sender, messages.getString("changeOthersGamemode")
                 .replace("<gamemode>", p.getGameMode().name().toLowerCase())
                 .replace("<player>", p.getDisplayName()));
-        MessageUtils.sendMessage(p, messages.getString("someoneChangedYourGamemode")
+        MessageUtil.sendMessage(p, messages.getString("someoneChangedYourGamemode")
                 .replace("<gamemode>", p.getGameMode().name().toLowerCase())
                 .replace("<staff>", sender.getDisplayName()));
         return true;
@@ -82,24 +82,24 @@ public class GamemodeCommand implements CommandClass {
     public boolean adventure (@Sender Player sender, @OptArg @me.fixeddev.commandflow.annotated.annotation.Named("name") String name) {
         if (name == null) {
             sender.setGameMode(GameMode.ADVENTURE);
-            MessageUtils.sendMessage(sender, messages.getString("changeYourGamemode")
+            MessageUtil.sendMessage(sender, messages.getString("changeYourGamemode")
                     .replace("<gamemode>", sender.getGameMode().name().toLowerCase()));
             return true;
         }
         Player p = Bukkit.getPlayer(name);
         if (p == null || !p.isOnline()) {
-            MessageUtils.sendMessage(sender, messages.getString("playerNotOnline"));
+            MessageUtil.sendMessage(sender, messages.getString("playerNotOnline"));
             return true;
         }
         if (!sender.hasPermission("qstaffmode.commands.gamemode.adventure.others")) {
-            MessageUtils.sendMessage(sender, messages.getString("noPerms"));
+            MessageUtil.sendMessage(sender, messages.getString("noPerms"));
             return true;
         }
         p.setGameMode(GameMode.ADVENTURE);
-        MessageUtils.sendMessage(sender, messages.getString("changeOthersGamemode")
+        MessageUtil.sendMessage(sender, messages.getString("changeOthersGamemode")
                 .replace("<gamemode>", p.getGameMode().name().toLowerCase())
                 .replace("<player>", p.getDisplayName()));
-        MessageUtils.sendMessage(p, messages.getString("someoneChangedYourGamemode")
+        MessageUtil.sendMessage(p, messages.getString("someoneChangedYourGamemode")
                 .replace("<gamemode>", p.getGameMode().name().toLowerCase())
                 .replace("<staff>", sender.getDisplayName()));
         return true;
@@ -110,24 +110,24 @@ public class GamemodeCommand implements CommandClass {
     public boolean spectator (@Sender Player sender, @OptArg @me.fixeddev.commandflow.annotated.annotation.Named("name") String name) {
         if (name == null) {
             sender.setGameMode(GameMode.SPECTATOR);
-            MessageUtils.sendMessage(sender, messages.getString("changeYourGamemode")
+            MessageUtil.sendMessage(sender, messages.getString("changeYourGamemode")
                     .replace("<gamemode>", sender.getGameMode().name().toLowerCase()));
             return true;
         }
         Player p = Bukkit.getPlayer(name);
         if (p == null || !p.isOnline()) {
-            MessageUtils.sendMessage(sender, messages.getString("playerNotOnline"));
+            MessageUtil.sendMessage(sender, messages.getString("playerNotOnline"));
             return true;
         }
         if (!sender.hasPermission("qstaffmode.commands.gamemode.spectator.others")) {
-            MessageUtils.sendMessage(sender, messages.getString("noPerms"));
+            MessageUtil.sendMessage(sender, messages.getString("noPerms"));
             return true;
         }
         p.setGameMode(GameMode.SPECTATOR);
-        MessageUtils.sendMessage(sender, messages.getString("changeOthersGamemode")
+        MessageUtil.sendMessage(sender, messages.getString("changeOthersGamemode")
                 .replace("<gamemode>", p.getGameMode().name().toLowerCase())
                 .replace("<player>", p.getDisplayName()));
-        MessageUtils.sendMessage(p, messages.getString("someoneChangedYourGamemode")
+        MessageUtil.sendMessage(p, messages.getString("someoneChangedYourGamemode")
                 .replace("<gamemode>", p.getGameMode().name().toLowerCase())
                 .replace("<staff>", sender.getDisplayName()));
         return true;

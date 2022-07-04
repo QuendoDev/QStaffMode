@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.inject.services;
 
-import com.kino.kore.utils.service.Service;
+import com.quendo.qore.setup.Service;
 import com.quendo.qstaffmode.QStaffMode;
 import com.quendo.qstaffmode.manager.StaffModeManager;
 import org.bukkit.Bukkit;

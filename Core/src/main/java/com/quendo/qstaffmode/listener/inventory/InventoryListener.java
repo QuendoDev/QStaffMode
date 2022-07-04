@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.listener.inventory;
 
-import com.kino.kore.utils.files.YMLFile;
+import com.quendo.qore.files.OldYMLFile;
 import com.quendo.qstaffmode.common.Utils;
 import com.quendo.qstaffmode.menus.stafflist.submenus.pages.PageTracker;
 import com.quendo.qstaffmode.menus.stafflist.submenus.pages.PlayerPage;
@@ -23,7 +23,7 @@ import javax.inject.Named;
 public class InventoryListener implements Listener {
 
     @Named("menus")
-    private YMLFile menus;
+    private OldYMLFile menus;
 
     private Utils utils;
 

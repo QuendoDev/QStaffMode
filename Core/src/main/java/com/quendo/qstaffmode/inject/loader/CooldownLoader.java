@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.inject.loader;
 
-import com.kino.kore.utils.loaders.Loader;
+import com.quendo.qore.setup.Loader;
 import com.quendo.qstaffmode.cooldown.ChatCooldown;
 import team.unnamed.inject.InjectAll;
 

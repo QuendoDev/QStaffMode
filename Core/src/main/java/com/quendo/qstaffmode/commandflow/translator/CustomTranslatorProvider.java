@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.commandflow.translator;
 
-import com.kino.kore.utils.files.YMLFile;
+import com.quendo.qore.files.OldYMLFile;
 import me.fixeddev.commandflow.Namespace;
 import me.fixeddev.commandflow.translator.TranslationProvider;
 
@@ -11,7 +11,7 @@ public class CustomTranslatorProvider implements TranslationProvider {
 
     protected Map<String, String> translations;
 
-    public CustomTranslatorProvider(YMLFile messages) {
+    public CustomTranslatorProvider(OldYMLFile messages) {
         translations = new HashMap<>();
         translations.put("command.subcommand.invalid", messages.getString("command-translator.invalid-subcommand"));
         translations.put("command.no-permission", messages.getString("command-translator.no-permission"));

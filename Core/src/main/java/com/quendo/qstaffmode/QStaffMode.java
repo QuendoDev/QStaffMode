@@ -1,8 +1,10 @@
 package com.quendo.qstaffmode;
 
-import com.kino.kore.utils.PluginUtils;
-import com.kino.kore.utils.service.Service;
+
+import com.quendo.qore.setup.Service;
+import com.quendo.qore.utils.bukkit.PluginUtil;
 import com.quendo.qstaffmode.inject.modules.MainModule;
+import com.quendo.qstaffmode.manager.StaffModeManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,6 +19,8 @@ public class QStaffMode extends JavaPlugin {
     @Named("qsm-service")
     private Service qsmService;
 
+    @Inject
+    private StaffModeManager staffModeManager;
 
     @Override
     public void onEnable() {
@@ -25,7 +29,8 @@ public class QStaffMode extends JavaPlugin {
 
         qsmService.start();
 
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "QStaffMode " + PluginUtils.getVersion(this) + " enabled");
+        staffModeManager.setup(this);
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "QStaffMode " + PluginUtil.getVersion(this) + " enabled");
     }
 
     @Override

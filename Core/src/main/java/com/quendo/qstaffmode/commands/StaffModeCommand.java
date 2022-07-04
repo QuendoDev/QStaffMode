@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.commands;
 
-import com.kino.kore.utils.files.YMLFile;
+import com.quendo.qore.files.OldYMLFile;
 import com.quendo.qstaffmode.manager.StaffModeManager;
 import me.fixeddev.commandflow.annotated.CommandClass;
 import me.fixeddev.commandflow.annotated.annotation.Command;
@@ -14,7 +14,7 @@ public class StaffModeCommand implements CommandClass {
 
     @Inject
     @javax.inject.Named ("messages")
-    private YMLFile messages;
+    private OldYMLFile messages;
 
     @Inject
     private StaffModeManager staffModeManager;

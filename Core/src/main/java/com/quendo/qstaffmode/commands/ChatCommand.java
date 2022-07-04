@@ -1,7 +1,7 @@
 package com.quendo.qstaffmode.commands;
 
-import com.kino.kore.utils.files.YMLFile;
-import com.kino.kore.utils.messages.MessageUtils;
+import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.utils.bukkit.MessageUtil;
 import com.quendo.qstaffmode.manager.StaffModeManager;
 import me.fixeddev.commandflow.annotated.CommandClass;
 import me.fixeddev.commandflow.annotated.annotation.Command;
@@ -19,7 +19,7 @@ public class ChatCommand implements CommandClass {
 
     @Inject
     @Named("messages")
-    private YMLFile messages;
+    private OldYMLFile messages;
 
     @Inject
     private StaffModeManager staffModeManager;
@@ -29,7 +29,7 @@ public class ChatCommand implements CommandClass {
     public boolean lock (@Sender Player sender) {
         staffModeManager.lockChat();
         for (Player p : Bukkit.getOnlinePlayers()) {
-            MessageUtils.sendMessage(p, messages.getString("chatLock")
+            MessageUtil.sendMessage(p, messages.getString("chatLock")
                     .replace("<value>", "disabled")
                     .replace("<name>", sender.getDisplayName())
                     .replace("<color>", messages.getString("disabledColor")));
@@ -42,7 +42,7 @@ public class ChatCommand implements CommandClass {
     public boolean unlock (@Sender Player sender) {
         staffModeManager.unlockChat();
         for (Player p : Bukkit.getOnlinePlayers()) {
-            MessageUtils.sendMessage(p, messages.getString("chatLock")
+            MessageUtil.sendMessage(p, messages.getString("chatLock")
                     .replace("<value>", "enabled")
                     .replace("<name>", sender.getDisplayName())
                     .replace("<color>", messages.getString("enabledColor")));
@@ -58,7 +58,7 @@ public class ChatCommand implements CommandClass {
         String color = staffModeManager.isChatLock() ? "enabledColor" : "disabledColor";
         staffModeManager.toggleChat();
         for (Player p : Bukkit.getOnlinePlayers()) {
-            MessageUtils.sendMessage(p, messages.getString("chatLock")
+            MessageUtil.sendMessage(p, messages.getString("chatLock")
                     .replace("<value>", action)
                     .replace("<name>", sender.getDisplayName())
                     .replace("<color>", messages.getString(color)));
@@ -71,7 +71,7 @@ public class ChatCommand implements CommandClass {
     public boolean clear (@Sender Player sender) {
         Bukkit.broadcastMessage(StringUtils.repeat(" \n", 100));
         for (Player p : Bukkit.getOnlinePlayers()) {
-            MessageUtils.sendMessage(p, messages.getString("chatCleared")
+            MessageUtil.sendMessage(p, messages.getString("chatCleared")
                     .replace("<player>", sender.getDisplayName()));
         }
         return true;
@@ -84,7 +84,7 @@ public class ChatCommand implements CommandClass {
         String color = staffModeManager.isSlowmode() ? "disabledColor" : "enabledColor";
         staffModeManager.toggleSlowMode();
         for (Player p : Bukkit.getOnlinePlayers()) {
-            MessageUtils.sendMessage(p, messages.getString("chatSlowMode")
+            MessageUtil.sendMessage(p, messages.getString("chatSlowMode")
                     .replace("<value>", action)
                     .replace("<name>", sender.getDisplayName())
                     .replace("<color>", messages.getString(color)));

@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.listener.basic;
 
-import com.kino.kore.utils.files.YMLFile;
+import com.quendo.qore.files.OldYMLFile;
 import com.quendo.qstaffmode.manager.StaffModeManager;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
@@ -16,7 +16,7 @@ public class JoinListener implements Listener {
 
 
     @Named("config")
-    private YMLFile config;
+    private OldYMLFile config;
 
     private StaffModeManager staffModeManager;
 

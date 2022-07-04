@@ -1,7 +1,7 @@
 package com.quendo.qstaffmode.listener.basic;
 
-import com.kino.kore.utils.files.YMLFile;
-import com.kino.kore.utils.messages.MessageUtils;
+import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.utils.bukkit.MessageUtil;
 import com.quendo.qstaffmode.cooldown.ChatCooldown;
 import com.quendo.qstaffmode.manager.StaffModeManager;
 import org.bukkit.Bukkit;
@@ -19,10 +19,10 @@ import javax.inject.Named;
 public class ChatListener implements Listener {
 
     @Named("messages")
-    private YMLFile messages;
+    private OldYMLFile messages;
 
     @Named("config")
-    private YMLFile config;
+    private OldYMLFile config;
 
     private StaffModeManager staffModeManager;
     private ChatCooldown chatCooldown;
@@ -40,7 +40,7 @@ public class ChatListener implements Listener {
                 if (staffModeManager.isInStaffChat(p)) {
                     for (Player staff : Bukkit.getServer().getOnlinePlayers()) {
                         if (staff.hasPermission("qstaffmode.staffchat.read")) {
-                            MessageUtils.sendMessage(staff, prefix + p.getDisplayName() + separator + msg);
+                            MessageUtil.sendMessage(staff, prefix + p.getDisplayName() + separator + msg);
                         }
                     }
                     e.setMessage(null);
@@ -51,7 +51,7 @@ public class ChatListener implements Listener {
                 if (staffModeManager.isChatLock() && !p.hasPermission("qstaffmode.chat.lock.bypass")) {
                     e.setMessage(null);
                     e.setCancelled(true);
-                    MessageUtils.sendMessage(p, messages.getString("cantTalk"));
+                    MessageUtil.sendMessage(p, messages.getString("cantTalk"));
                     return;
                 }
             }
@@ -60,7 +60,7 @@ public class ChatListener implements Listener {
                     if (chatCooldown.hasCooldown(p.getUniqueId())) {
                         e.setMessage(null);
                         e.setCancelled(true);
-                        MessageUtils.sendMessage(p, messages.getString("inCooldownChat").replace("<time>", chatCooldown.getRemainingCooldown(p.getUniqueId()) + ""));
+                        MessageUtil.sendMessage(p, messages.getString("inCooldownChat").replace("<time>", chatCooldown.getRemainingCooldown(p.getUniqueId()) + ""));
                     } else {
                         chatCooldown.checkIfCooldown(p.getUniqueId(), config.getInt("slowmodeCooldown"));
                     }

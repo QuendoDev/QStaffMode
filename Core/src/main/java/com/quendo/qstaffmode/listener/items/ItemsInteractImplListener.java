@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.listener.items;
 
-import com.kino.kore.utils.files.YMLFile;
+import com.quendo.qore.files.OldYMLFile;
 import com.quendo.qstaffmode.events.*;
 import com.quendo.qstaffmode.manager.MenuManager;
 import com.quendo.qstaffmode.manager.StaffModeManager;
@@ -17,7 +17,7 @@ import javax.inject.Named;
 public class ItemsInteractImplListener implements Listener {
 
     @Named("config")
-    private YMLFile config;
+    private OldYMLFile config;
 
     private StaffModeManager staffModeManager;
     private MenuManager menuManager;
@@ -76,7 +76,6 @@ public class ItemsInteractImplListener implements Listener {
 
     @EventHandler
     public void freezeInteract (FreezeInteractEvent e) {
-        System.out.println(e.getPlayer().getName() + e.getPlayerFrozen().getName());
         if(e.getPlayer().hasPermission("qstaffmode.items.freeze") && !e.getPlayerFrozen().hasPermission("qstaffmode.bypass.freeze")) {
             staffModeManager.toggleFreeze(e.getPlayerFrozen(), e.getPlayer());
         }

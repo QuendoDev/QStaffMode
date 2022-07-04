@@ -1,7 +1,7 @@
 package com.quendo.qstaffmode.listener.basic;
 
-import com.kino.kore.utils.files.YMLFile;
-import com.kino.kore.utils.messages.MessageUtils;
+import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.utils.bukkit.MessageUtil;
 import com.quendo.qstaffmode.manager.StaffModeManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -17,10 +17,10 @@ import javax.inject.Named;
 public class LeaveListener implements Listener {
 
     @Named("config")
-    private YMLFile config;
+    private OldYMLFile config;
 
     @Named("messages")
-    private YMLFile messages;
+    private OldYMLFile messages;
 
     private StaffModeManager staffModeManager;
 
@@ -29,7 +29,7 @@ public class LeaveListener implements Listener {
         if(staffModeManager.isFrozen(e.getPlayer())) {
             for(Player p : Bukkit.getServer().getOnlinePlayers()) {
                 if(p.hasPermission("qstaffmode.frozendisconnect")) {
-                    MessageUtils.sendMessage(p, messages.getString("frozenDisconnect").replace("<player>", e.getPlayer().getName()));
+                    MessageUtil.sendMessage(p, messages.getString("frozenDisconnect").replace("<player>", e.getPlayer().getName()));
                 }
             }
             staffModeManager.unfreeze(e.getPlayer(), null, true);
@@ -49,7 +49,7 @@ public class LeaveListener implements Listener {
         if(staffModeManager.isFrozen(e.getPlayer())) {
             for(Player p : Bukkit.getServer().getOnlinePlayers()) {
                 if(p.hasPermission("qstaffmode.frozendisconnect")) {
-                    MessageUtils.sendMessage(p, messages.getString("frozenDisconnect").replace("<player>", e.getPlayer().getName()));
+                    MessageUtil.sendMessage(p, messages.getString("frozenDisconnect").replace("<player>", e.getPlayer().getName()));
                 }
             }
             staffModeManager.unfreeze(e.getPlayer(), null, false);
