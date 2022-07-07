@@ -12,6 +12,7 @@ import com.quendo.qstaffmode.models.data.StaffInformation;
 import com.quendo.qstaffmode.scoreboard.QStaffModeScoreboard;
 import lombok.Getter;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -112,6 +113,9 @@ public class StaffModeManager {
             p.setFoodLevel(20);
             if (config.getBoolean("scoreboard")) {
                 scoreboardMap.put(p.getUniqueId(), new AssembleBoard(p, staffmodeScoreboard));
+            }
+            if (config.getBoolean("creativeOnStaffmode")) {
+                p.setGameMode(GameMode.CREATIVE);
             }
             MessageUtil.sendMessage(p, messages.getString("enabledStaffMode"));
             if (config.getBoolean("bcStaffMode")) {

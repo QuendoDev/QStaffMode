@@ -33,3 +33,10 @@ slowmodeCooldown: 3
 bcStaffMode: true
 #A message is shown on the action bar when vanishing
 actionbarWhenVanish: true
+#If it is true, the player's gamemode will change to creative when enabling staff-mode.
+creativeOnStaffmode: false
+#When clicking the tp item, it opens a menu with 2 options: random teleport to any player or opening
+#a menu with all the players in the mining layers.
+tpMenu: true
+#These layers are used for checking to all the players in them, for displaying the menu of the tp item.
+miningLayers: "10,11,12,13,14"

@@ -6,6 +6,8 @@ import com.quendo.qstaffmode.menus.InspectMenu;
 import com.quendo.qstaffmode.menus.stafflist.StaffListMainMenu;
 import com.quendo.qstaffmode.menus.stafflist.submenus.InStaffModeMenu;
 import com.quendo.qstaffmode.menus.stafflist.submenus.WithoutStaffModeMenu;
+import com.quendo.qstaffmode.menus.tp.TpMainMenu;
+import com.quendo.qstaffmode.menus.tp.submenus.MiningLayersMenu;
 import org.bukkit.entity.Player;
 import team.unnamed.inject.InjectAll;
 
@@ -22,6 +24,8 @@ public class MenuManager {
     private StaffListMainMenu staffListMainMenu;
     private InStaffModeMenu inStaffModeMenu;
     private WithoutStaffModeMenu withoutStaffModeMenu;
+    private TpMainMenu tpMainMenu;
+    private MiningLayersMenu miningLayersMenu;
 
     public void openInspectMenu (Player p, Player interacted) {
         if (p.hasPermission("qstaffmode.inspect")) {
@@ -45,6 +49,18 @@ public class MenuManager {
     public void openUnavailableStaffMenu (Player p, int page) {
         if (p.hasPermission("qstaffmode.stafflist.unavailablestaff")) {
             withoutStaffModeMenu.open(p, page);
+        }
+    }
+
+    public void openTpMainMenu (Player p) {
+        if (p.hasPermission("qstaffmode.tpmenu")) {
+            tpMainMenu.open(p);
+        }
+    }
+
+    public void openMiningMenu (Player p, int page) {
+        if (p.hasPermission("qstaffmode.tpmenu.mining")) {
+            miningLayersMenu.open(p, page);
         }
     }
 }

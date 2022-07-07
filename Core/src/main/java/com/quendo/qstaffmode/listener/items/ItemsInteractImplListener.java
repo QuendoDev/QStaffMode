@@ -49,7 +49,11 @@ public class ItemsInteractImplListener implements Listener {
     @EventHandler
     public void randomTpInteract (RandomTpInteractEvent e) {
         if(e.getPlayer().hasPermission("qstaffmode.items.randomtp")) {
-            staffModeManager.teleportToRandomplayer(e.getPlayer(), config.getBoolean("randomTpMultiworld"));
+            if (config.getBoolean("tpMenu")) {
+                menuManager.openTpMainMenu(e.getPlayer());
+            } else {
+                staffModeManager.teleportToRandomplayer(e.getPlayer(), config.getBoolean("randomTpMultiworld"));
+            }
         }
     }
 

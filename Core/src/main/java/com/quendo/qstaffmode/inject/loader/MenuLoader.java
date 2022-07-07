@@ -5,6 +5,8 @@ import com.quendo.qstaffmode.menus.InspectMenu;
 import com.quendo.qstaffmode.menus.stafflist.StaffListMainMenu;
 import com.quendo.qstaffmode.menus.stafflist.submenus.InStaffModeMenu;
 import com.quendo.qstaffmode.menus.stafflist.submenus.WithoutStaffModeMenu;
+import com.quendo.qstaffmode.menus.tp.TpMainMenu;
+import com.quendo.qstaffmode.menus.tp.submenus.MiningLayersMenu;
 import team.unnamed.inject.InjectAll;
 
 
@@ -15,6 +17,8 @@ public class MenuLoader implements Loader {
     private StaffListMainMenu staffListMainMenu;
     private WithoutStaffModeMenu withoutStaffModeMenu;
     private InStaffModeMenu inStaffModeMenu;
+    private TpMainMenu tpMainMenu;
+    private MiningLayersMenu miningLayersMenu;
 
     @Override
     public void load() {
@@ -22,5 +26,7 @@ public class MenuLoader implements Loader {
         staffListMainMenu.create();
         withoutStaffModeMenu.create();
         inStaffModeMenu.create();
+        tpMainMenu.create();
+        miningLayersMenu.create();
     }
 }

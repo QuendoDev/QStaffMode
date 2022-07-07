@@ -1,4 +1,4 @@
-package com.quendo.qstaffmode.menus.stafflist.submenus.pages;
+package com.quendo.qstaffmode.menus.pages;
 
 import lombok.AllArgsConstructor;
 import org.bukkit.entity.Player;

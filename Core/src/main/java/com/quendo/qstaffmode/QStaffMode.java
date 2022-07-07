@@ -100,6 +100,9 @@ public class QStaffMode extends JavaPlugin {
     qstaffmode.menu.unavailablestaff.open
     qstaffmode.menu.availablestaff.teleport
     qstaffmode.menu.unavailableStaff.teleport
+    qstaffmode.menu.tp.random
+    qstaffmode.menu.tp.mining
+    qstaffmode.menu.tp.teleport
 
     qstaffmode.data.save
     qstaffmode.data.read
@@ -124,6 +127,8 @@ public class QStaffMode extends JavaPlugin {
     qstaffmode.stafflist
     qstaffmode.stafflist.availablestaff
     qstaffmode.stafflist.unavailablestaff
+    qstaffmode.tpmenu
+    qstaffmode.tpmenu.mining
     qstaffmode.message.enabledstaffmode
     qstaffmode.silentchest
 
