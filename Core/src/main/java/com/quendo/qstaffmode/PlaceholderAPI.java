@@ -70,7 +70,7 @@ public class PlaceholderAPI extends PlaceholderExpansion {
                 return String.valueOf(staffModeManager.isFrozen(player));
             case "savedlocation":
                 return staffModeManager.getInStaffMode().find(player.getUniqueId()).isPresent() ?
-                        BukkitUtil.formatLocation(staffModeManager.getInStaffMode().find(player.getUniqueId()).get().getSavedLocation()) : "";
+                        BukkitUtil.formatLocation(staffModeManager.getInStaffMode().find(player.getUniqueId()).get().getSavedLocation(), false) : "";
         }
 
         return null;
