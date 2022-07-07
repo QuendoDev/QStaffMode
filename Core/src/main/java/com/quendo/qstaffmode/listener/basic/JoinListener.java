@@ -33,6 +33,12 @@ public class JoinListener implements Listener {
         }
         if(config.getBoolean("autoEnableBySavedInfo") && e.getPlayer().hasPermission("qstaffmode.data.read")){
             staffModeManager.readData(e.getPlayer());
+            return;
+        }
+        if (!config.getBoolean("autoStaffModeOnJoin") && !config.getBoolean("autoEnableBySavedInfo") && staffModeManager.getInStaffMode().find(e.getPlayer().getUniqueId()).isPresent()) {
+            staffModeManager.returnPlayerItems(e.getPlayer());
+            e.getPlayer().teleport(staffModeManager.getInStaffMode().find(e.getPlayer().getUniqueId()).get().getSavedLocation());
+            staffModeManager.getInStaffMode().remove(e.getPlayer().getUniqueId());
         }
     }
 }

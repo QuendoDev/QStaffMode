@@ -428,6 +428,7 @@ public class StaffModeManager {
         if (staffmode) {
             enableStaffMode(p, true);
         } else {
+            returnPlayerItems(p);
             inStaffMode.remove(p.getUniqueId());
         }
     }
