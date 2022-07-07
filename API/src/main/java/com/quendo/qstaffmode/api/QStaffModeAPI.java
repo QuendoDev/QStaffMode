@@ -1,18 +1,17 @@
 package com.quendo.qstaffmode.api;
 
 import com.quendo.qstaffmode.manager.StaffModeManager;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.ServicesManager;
 
 public class QStaffModeAPI {
 
     private final StaffModeManager staffModeManager;
 
     public QStaffModeAPI (Plugin plugin) {
-        ServicesManager servicesManager = plugin.getServer().getServicesManager();
-        this.staffModeManager = servicesManager.getRegistration(StaffModeManager.class).getProvider();
+        this.staffModeManager = Bukkit.getServicesManager().getRegistration(StaffModeManager.class).getProvider();
     }
 
     public boolean isInStaffMode (Player p) {

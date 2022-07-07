@@ -25,12 +25,7 @@ public class QStaffModeCommand implements CommandClass {
 
     @Command(names = {"info", "author", "version"}, permission = "qstaffmode.commands.main.info", desc = "Get the info of this plugin.")
     @Usage("/qsm info")
-    public boolean infoArgument(@Sender Player sender) {
-        MessageUtil.sendMessage(sender, "&e&m--------&e[QStaffMode]&e&m--------");
-        MessageUtil.sendMessage(sender, "&aName: &f" + PluginUtil.getName(plugin));
-        MessageUtil.sendMessage(sender, "&aVersion: &f" + PluginUtil.getVersion(plugin));
-        MessageUtil.sendMessage(sender, "&aAuthor: &f" + Arrays.toString(PluginUtil.getAuthors(plugin).toArray()));
-        MessageUtil.sendMessage(sender, "&e&m----------------------------");
-        return true;
+    public void infoArgument(@Sender Player sender) {
+        PluginUtil.sendInfo(plugin, sender);
     }
 }

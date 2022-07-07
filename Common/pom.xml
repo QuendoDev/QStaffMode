@@ -5,12 +5,12 @@
     <parent>
         <artifactId>QStaffMode</artifactId>
         <groupId>com.quendo</groupId>
-        <version>1.2.0</version>
+        <version>1.2.4</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>qstaffmode-common</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.4</version>
 
     <build>
         <plugins>

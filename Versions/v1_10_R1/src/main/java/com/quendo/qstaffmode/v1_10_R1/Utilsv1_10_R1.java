@@ -1,10 +1,13 @@
 package com.quendo.qstaffmode.v1_10_R1;
 
 import com.quendo.qstaffmode.common.Utils;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.minecraft.server.v1_10_R1.MinecraftServer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_10_R1.CraftServer;
+import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
@@ -60,5 +63,10 @@ public class Utilsv1_10_R1 implements Utils {
     @Override
     public boolean isPlayerHead (ItemStack itemStack) {
         return isSkull(itemStack) && itemStack.getDurability() == 3 && itemStack.hasItemMeta() && ((SkullMeta)itemStack.getItemMeta()).hasOwner();
+    }
+
+    @Override
+    public void sendActionBar(Player p, String message) {
+        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(message));
     }
 }

@@ -24,17 +24,16 @@ public class FreezeCommand implements CommandClass {
 
     @Command(names = {"freeze", "ss"}, permission = "qstaffmode.commands.freeze", desc = "Freezes a player.")
     @Usage("/freeze <player>")
-    public boolean freezeCommand (@Sender Player sender, @Named("name") String name) {
+    public void freezeCommand (@Sender Player sender, @Named("name") String name) {
         Player p = Bukkit.getPlayer(name);
         if (p == null || !p.isOnline()) {
             MessageUtil.sendMessage(sender, messages.getString("playerNotOnline"));
-            return true;
+            return;
         }
         if (p.hasPermission("qstaffmode.bypass.freeze") || sender.getName().equals(name)) {
             MessageUtil.sendMessage(sender, messages.getString("noPerms"));
-            return true;
+            return;
         }
         staffModeManager.toggleFreeze(p, sender);
-        return true;
     }
 }

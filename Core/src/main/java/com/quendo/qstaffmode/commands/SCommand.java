@@ -20,14 +20,13 @@ public class SCommand implements CommandClass {
 
     @Command(names = "s", permission = "qstaffmode.commands.teleport", desc = "The player used as an argument is teleported to your position.")
     @Usage("/s <player>")
-    public boolean sCommand(@Sender Player sender, @Named("name") String name) {
+    public void sCommand(@Sender Player sender, @Named("name") String name) {
         Player p = Bukkit.getPlayer(name);
         if (p == null || !p.isOnline()) {
             MessageUtil.sendMessage(sender, messages.getString("playerNotOnline"));
-            return true;
+            return;
         }
         p.teleport(sender);
         MessageUtil.sendMessage(sender,  messages.getString("teleported").replace("<player>", p.getName()));
-        return true;
     }
 }

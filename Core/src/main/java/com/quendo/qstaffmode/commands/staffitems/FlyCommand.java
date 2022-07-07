@@ -17,22 +17,19 @@ public class FlyCommand implements CommandClass {
 
     @Command(names = "", permission = "qstaffmode.commands.fly.toggle", desc = "The player enables fly if it's disabled, and disables it if enabled.")
     @Usage("/fly")
-    public boolean toggleFlyCommand(@Sender Player sender) {
+    public void toggleFlyCommand(@Sender Player sender) {
         staffModeManager.toggleFly(sender);
-        return true;
     }
 
     @Command(names = "on", permission = "qstaffmode.commands.fly.on", desc = "The player enables fly.")
     @Usage("/fly on")
-    public boolean onFly(@Sender Player sender) {
+    public void onFly(@Sender Player sender) {
         staffModeManager.fly(sender);
-        return true;
     }
 
     @Command(names = "off", permission = "qstaffmode.commands.fly.off", desc = "The player disables fly.")
     @Usage("/fly off")
-    public boolean offFly(@Sender Player sender) {
+    public void offFly(@Sender Player sender) {
         staffModeManager.stopFlying(sender);
-        return true;
     }
 }

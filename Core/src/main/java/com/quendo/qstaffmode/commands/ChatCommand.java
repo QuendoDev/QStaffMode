@@ -26,7 +26,7 @@ public class ChatCommand implements CommandClass {
 
     @Command(names = {"lock", "disable"} , permission = "qstaffmode.commands.chat.lock", desc = "The player disables chat for everyone.")
     @Usage("/chat lock")
-    public boolean lock (@Sender Player sender) {
+    public void lock (@Sender Player sender) {
         staffModeManager.lockChat();
         for (Player p : Bukkit.getOnlinePlayers()) {
             MessageUtil.sendMessage(p, messages.getString("chatLock")
@@ -34,12 +34,11 @@ public class ChatCommand implements CommandClass {
                     .replace("<name>", sender.getDisplayName())
                     .replace("<color>", messages.getString("disabledColor")));
         }
-        return true;
     }
 
     @Command(names = {"unlock", "enable"} , permission = "qstaffmode.commands.chat.unlock", desc = "The player enables chat for everyone.")
     @Usage("/chat unlock")
-    public boolean unlock (@Sender Player sender) {
+    public void unlock (@Sender Player sender) {
         staffModeManager.unlockChat();
         for (Player p : Bukkit.getOnlinePlayers()) {
             MessageUtil.sendMessage(p, messages.getString("chatLock")
@@ -47,13 +46,11 @@ public class ChatCommand implements CommandClass {
                     .replace("<name>", sender.getDisplayName())
                     .replace("<color>", messages.getString("enabledColor")));
         }
-
-        return true;
     }
 
     @Command(names = "toggle" , permission = "qstaffmode.commands.chat.toggle", desc = "The player toggles chat for everyone.")
     @Usage("/chat toggle")
-    public boolean toggle (@Sender Player sender) {
+    public void toggle (@Sender Player sender) {
         String action = staffModeManager.isChatLock() ? "enabled" : "disabled";
         String color = staffModeManager.isChatLock() ? "enabledColor" : "disabledColor";
         staffModeManager.toggleChat();
@@ -63,18 +60,16 @@ public class ChatCommand implements CommandClass {
                     .replace("<name>", sender.getDisplayName())
                     .replace("<color>", messages.getString(color)));
         }
-        return true;
     }
 
     @Command(names = "clear" , permission = "qstaffmode.commands.chat.clear", desc = "The player clear chat for everyone.")
     @Usage("/chat clear")
-    public boolean clear (@Sender Player sender) {
+    public void clear (@Sender Player sender) {
         Bukkit.broadcastMessage(StringUtils.repeat(" \n", 100));
         for (Player p : Bukkit.getOnlinePlayers()) {
             MessageUtil.sendMessage(p, messages.getString("chatCleared")
                     .replace("<player>", sender.getDisplayName()));
         }
-        return true;
     }
 
     @Command(names = {"slow", "slowmode", "cooldown"} , permission = "qstaffmode.commands.chat.slowmode", desc = "The player enables slow-mode chat for everyone.")

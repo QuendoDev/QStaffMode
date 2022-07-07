@@ -17,22 +17,19 @@ public class StaffChatCommand implements CommandClass {
 
     @Command(names = "", permission = "qstaffmode.commands.staffchat.toggle", desc = "The player enables staffchat if it's disabled, and disables it if enabled.")
     @Usage("/staffchat")
-    public boolean toggleStaffChatCommand(@Sender Player sender) {
+    public void toggleStaffChatCommand(@Sender Player sender) {
         staffModeManager.toggleStaffChat(sender);
-        return true;
     }
 
     @Command(names = "on", permission = "qstaffmode.commands.staffchat.on", desc = "The player enables staffchat.")
     @Usage("/staffchat on")
-    public boolean onStaffChat(@Sender Player sender) {
+    public void onStaffChat(@Sender Player sender) {
         staffModeManager.enableStaffChat(sender);
-        return true;
     }
 
     @Command(names = "off", permission = "qstaffmode.commands.staffchat.off", desc = "The player disables staffchat.")
     @Usage("/staffchat off")
-    public boolean offStaffChat(@Sender Player sender) {
+    public void offStaffChat(@Sender Player sender) {
         staffModeManager.disableStaffChat(sender);
-        return true;
     }
 }

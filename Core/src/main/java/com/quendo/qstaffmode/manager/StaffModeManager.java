@@ -90,9 +90,11 @@ public class StaffModeManager {
                 p.setScoreboard(Bukkit.getScoreboardManager().getMainScoreboard());
             }
             MessageUtil.sendMessage(p, messages.getString("disabledStaffMode"));
-            for (Player online : Bukkit.getOnlinePlayers()) {
-                if (online.hasPermission("qstaffmode.message.enabledstaffmode")) {
-                    MessageUtil.sendMessage(online, messages.getString("bcDisabledStaffMode").replace("<player>", p.getName()));
+            if (config.getBoolean("bcStaffMode")) {
+                for (Player online : Bukkit.getOnlinePlayers()) {
+                    if (online.hasPermission("qstaffmode.message.enabledstaffmode")) {
+                        MessageUtil.sendMessage(online, messages.getString("bcDisabledStaffMode").replace("<player>", p.getName()));
+                    }
                 }
             }
         }
@@ -112,9 +114,11 @@ public class StaffModeManager {
                 scoreboardMap.put(p.getUniqueId(), new AssembleBoard(p, staffmodeScoreboard));
             }
             MessageUtil.sendMessage(p, messages.getString("enabledStaffMode"));
-            for (Player online : Bukkit.getOnlinePlayers()) {
-                if (online.hasPermission("qstaffmode.message.enabledstaffmode")) {
-                    MessageUtil.sendMessage(online, messages.getString("bcEnabledStaffMode").replace("<player>", p.getName()));
+            if (config.getBoolean("bcStaffMode")) {
+                for (Player online : Bukkit.getOnlinePlayers()) {
+                    if (online.hasPermission("qstaffmode.message.enabledstaffmode")) {
+                        MessageUtil.sendMessage(online, messages.getString("bcEnabledStaffMode").replace("<player>", p.getName()));
+                    }
                 }
             }
         }
@@ -203,6 +207,9 @@ public class StaffModeManager {
                 showPlayerToPlayer(p, player, false);
             }
             vanished.add(p.getUniqueId());
+            if (config.getBoolean("actionbarWhenVanish")) {
+                utils.sendActionBar(p, messages.getString("vanishActionBar"));
+            }
             MessageUtil.sendMessage(p, messages.getString("enabledVanish"));
         }
     }
@@ -216,6 +223,9 @@ public class StaffModeManager {
                 showPlayerToPlayer(p, player, true);
             }
             vanished.remove(p.getUniqueId());
+            if (config.getBoolean("actionbarWhenVanish")) {
+                utils.sendActionBar(p, messages.getString("unvanishActionBar"));
+            }
             MessageUtil.sendMessage(p, messages.getString("disabledVanish"));
         }
     }

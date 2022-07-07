@@ -42,7 +42,9 @@ disabledFly: "&cYou now can't fly!"
 usedFishingRod: "&aYou used your knock-back-testing fishing rod!"
 #################################################################################################################
 enabledVanish: "&bYou are now vanished."
+vanishActionBar: "&bVanish enabled."
 disabledVanish: "&cYou are now visible!"
+unvanishActionBar: "&bVanish disabled."
 #################################################################################################################
 changeYourGamemode: "&aYou changed your gamemode to &e<gamemode>."
 changeOthersGamemode: "&aYou changed <player>'s gamemode to &e<gamemode>."
@@ -61,15 +63,19 @@ moveWhileFrozen: "&cYou are frozen, you can't move."
 frozenDisconnect: "&c<player> disconnected while frozen!"
 #################################################################################################################
 command-translator:
-  invalid-subcommand: "The subcommand %s doesn't exists!"
-  no-permission: "No permission."
-  no-more-arguments: "No more arguments were found, size: %s position: %s"
-  number-out-range: "The number %s is not within the range min: %s max: %s"
-  invalid-values:
+  command:
+    subcommand:
+      invalid: "The subcommand %s doesn't exists!"
+    no-permission: "No permission."
+  argument:
+    no-more: "No more arguments were found, size: %s position: %s"
+  number:
+    out-range: "The number %s is not within the range min: %s max: %s"
+  invalid:
     byte: "The number %s is not a valid byte!"
-    int: "The number %s is not a valid integer!"
+    integer: "The number %s is not a valid integer!"
     float: "The number %s is not a valid float!"
     double: "The number %s is not a valid double!"
     boolean: "The string %s is not a valid boolean!"
-    enum: "The value %s is not valid, the valid values are: %s"
+    enum-value: "The value %s is not valid, the valid values are: %s"
 #################################################################################################################

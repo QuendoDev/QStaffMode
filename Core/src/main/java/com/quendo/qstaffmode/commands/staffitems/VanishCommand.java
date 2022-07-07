@@ -17,22 +17,19 @@ public class VanishCommand implements CommandClass {
 
     @Command(names = "", permission = "qstaffmode.commands.vanish.toggle", desc = "The player enables vanish if it's disabled, and disables it if enabled.")
     @Usage("/vanish")
-    public boolean toggleVanishCommand(@Sender Player sender) {
+    public void toggleVanishCommand(@Sender Player sender) {
         staffModeManager.toggleVanish(sender);
-        return true;
     }
 
     @Command(names = "on", permission = "qstaffmode.commands.vanish.on", desc = "The player enables vanish.")
     @Usage("/vanish on")
-    public boolean onVanish(@Sender Player sender) {
+    public void onVanish(@Sender Player sender) {
         staffModeManager.vanish(sender);
-        return true;
     }
 
     @Command(names = "off", permission = "qstaffmode.commands.vanish.off", desc = "The player disables vanish.")
     @Usage("/vanish off")
-    public boolean offVanish(@Sender Player sender) {
+    public void offVanish(@Sender Player sender) {
         staffModeManager.unvanish(sender);
-        return true;
     }
 }

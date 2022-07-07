@@ -2,7 +2,7 @@ package com.quendo.qstaffmode.listener.basic;
 
 import com.quendo.qore.files.OldYMLFile;
 import com.quendo.qore.utils.bukkit.MessageUtil;
-import com.quendo.qstaffmode.cooldown.ChatCooldown;
+import com.quendo.qstaffmode.manager.ChatManager;
 import com.quendo.qstaffmode.manager.StaffModeManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -25,7 +25,7 @@ public class ChatListener implements Listener {
     private OldYMLFile config;
 
     private StaffModeManager staffModeManager;
-    private ChatCooldown chatCooldown;
+    private ChatManager chatManager;
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onChat(AsyncPlayerChatEvent e){
@@ -57,12 +57,12 @@ public class ChatListener implements Listener {
             }
             if (config.getBoolean("slowmode")) {
                 if (staffModeManager.isSlowmode() && !p.hasPermission("qstaffmode.chat.slowmode.bypass")) {
-                    if (chatCooldown.hasCooldown(p.getUniqueId())) {
+                    if (!chatManager.canChat(p)) {
                         e.setMessage(null);
                         e.setCancelled(true);
-                        MessageUtil.sendMessage(p, messages.getString("inCooldownChat").replace("<time>", chatCooldown.getRemainingCooldown(p.getUniqueId()) + ""));
+                        MessageUtil.sendMessage(p, messages.getString("inCooldownChat").replace("<time>", chatManager.getRemainingCooldown(p) + ""));
                     } else {
-                        chatCooldown.checkIfCooldown(p.getUniqueId(), config.getInt("slowmodeCooldown"));
+                        chatManager.add(p);
                     }
                 }
             }

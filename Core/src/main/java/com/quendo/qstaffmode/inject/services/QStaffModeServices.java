@@ -17,7 +17,6 @@ public class QStaffModeServices implements Service {
 
     private ListenerLoader listenerLoader;
     private CommandLoader commandsLoader;
-    private CooldownLoader cooldownLoader;
     private FilesLoader filesLoader;
     private ItemsLoader itemsLoader;
     private MenuLoader menuLoader;
@@ -37,7 +36,6 @@ public class QStaffModeServices implements Service {
     public void start() {
         listenerLoader.load();
         commandsLoader.load();
-        cooldownLoader.load();
         filesLoader.load();
         itemsLoader.load();
         menuLoader.load();

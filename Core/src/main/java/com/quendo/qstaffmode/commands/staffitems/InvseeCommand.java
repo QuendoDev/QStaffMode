@@ -24,17 +24,16 @@ public class InvseeCommand implements CommandClass {
 
     @Command(names = {"invsee", "inspect"}, permission = "qstaffmode.commands.invsee", desc = "Opens a menu with the inventory of the player that you chose.")
     @Usage("/invsee <player>")
-    public boolean sCommand(@Sender Player sender, @Named("name") String name) {
+    public void sCommand(@Sender Player sender, @Named("name") String name) {
         Player p = Bukkit.getPlayer(name);
         if (p == null || !p.isOnline()) {
             MessageUtil.sendMessage(sender, messages.getString("playerNotOnline"));
-            return true;
+            return;
         }
         if (p.hasPermission("qstaffmode.bypass.inspect")) {
             MessageUtil.sendMessage(sender, messages.getString("noPerms"));
-            return true;
+            return;
         }
         menuManager.openInspectMenu(sender, p);
-        return true;
     }
 }

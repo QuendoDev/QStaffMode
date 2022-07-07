@@ -29,3 +29,7 @@ chatLock: true
 slowmode: true
 #Time in seconds to have permission for talking.
 slowmodeCooldown: 3
+#A message wil be broadcast when a player enters/quits staff-mode
+bcStaffMode: true
+#A message is shown on the action bar when vanishing
+actionbarWhenVanish: true
