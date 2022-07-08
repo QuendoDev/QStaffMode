@@ -27,36 +27,44 @@ public class ChatCommand implements CommandClass {
     @Command(names = {"lock", "disable"} , permission = "qstaffmode.commands.chat.lock", desc = "The player disables chat for everyone.")
     @Usage("/chat lock")
     public void lock (@Sender Player sender) {
-        staffModeManager.lockChat();
-        for (Player p : Bukkit.getOnlinePlayers()) {
-            MessageUtil.sendMessage(p, messages.getString("chatLock")
-                    .replace("<value>", "disabled")
-                    .replace("<name>", sender.getDisplayName())
-                    .replace("<color>", messages.getString("disabledColor")));
+        if(!staffModeManager.isChatLock()) {
+            staffModeManager.lockChat();
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                MessageUtil.sendMessage(p, messages.getString("chatLock")
+                        .replace("<value>", messages.getString("disabledMessage"))
+                        .replace("<name>", sender.getDisplayName())
+                        .replace("<color>", messages.getString("disabledColor")));
+            }
+        } else {
+            MessageUtil.sendMessage(sender, messages.getString("alreadyLocked"));
         }
     }
 
     @Command(names = {"unlock", "enable"} , permission = "qstaffmode.commands.chat.unlock", desc = "The player enables chat for everyone.")
     @Usage("/chat unlock")
     public void unlock (@Sender Player sender) {
-        staffModeManager.unlockChat();
-        for (Player p : Bukkit.getOnlinePlayers()) {
-            MessageUtil.sendMessage(p, messages.getString("chatLock")
-                    .replace("<value>", "enabled")
-                    .replace("<name>", sender.getDisplayName())
-                    .replace("<color>", messages.getString("enabledColor")));
+        if (staffModeManager.isChatLock()) {
+            staffModeManager.unlockChat();
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                MessageUtil.sendMessage(p, messages.getString("chatLock")
+                        .replace("<value>", messages.getString("enabledMessage"))
+                        .replace("<name>", sender.getDisplayName())
+                        .replace("<color>", messages.getString("enabledColor")));
+            }
+        } else {
+            MessageUtil.sendMessage(sender, messages.getString("alreadyUnlocked"));
         }
     }
 
     @Command(names = "toggle" , permission = "qstaffmode.commands.chat.toggle", desc = "The player toggles chat for everyone.")
     @Usage("/chat toggle")
     public void toggle (@Sender Player sender) {
-        String action = staffModeManager.isChatLock() ? "enabled" : "disabled";
+        String action = staffModeManager.isChatLock() ? "enabledMessage" : "disabledMessage";
         String color = staffModeManager.isChatLock() ? "enabledColor" : "disabledColor";
         staffModeManager.toggleChat();
         for (Player p : Bukkit.getOnlinePlayers()) {
             MessageUtil.sendMessage(p, messages.getString("chatLock")
-                    .replace("<value>", action)
+                    .replace("<value>", messages.getString(action))
                     .replace("<name>", sender.getDisplayName())
                     .replace("<color>", messages.getString(color)));
         }
@@ -75,12 +83,12 @@ public class ChatCommand implements CommandClass {
     @Command(names = {"slow", "slowmode", "cooldown"} , permission = "qstaffmode.commands.chat.slowmode", desc = "The player enables slow-mode chat for everyone.")
     @Usage("/chat slowmode")
     public boolean slowmode (@Sender Player sender) {
-        String action = staffModeManager.isSlowmode() ? "disabled" : "enabled";
+        String action = staffModeManager.isSlowmode() ? "enabledMessage" : "disabledMessage";
         String color = staffModeManager.isSlowmode() ? "disabledColor" : "enabledColor";
         staffModeManager.toggleSlowMode();
         for (Player p : Bukkit.getOnlinePlayers()) {
             MessageUtil.sendMessage(p, messages.getString("chatSlowMode")
-                    .replace("<value>", action)
+                    .replace("<value>", messages.getString(action))
                     .replace("<name>", sender.getDisplayName())
                     .replace("<color>", messages.getString(color)));
         }

@@ -3,6 +3,7 @@ package com.quendo.qstaffmode.models.data;
 import com.quendo.qore.utils.bukkit.BukkitUtil;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.inventory.ItemStack;
@@ -19,11 +20,13 @@ public class StaffInformation implements ConfigurationSerializable {
     private Location savedLocation;
     private ItemStack[] inventoryItems;
     private ItemStack[] armor;
+    private GameMode gameMode;
 
     public StaffInformation (Map<String, Object> map) {
         this.savedLocation = BukkitUtil.getOneLineLocFromString((String) map.get("savedLocation"));
         this.inventoryItems = ((ArrayList<ItemStack>) map.get("inventoryItems")).toArray(new ItemStack[0]);
         this.armor = ((ArrayList<ItemStack>) map.get("armor")).toArray(new ItemStack[0]);
+        this.gameMode = GameMode.valueOf((String) map.get("gameMode"));
     }
 
     @Override
@@ -32,6 +35,7 @@ public class StaffInformation implements ConfigurationSerializable {
         map.put("savedLocation", BukkitUtil.locToString(savedLocation));
         map.put("inventoryItems", inventoryItems);
         map.put("armor", armor);
+        map.put("gameMode", gameMode.name());
         return map;
     }
 }

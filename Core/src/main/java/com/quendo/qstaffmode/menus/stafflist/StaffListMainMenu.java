@@ -102,7 +102,7 @@ public class StaffListMainMenu {
         if (getGlow(item)) {
             itemBuilder.glow();
         }
-        if (getSkullType(item) == SkullType.NAME) {
+        if (getSkullType(item) == SkullType.OWNER) {
             itemBuilder.setOwner(getSkullId(item));
         }
         if (getSkullType(item) == SkullType.URL) {

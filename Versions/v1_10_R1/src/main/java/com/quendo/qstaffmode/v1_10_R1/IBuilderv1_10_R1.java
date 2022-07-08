@@ -141,21 +141,26 @@ public class IBuilderv1_10_R1 implements ItemBuilder {
         ItemStack itemStack = new ItemStack(material, amount, data);
         ItemMeta meta = itemStack.getItemMeta();
 
-        enchantments.forEach((enchantment, level) -> meta.addEnchant(enchantment, level, true));
+        if (meta != null) {
+            enchantments.forEach((enchantment, level) -> meta.addEnchant(enchantment, level, true));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
+            if (name != null) {
+                meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
+            }
 
-        lore.replaceAll(line -> ChatColor.translateAlternateColorCodes('&', line));
-        meta.setLore(lore);
+            if (lore != null && !lore.isEmpty()) {
+                lore.replaceAll(line -> ChatColor.translateAlternateColorCodes('&', line));
+                meta.setLore(lore);
+            }
 
-        flags.forEach(meta::addItemFlags);
+            flags.forEach(meta::addItemFlags);
 
-        if (unbreakable) {
-            meta.spigot().setUnbreakable(true);
+            if (unbreakable) {
+                meta.spigot().setUnbreakable(true);
+            }
+
+            itemStack.setItemMeta(meta);
         }
-
-        itemStack.setItemMeta(meta);
-
 
         if((material == Material.SKULL_ITEM) || (material == Material.SKULL)) {
             buidSkull(itemStack);
@@ -172,10 +177,14 @@ public class IBuilderv1_10_R1 implements ItemBuilder {
 
         enchantments.forEach((enchantment, level) -> meta.addEnchant(enchantment, level, true));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
+        if (name != null) {
+            meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
+        }
 
-        lore.replaceAll(line -> ChatColor.translateAlternateColorCodes('&', line));
-        meta.setLore(lore);
+        if (lore != null && !lore.isEmpty()) {
+            lore.replaceAll(line -> ChatColor.translateAlternateColorCodes('&', line));
+            meta.setLore(lore);
+        }
 
         flags.forEach(meta::addItemFlags);
 

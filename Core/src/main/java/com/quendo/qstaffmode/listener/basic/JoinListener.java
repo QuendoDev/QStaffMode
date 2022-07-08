@@ -22,7 +22,7 @@ public class JoinListener implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e){
-        if(!e.getPlayer().hasPermission("qstaffmode.bypass.vanish")) {
+        if(!e.getPlayer().hasPermission("qstaffmode.bypass.vanish") && !staffModeManager.getVanished().isEmpty()) {
             for (UUID uuid : staffModeManager.getVanished()) {
                 e.getPlayer().hidePlayer(Bukkit.getPlayer(uuid));
             }

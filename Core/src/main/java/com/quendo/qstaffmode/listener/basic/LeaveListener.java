@@ -38,6 +38,10 @@ public class LeaveListener implements Listener {
         if(e.getPlayer().hasPermission("qstaffmode.data.save")){
             staffModeManager.saveData(e.getPlayer());
         }
+        if (config.getBoolean("scoreboard")) {
+            staffModeManager.getScoreboardMap().remove(e.getPlayer().getUniqueId());
+            e.getPlayer().setScoreboard(Bukkit.getScoreboardManager().getMainScoreboard());
+        }
     }
 
     @EventHandler
@@ -54,6 +58,10 @@ public class LeaveListener implements Listener {
             }
             staffModeManager.unfreeze(e.getPlayer(), null, false);
             Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), config.getString("frozenDisconnect").replace("<player>", e.getPlayer().getName()));
+        }
+        if (config.getBoolean("scoreboard")) {
+            staffModeManager.getScoreboardMap().remove(e.getPlayer().getUniqueId());
+            e.getPlayer().setScoreboard(Bukkit.getScoreboardManager().getMainScoreboard());
         }
     }
 }

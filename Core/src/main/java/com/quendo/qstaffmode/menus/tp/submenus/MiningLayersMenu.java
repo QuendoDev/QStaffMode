@@ -44,6 +44,7 @@ public class MiningLayersMenu {
     }
 
     public void open (Player p, int page) {
+        inMiningLayers.clear();
         //Decoration (if it is not enabled, then "defaultItems" will be empty).
         for (Integer i : defaultItems.keySet()) {
             inMiningLayers.setItem(i, defaultItems.get(i));
@@ -143,7 +144,12 @@ public class MiningLayersMenu {
         List<UUID> mining = getInMiningLayers();
         UUID uuid = mining.get(i);
         Player player = Bukkit.getPlayer(uuid);
-        String name = menus.getString("inMiningLayers.heads.name").replace("<player>", player.getName()).replace("<diff>", menus.getString("inMiningLayers.heads.difference"));
+        String name = menus.getString("inMiningLayers.heads.name").replace("<player>", player.getName());
+        if (player.hasPermission("qstaffmode.staff")) {
+            name = name.replace("<diff>", menus.getString("inMiningLayers.heads.difference"));
+        } else {
+            name = name.replace("<diff>", "");
+        }
         List<String> lore = menus.getStringList("inMiningLayers.heads.lore");
         lore.replaceAll(
                 line -> line.replace("<player>", player.getName())
@@ -172,7 +178,7 @@ public class MiningLayersMenu {
         if (getGlow(item)) {
             itemBuilder.glow();
         }
-        if (getSkullType(item) == SkullType.NAME) {
+        if (getSkullType(item) == SkullType.OWNER) {
             itemBuilder.setOwner(getSkullId(item));
         }
         if (getSkullType(item) == SkullType.URL) {
@@ -243,22 +249,25 @@ public class MiningLayersMenu {
         switch (s) {
             case "diamonds":
                 for (ItemStack item : p.getInventory().getContents()) {
-                    if (item.getType() == Material.DIAMOND) {
-                        i++;
+                    if (item != null && item.getType() == Material.DIAMOND) {
+                        i += item.getAmount();
                     }
                 }
+                return i;
             case "gold":
                 for (ItemStack item : p.getInventory().getContents()) {
-                    if (item.getType() == Material.GOLD_INGOT) {
-                        i++;
+                    if (item != null && item.getType() == Material.GOLD_INGOT) {
+                        i += item.getAmount();
                     }
                 }
+                return i;
             case "iron":
                 for (ItemStack item : p.getInventory().getContents()) {
-                    if (item.getType() == Material.IRON_INGOT) {
-                        i++;
+                    if (item != null && item.getType() == Material.IRON_INGOT) {
+                        i += item.getAmount();
                     }
                 }
+                return i;
         }
         return i;
     }

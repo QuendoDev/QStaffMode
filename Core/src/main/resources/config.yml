@@ -40,3 +40,8 @@ creativeOnStaffmode: false
 tpMenu: true
 #These layers are used for checking to all the players in them, for displaying the menu of the tp item.
 miningLayers: "10,11,12,13,14"
+#When entering staffmode, you will receive night vision effect.
+nightVision: true
+#When freezing someone, it will change it's helmet by an item.
+freezeHelmetChange: true
+freezeHelmetID: "ICE"

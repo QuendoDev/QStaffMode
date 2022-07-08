@@ -14,8 +14,13 @@ openChestSilent: "&bOpening chest silently..."
 chatCleared: "&aChat has been cleared by &r<player>"
 enabledColor: "&a"
 disabledColor: "&c"
+#Values for the variable <value>
+enabledMessage: "enabled"
+disabledMessage: "disabled"
 #When you use /chat [lock/unlock/toggle], this message is broadcast.
 chatLock: "&bChat has been <color><value> by &f<name>."
+alreadyLocked: "&cChat is already locked."
+alreadyUnlocked: "&cChat is already unlocked."
 #Sended when talking with locked chat.
 cantTalk: "&cYou can't use the chat right now."
 #When you use /chat slowmode, this message is broadcast.

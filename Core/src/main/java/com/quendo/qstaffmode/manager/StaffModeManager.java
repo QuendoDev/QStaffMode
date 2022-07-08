@@ -6,6 +6,7 @@ import com.quendo.qore.scoreboard.AssembleBoard;
 import com.quendo.qore.storage.Storage;
 import com.quendo.qore.utils.bukkit.MessageUtil;
 import com.quendo.qstaffmode.QStaffMode;
+import com.quendo.qstaffmode.common.ItemBuilder;
 import com.quendo.qstaffmode.common.Utils;
 import com.quendo.qstaffmode.models.data.LeaveInformation;
 import com.quendo.qstaffmode.models.data.StaffInformation;
@@ -17,6 +18,8 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.ServicesManager;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -46,8 +49,9 @@ public class StaffModeManager {
     @Inject Storage<UUID, LeaveInformation> leaveInformationStorage;
 
     @Inject private ItemManager itemManager;
+    @Inject private ItemBuilder itemBuilder;
 
-    @Getter private final List<UUID> frozen = new ArrayList<>();
+    @Getter private final Map<UUID, ItemStack> frozen = new HashMap<>();
     @Getter private final List<UUID> vanished = new ArrayList<>();
     @Getter private final List<UUID> flying = new ArrayList<>();
     @Getter private final List<UUID> inStaffChat = new ArrayList<>();
@@ -83,13 +87,15 @@ public class StaffModeManager {
                 inStaffMode.find(p.getUniqueId()).ifPresent(staffInformation -> p.teleport(staffInformation.getSavedLocation()));
                 MessageUtil.sendMessage(p, messages.getString("teleportedToInitialPos"));
             }
-            if (!leaving) {
-                inStaffMode.remove(p.getUniqueId());
-            }
+            inStaffMode.find(p.getUniqueId()).ifPresent(staffInformation -> p.setGameMode(staffInformation.getGameMode()));
             if (config.getBoolean("scoreboard")) {
                 scoreboardMap.remove(p.getUniqueId());
                 p.setScoreboard(Bukkit.getScoreboardManager().getMainScoreboard());
             }
+            for (PotionEffect effect : p.getActivePotionEffects()) {
+                p.removePotionEffect(effect.getType());
+            }
+            if (!leaving) inStaffMode.remove(p.getUniqueId());
             MessageUtil.sendMessage(p, messages.getString("disabledStaffMode"));
             if (config.getBoolean("bcStaffMode")) {
                 for (Player online : Bukkit.getOnlinePlayers()) {
@@ -104,7 +110,7 @@ public class StaffModeManager {
     public void enableStaffMode (Player p, boolean reconnecting) {
         if (p.hasPermission("qstaffmode.staffmode")) {
             if (!reconnecting && !inStaffMode.find(p.getUniqueId()).isPresent()) {
-                inStaffMode.add(p.getUniqueId(), new StaffInformation(p.getLocation(), p.getInventory().getContents(), p.getInventory().getArmorContents()));
+                inStaffMode.add(p.getUniqueId(), new StaffInformation(p.getLocation(), p.getInventory().getContents(), p.getInventory().getArmorContents(), p.getGameMode()));
             }
             vanish(p);
             fly(p);
@@ -116,6 +122,9 @@ public class StaffModeManager {
             }
             if (config.getBoolean("creativeOnStaffmode")) {
                 p.setGameMode(GameMode.CREATIVE);
+            }
+            if (config.getBoolean("nightVision")) {
+                p.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 1));
             }
             MessageUtil.sendMessage(p, messages.getString("enabledStaffMode"));
             if (config.getBoolean("bcStaffMode")) {
@@ -253,7 +262,10 @@ public class StaffModeManager {
     private void freeze (Player p, Player staff) {
         if (staff.hasPermission("qstaffmode.freeze")) {
             if (!p.hasPermission("qstaffmode.bypass.freeze")) {
-                frozen.add(p.getUniqueId());
+                frozen.put(p.getUniqueId(), p.getInventory().getHelmet());
+                if (config.getBoolean("freezeHelmetChange")) {
+                    p.getInventory().setHelmet(itemBuilder.material(config.getString("freezeHelmetID")).amount(1).build());
+                }
                 MessageUtil.sendMessage(p, messages.getString("frozenByStaff").replace("<player>", staff.getName()));
                 MessageUtil.sendMessage(staff, messages.getString("frozeSomeone").replace("<player>", p.getName()));
             } else {
@@ -263,19 +275,16 @@ public class StaffModeManager {
     }
 
     public void unfreeze (Player p, Player staff, boolean console) {
-        if (console) {
-            frozen.remove(p.getUniqueId());
-            return;
-        }
-        if (staff.hasPermission("qstaffmode.freeze")) {
-            frozen.remove(p.getUniqueId());
+        p.getInventory().setHelmet(frozen.get(p.getUniqueId()));
+        frozen.remove(p.getUniqueId());
+        if (!console && staff.hasPermission("qstaffmode.freeze")) {
             MessageUtil.sendMessage(p, messages.getString("unfrozenByStaff").replace("<player>", staff.getName()));
             MessageUtil.sendMessage(staff, messages.getString("unfrozeSomeone").replace("<player>", p.getName()));
         }
     }
 
     public boolean isFrozen(Player p) {
-        return frozen.contains(p.getUniqueId());
+        return frozen.containsKey(p.getUniqueId());
     }
 
     public void teleportToRandomplayer(Player p, boolean useMultiworld) {

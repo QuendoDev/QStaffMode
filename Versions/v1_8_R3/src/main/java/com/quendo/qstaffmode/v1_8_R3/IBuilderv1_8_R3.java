@@ -171,17 +171,22 @@ public class IBuilderv1_8_R3 implements ItemBuilder {
         ItemStack itemStack = new ItemStack(Material.SKULL_ITEM, amount, (short) 3);
         ItemMeta meta = itemStack.getItemMeta();
 
-        enchantments.forEach((enchantment, level) -> meta.addEnchant(enchantment, level, true));
+        if (meta != null) {
+            enchantments.forEach((enchantment, level) -> meta.addEnchant(enchantment, level, true));
 
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
+            if (name != null) {
+                meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
+            }
 
-        lore.replaceAll(line -> ChatColor.translateAlternateColorCodes('&', line));
-        meta.setLore(lore);
+            if (lore != null && !lore.isEmpty()) {
+                lore.replaceAll(line -> ChatColor.translateAlternateColorCodes('&', line));
+                meta.setLore(lore);
+            }
 
-        flags.forEach(meta::addItemFlags);
+            flags.forEach(meta::addItemFlags);
 
-        itemStack.setItemMeta(meta);
-
+            itemStack.setItemMeta(meta);
+        }
         SkullMeta skullMeta = (SkullMeta) itemStack.getItemMeta();
         skullMeta.setOwner(Bukkit.getPlayer(uuid).getName());
 

@@ -5,6 +5,7 @@ import com.quendo.qstaffmode.common.ItemBuilder;
 import com.quendo.qstaffmode.utils.SkullType;
 import lombok.Getter;
 import org.bukkit.Bukkit;
+import org.bukkit.DyeColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -139,7 +140,7 @@ public class InspectMenu {
         if (getGlow(item)) {
             itemBuilder.glow();
         }
-        if (getSkullType(item) == SkullType.NAME) {
+        if (getSkullType(item) == SkullType.OWNER) {
             itemBuilder.setOwner(getSkullId(item));
         }
         if (getSkullType(item) == SkullType.URL) {
