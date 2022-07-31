@@ -68,6 +68,9 @@ moveWhileFrozen: "&cYou are frozen, you can't move."
 frozenDisconnect: "&c<player> disconnected while frozen!"
 #################################################################################################################
 command-translator:
+  usage:
+    text: "Usage: "
+    color: "RED"
   command:
     subcommand:
       invalid: "The subcommand %s doesn't exists!"
