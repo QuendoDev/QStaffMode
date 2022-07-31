@@ -54,6 +54,7 @@ public class QStaffMode extends JavaPlugin {
     qstaffmode.commands.chat.unlock
     qstaffmode.commands.chat.toggle
     qstaffmode.commands.chat.slowmode
+    qstaffmode.commands.chat.clear
 
     qstaffmode.commands.gamemode.creative
     qstaffmode.commands.gamemode.spectator
