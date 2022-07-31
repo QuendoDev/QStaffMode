@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.listener.inventory;
 
-import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.files.config.OldYMLFile;
 import com.quendo.qstaffmode.common.Utils;
 import com.quendo.qstaffmode.manager.StaffModeManager;
 import com.quendo.qstaffmode.menus.pages.PageTracker;

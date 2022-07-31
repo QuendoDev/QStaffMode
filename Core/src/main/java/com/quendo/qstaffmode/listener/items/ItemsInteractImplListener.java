@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.listener.items;
 
-import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.files.config.OldYMLFile;
 import com.quendo.qstaffmode.events.*;
 import com.quendo.qstaffmode.manager.MenuManager;
 import com.quendo.qstaffmode.manager.StaffModeManager;

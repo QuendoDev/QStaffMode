@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.commandflow.translator;
 
-import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.files.config.OldYMLFile;
 import me.fixeddev.commandflow.Namespace;
 import me.fixeddev.commandflow.translator.TranslationProvider;
 

@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode;
 
-import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.files.config.OldYMLFile;
 import com.quendo.qore.utils.bukkit.BukkitUtil;
 import com.quendo.qstaffmode.manager.StaffModeManager;
 import lombok.AllArgsConstructor;

@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.menus.stafflist;
 
-import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.files.config.OldYMLFile;
 import com.quendo.qore.storage.Storage;
 import com.quendo.qore.utils.bukkit.BukkitUtil;
 import com.quendo.qstaffmode.common.ItemBuilder;

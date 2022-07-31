@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.commands;
 
-import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.files.config.OldYMLFile;
 import com.quendo.qore.utils.bukkit.MessageUtil;
 import com.quendo.qstaffmode.manager.StaffModeManager;
 import me.fixeddev.commandflow.annotated.CommandClass;

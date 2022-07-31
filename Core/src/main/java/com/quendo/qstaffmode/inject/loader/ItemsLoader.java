@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.inject.loader;
 
-import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.files.config.OldYMLFile;
 import com.quendo.qore.setup.Loader;
 import com.quendo.qstaffmode.common.ItemBuilder;
 import com.quendo.qstaffmode.models.StaffItem;

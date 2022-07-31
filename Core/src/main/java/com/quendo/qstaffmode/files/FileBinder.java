@@ -1,7 +1,7 @@
 package com.quendo.qstaffmode.files;
 
 
-import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.files.config.OldYMLFile;
 import team.unnamed.inject.Module;
 
 import java.util.HashMap;

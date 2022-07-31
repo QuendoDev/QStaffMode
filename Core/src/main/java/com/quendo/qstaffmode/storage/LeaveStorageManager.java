@@ -1,7 +1,7 @@
 package com.quendo.qstaffmode.storage;
 
 import com.eatthepath.uuid.FastUUID;
-import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.files.config.OldYMLFile;
 import com.quendo.qore.storage.Storage;
 import com.quendo.qstaffmode.models.data.LeaveInformation;
 import org.bukkit.configuration.ConfigurationSection;

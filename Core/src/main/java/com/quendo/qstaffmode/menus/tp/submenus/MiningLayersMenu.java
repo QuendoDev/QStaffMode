@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.menus.tp.submenus;
 
-import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.files.config.OldYMLFile;
 import com.quendo.qore.utils.bukkit.BukkitUtil;
 import com.quendo.qstaffmode.common.ItemBuilder;
 import com.quendo.qstaffmode.menus.pages.PageTracker;

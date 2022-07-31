@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.menus;
 
-import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.files.config.OldYMLFile;
 import com.quendo.qstaffmode.common.ItemBuilder;
 import com.quendo.qstaffmode.utils.SkullType;
 import lombok.Getter;

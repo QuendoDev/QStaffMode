@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.manager;
 
-import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.files.config.OldYMLFile;
 import com.quendo.qore.utils.bukkit.MessageUtil;
 import com.quendo.qstaffmode.menus.InspectMenu;
 import com.quendo.qstaffmode.menus.stafflist.StaffListMainMenu;

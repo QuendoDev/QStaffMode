@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.scoreboard;
 
-import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.files.config.OldYMLFile;
 import com.quendo.qore.scoreboard.AssembleAdapter;
 import com.quendo.qore.utils.JavaUtil;
 import com.quendo.qstaffmode.common.Utils;

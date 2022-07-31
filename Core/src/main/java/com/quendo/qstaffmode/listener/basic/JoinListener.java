@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.listener.basic;
 
-import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.files.config.OldYMLFile;
 import com.quendo.qstaffmode.manager.StaffModeManager;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;

@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.manager;
 
-import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.files.config.OldYMLFile;
 import lombok.Getter;
 import org.bukkit.entity.Player;
 
