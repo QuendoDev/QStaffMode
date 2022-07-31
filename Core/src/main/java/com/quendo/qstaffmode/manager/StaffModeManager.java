@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.manager;
 
-import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.files.config.OldYMLFile;
 import com.quendo.qore.scoreboard.Assemble;
 import com.quendo.qore.scoreboard.AssembleBoard;
 import com.quendo.qore.storage.Storage;
@@ -17,7 +17,6 @@ import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.ServicesManager;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -275,11 +274,15 @@ public class StaffModeManager {
     }
 
     public void unfreeze (Player p, Player staff, boolean console) {
-        p.getInventory().setHelmet(frozen.get(p.getUniqueId()));
-        frozen.remove(p.getUniqueId());
-        if (!console && staff.hasPermission("qstaffmode.freeze")) {
-            MessageUtil.sendMessage(p, messages.getString("unfrozenByStaff").replace("<player>", staff.getName()));
-            MessageUtil.sendMessage(staff, messages.getString("unfrozeSomeone").replace("<player>", p.getName()));
+        if (staff.hasPermission("qstaffmode.freeze")) {
+            p.getInventory().setHelmet(frozen.get(p.getUniqueId()));
+            frozen.remove(p.getUniqueId());
+            if (!console) {
+                MessageUtil.sendMessage(p, messages.getString("unfrozenByStaff").replace("<player>", staff.getName()));
+                MessageUtil.sendMessage(staff, messages.getString("unfrozeSomeone").replace("<player>", p.getName()));
+            }
+        } else {
+            MessageUtil.sendMessage(staff, messages.getString("noPerms"));
         }
     }
 
