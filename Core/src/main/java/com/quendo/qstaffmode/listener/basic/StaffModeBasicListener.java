@@ -1,6 +1,6 @@
 package com.quendo.qstaffmode.listener.basic;
 
-import com.quendo.qore.files.OldYMLFile;
+import com.quendo.qore.files.config.OldYMLFile;
 import com.quendo.qore.utils.bukkit.MessageUtil;
 import com.quendo.qstaffmode.QStaffMode;
 import com.quendo.qstaffmode.manager.StaffModeManager;
@@ -19,6 +19,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityTargetEvent;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -147,6 +148,15 @@ public class StaffModeBasicListener implements Listener {
                     }
                 }
             }
+        }
+    }
+
+    @EventHandler
+    public void hunger (FoodLevelChangeEvent event) {
+        Player player = (Player) event.getEntity();
+        if (staffModeManager.isInStaffMode(player)) {
+            player.setFoodLevel(20);
+            event.setCancelled(true);
         }
     }
 }
