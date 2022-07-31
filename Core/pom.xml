@@ -27,30 +27,15 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>3.8.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.2.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
         </plugins>
 
         <resources>
@@ -177,21 +162,25 @@
             <groupId>me.fixeddev</groupId>
             <artifactId>commandflow-universal</artifactId>
             <version>0.5.3</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>me.fixeddev</groupId>
             <artifactId>commandflow-bukkit</artifactId>
             <version>0.5.2</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>team.unnamed</groupId>
             <artifactId>inject</artifactId>
             <version>1.0.1</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.eatthepath</groupId>
             <artifactId>fast-uuid</artifactId>
             <version>0.2.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>me.clip</groupId>
