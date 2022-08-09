@@ -14,6 +14,12 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 public class Utilsv1_8_R3 implements Utils {
 
+
+    @Override
+    public ItemStack getItemInHand(Player p) {
+        return p.getItemInHand();
+    }
+
     @Override
     public ItemStack getItemInHand (PlayerEvent e) {
         return e.getPlayer().getItemInHand();

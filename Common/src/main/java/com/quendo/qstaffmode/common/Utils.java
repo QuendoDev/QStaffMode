@@ -12,6 +12,8 @@ public interface Utils {
 
     ItemStack getItemInHand (PlayerEvent e);
 
+    ItemStack getItemInHand (Player p);
+
     double getTPS();
 
     String getInventoryName(InventoryClickEvent inventoryClickEvent);

@@ -18,6 +18,11 @@ import org.bukkit.inventory.ItemStack;
 public class Utilsv1_16_R3 implements Utils {
 
     @Override
+    public ItemStack getItemInHand(Player p) {
+        return p.getInventory().getItemInMainHand();
+    }
+
+    @Override
     public ItemStack getItemInHand(PlayerEvent e) {
         if(e instanceof PlayerInteractEntityEvent) {
             if (((PlayerInteractEntityEvent) e).getHand() == EquipmentSlot.HAND) {

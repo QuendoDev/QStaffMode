@@ -19,6 +19,11 @@ import org.w3c.dom.Text;
 public class Utilsv1_19_R1 implements Utils {
 
     @Override
+    public ItemStack getItemInHand(Player p) {
+        return p.getInventory().getItemInMainHand();
+    }
+
+    @Override
     public ItemStack getItemInHand(PlayerEvent e) {
         if(e instanceof PlayerInteractEntityEvent) {
             if (((PlayerInteractEntityEvent) e).getHand() == EquipmentSlot.HAND) {

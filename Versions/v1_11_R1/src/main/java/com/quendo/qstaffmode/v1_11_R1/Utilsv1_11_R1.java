@@ -19,6 +19,10 @@ import org.bukkit.inventory.meta.SkullMeta;
 public class Utilsv1_11_R1 implements Utils {
 
     @Override
+    public ItemStack getItemInHand(Player p) {
+        return p.getInventory().getItemInMainHand();
+    }
+    @Override
     public ItemStack getItemInHand(PlayerEvent e) {
         if(e instanceof PlayerInteractEntityEvent) {
             if (((PlayerInteractEntityEvent) e).getHand() == EquipmentSlot.HAND) {
