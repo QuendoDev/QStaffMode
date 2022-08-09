@@ -67,6 +67,7 @@ public class QStaffMode extends JavaPlugin {
     qstaffmode.commands.gamemode.adventure.others
 
     qstaffmode.commands.main.info
+    qstaffmode.commands.main.reload
 
     qstaffmode.commands.freeze
 
