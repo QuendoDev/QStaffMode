@@ -28,7 +28,7 @@ public class ItemManager {
                 player.getInventory().setItem(tempItems.get(s).getSlot(), tempItems.get(s).getItem());
             }
         }
-        items.put(vanished ? "visible" : "vanished", removed);
+        items.put(vanished ? "visible" : "vanish", removed);
     }
 
     public void giveVanishItem (Player player, boolean vanished) {
