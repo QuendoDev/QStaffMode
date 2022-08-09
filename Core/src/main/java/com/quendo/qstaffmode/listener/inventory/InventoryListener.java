@@ -1,6 +1,7 @@
 package com.quendo.qstaffmode.listener.inventory;
 
 import com.quendo.qore.files.config.OldYMLFile;
+import com.quendo.qstaffmode.QStaffMode;
 import com.quendo.qstaffmode.common.Utils;
 import com.quendo.qstaffmode.manager.StaffModeManager;
 import com.quendo.qstaffmode.menus.pages.PageTracker;
@@ -16,6 +17,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.scheduler.BukkitScheduler;
 import team.unnamed.inject.InjectAll;
 
 import javax.inject.Named;
@@ -31,6 +33,8 @@ public class InventoryListener implements Listener {
 
     private Utils utils;
 
+    private QStaffMode qStaffMode;
+
     private StaffModeManager staffModeManager;
     private MenuManager menuManager;
     private PageTracker pageTracker;
@@ -38,34 +42,39 @@ public class InventoryListener implements Listener {
     @EventHandler
     public void onClick (InventoryClickEvent e) {
         if (e.getClickedInventory() != null) {
-            String invName = utils.getInventoryName(e);
+            String invName = ChatColor.stripColor(utils.getInventoryName(e));
             //////////////////MAIN MENU////////////////////////
-            if (ChatColor.stripColor(menus.getString("main.title")).equals(ChatColor.stripColor(invName))) {
+            if (ChatColor.stripColor(menus.getString("main.title")).equals(invName)) {
                 mainMenu(e);
+                return;
             }
 
             //////////////////AVAILABLE STAFF MENU////////////////////////
-            if (ChatColor.stripColor(menus.getString("availableStaff.title")).equals(ChatColor.stripColor(invName))) {
+            if (ChatColor.stripColor(menus.getString("availableStaff.title")).equals(invName)) {
                 availableMenu(e);
+                return;
             }
 
             //////////////////UNAVAILABLE STAFF MENU////////////////////////
-            if (ChatColor.stripColor(menus.getString("unavailableStaff.title")).equals(ChatColor.stripColor(invName))) {
+            if (ChatColor.stripColor(menus.getString("unavailableStaff.title")).equals(invName)) {
                 unavailableMenu(e);
+                return;
             }
 
             //////////////////TP MAIN MENU////////////////////////
-            if (ChatColor.stripColor(menus.getString("tpItemMenu.title")).equals(ChatColor.stripColor(invName))) {
+            if (ChatColor.stripColor(menus.getString("tpItemMenu.title")).equals(invName)) {
                 tpMenu(e);
+                return;
             }
 
             //////////////////TP MINING PLAYERS MENU////////////////////////
-            if (ChatColor.stripColor(menus.getString("inMiningLayers.title")).equals(ChatColor.stripColor(invName))) {
+            if (ChatColor.stripColor(menus.getString("inMiningLayers.title")).equals(invName)) {
                 miningMenu(e);
+                return;
             }
 
             //////////////////INVSEE MENU////////////////////////
-            if (ChatColor.stripColor(menus.getString("inspect.title")).equals(ChatColor.stripColor(invName))) {
+            if (ChatColor.stripColor(menus.getString("inspect.title")).equals(invName)) {
                 e.setCancelled(true);
             }
         }
@@ -93,12 +102,17 @@ public class InventoryListener implements Listener {
 
                 if (itemClickedEqualsItem(e.getCurrentItem(), menus.getString("main.inStaffMode.id"))
                         && p.hasPermission("qstaffmode.menu.availablestaff.open")) {
-                    menuManager.openAvailableStaffMenu(p, 1);
+                    Bukkit.getScheduler().runTaskLater(qStaffMode,
+                            () -> menuManager.openAvailableStaffMenu(p, 1),
+                            1);
+
                 }
 
                 if (itemClickedEqualsItem(e.getCurrentItem(), menus.getString("main.withoutStaffMode.id"))
                         && p.hasPermission("qstaffmode.menu.unavailablestaff.open")) {
-                    menuManager.openUnavailableStaffMenu(p, 1);
+                    Bukkit.getScheduler().runTaskLater(qStaffMode,
+                            () -> menuManager.openUnavailableStaffMenu(p, 1),
+                            1);
                 }
             }
         }
@@ -123,7 +137,10 @@ public class InventoryListener implements Listener {
 
                     if (slot == nextPageSlot && itemClickedEqualsItem(e.getCurrentItem(), menus.getString("availableStaff.nextPage.id"))) {
                         page++;
-                        menuManager.openAvailableStaffMenu(p, page);
+                        int finalPage = page;
+                        Bukkit.getScheduler().runTaskLater(qStaffMode,
+                                () -> menuManager.openAvailableStaffMenu(p, finalPage),
+                                1);
                         pageTracker.modifyPlayerPage(p, page);
                     }
 
@@ -135,7 +152,10 @@ public class InventoryListener implements Listener {
 
                     if (slot == prevPageSlot && itemClickedEqualsItem(e.getCurrentItem(), menus.getString("availableStaff.previousPage.id"))) {
                         page--;
-                        menuManager.openAvailableStaffMenu(p, page);
+                        int finalPage = page;
+                        Bukkit.getScheduler().runTaskLater(qStaffMode,
+                                () -> menuManager.openAvailableStaffMenu(p, finalPage),
+                                1);
                         pageTracker.modifyPlayerPage(p, page);
                     }
 
@@ -171,7 +191,10 @@ public class InventoryListener implements Listener {
 
                     if (slot == nextPageSlot && itemClickedEqualsItem(e.getCurrentItem(), menus.getString("unavailableStaff.nextPage.id"))) {
                         page++;
-                        menuManager.openUnavailableStaffMenu(p, page);
+                        int finalPage = page;
+                        Bukkit.getScheduler().runTaskLater(qStaffMode,
+                                () -> menuManager.openUnavailableStaffMenu(p, finalPage),
+                                1);
                         pageTracker.modifyPlayerPage(p, page);
                     }
 
@@ -183,7 +206,10 @@ public class InventoryListener implements Listener {
 
                     if (slot == prevPageSlot && itemClickedEqualsItem(e.getCurrentItem(), menus.getString("unavailableStaff.previousPage.id"))) {
                         page--;
-                        menuManager.openUnavailableStaffMenu(p, page);
+                        int finalPage = page;
+                        Bukkit.getScheduler().runTaskLater(qStaffMode,
+                                () -> menuManager.openUnavailableStaffMenu(p, finalPage),
+                                1);
                         pageTracker.modifyPlayerPage(p, page);
                     }
 
@@ -212,7 +238,9 @@ public class InventoryListener implements Listener {
 
                 if (itemClickedEqualsItem(e.getCurrentItem(), menus.getString("tpItemMenu.miningLayersPlayers.id"))
                         && p.hasPermission("qstaffmode.menu.tp.mining")) {
-                    menuManager.openMiningMenu(p, 1);
+                    Bukkit.getScheduler().runTaskLater(qStaffMode,
+                            () -> menuManager.openMiningMenu(p, 1),
+                            1);
                 }
             }
         }
@@ -237,7 +265,10 @@ public class InventoryListener implements Listener {
 
                     if (slot == nextPageSlot && itemClickedEqualsItem(e.getCurrentItem(), menus.getString("inMiningLayers.nextPage.id"))) {
                         page++;
-                        menuManager.openMiningMenu(p, page);
+                        int finalPage = page;
+                        Bukkit.getScheduler().runTaskLater(qStaffMode,
+                                () -> menuManager.openMiningMenu(p, finalPage),
+                                1);
                         pageTracker.modifyPlayerPage(p, page);
                     }
 
@@ -249,7 +280,10 @@ public class InventoryListener implements Listener {
 
                     if (slot == prevPageSlot && itemClickedEqualsItem(e.getCurrentItem(), menus.getString("inMiningLayers.previousPage.id"))) {
                         page--;
-                        menuManager.openMiningMenu(p, page);
+                        int finalPage1 = page;
+                        Bukkit.getScheduler().runTaskLater(qStaffMode,
+                                () -> menuManager.openMiningMenu(p, finalPage1),
+                                1);
                         pageTracker.modifyPlayerPage(p, page);
                     }
 
